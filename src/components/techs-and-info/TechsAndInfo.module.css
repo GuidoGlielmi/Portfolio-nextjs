@@ -1,0 +1,49 @@
+.techsAndInfoSection {
+  font-size: var(--global-font-medium);
+}
+.personalInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  position: relative;
+  width: 50%;
+  margin-bottom: min(25vw, 20vh);
+}
+.personalInfo > h2 {
+  width: 90%;
+  padding-top: 1vh;
+  font-size: 1.5em;
+  font-weight: 500;
+  text-align: end;
+}
+.personalInfo > h2::before {
+  content: '';
+  position: absolute;
+  width: 80%;
+  left: 10%;
+  top: 0;
+  border-top: 2px solid #2a2a2a;
+}
+.personalInfo textarea {
+  height: 80px;
+  width: 100%;
+  padding: 2px;
+  font-size: larger;
+  resize: vertical;
+}
+
+@media (max-width: 650px) {
+  .personalInfo {
+    width: 90%;
+    margin: 0 auto min(25vw, 20vh);
+  }
+  .personalInfo h2 {
+    position: relative;
+    text-align: center;
+  }
+  .personalInfo > h2::before {
+    width: 90%;
+    left: 5%;
+  }
+}

@@ -1,0 +1,108 @@
+.nav {
+  display: flex;
+  position: fixed;
+  align-items: center;
+  top: 0;
+  right: 0;
+  padding: max(1vw, 1vh);
+  z-index: 100;
+}
+
+.nav a {
+  display: flex;
+  align-items: center;
+  height: 6vh;
+  transition: all 0.4s cubic-bezier(0.41, -1.17, 0.4, 1.87);
+}
+.nav img {
+  max-height: 100%;
+  max-width: 100%;
+  min-width: 20px;
+  filter: drop-shadow(0 0 2px #9b9b9b);
+}
+.nav a:hover {
+  filter: drop-shadow(4px 4px 0px rgba(170, 57, 57, 0.151));
+  transform: scale(1.1);
+}
+
+.social {
+  display: flex;
+  align-items: center;
+}
+.mobileInputs {
+  display: flex;
+  align-items: center;
+}
+.navButton {
+  margin: 0 10px;
+}
+.linksForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.social > * {
+  /*inputLabel*/
+  display: flex;
+  flex-direction: column;
+  margin: 0 5px;
+}
+
+.modalBackground {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  z-index: 2;
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.4);
+  transition: opacity 0.5s ease, z-index 0.5s ease;
+}
+.modalBackgroundFade {
+  z-index: -1;
+  opacity: 0;
+}
+
+.mobile {
+  display: none;
+}
+@media (max-width: 650px) {
+  .nav {
+    flex-direction: column;
+  }
+  .social {
+    justify-content: space-between;
+    width: 100%;
+  }
+  .navButton {
+    display: none;
+  }
+}
+
+/* @media (max-width: 650px) {
+  .nav {
+    display: none;
+  }
+  .mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .mobile > :first-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 15vh;
+    transition: height 200ms ease, transform 200ms ease;
+  }
+  .cellElementsTransition {
+    transform: scaleY(0);
+    height: 0;
+  }
+  .mobileInputs {
+    flex-direction: column;
+  }
+} */

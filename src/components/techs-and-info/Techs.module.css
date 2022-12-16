@@ -1,0 +1,60 @@
+.techsSection {
+  display: flex;
+  flex-direction: column;
+}
+.techsSection > h3 {
+  align-self: flex-end;
+  position: relative;
+  width: 55%;
+  margin: 0 30px 30px 0;
+  text-align: left;
+  margin-bottom: 20px;
+  padding-top: 1vh;
+  font-size: 1.5em;
+}
+.techsSection > h3::before {
+  content: '';
+  position: absolute;
+  width: 97%;
+  right: 0;
+  top: 0;
+  border-top: 2px solid #2a2a2a;
+}
+.techsContainer::-webkit-scrollbar {
+  display: none;
+}
+.techsContainer {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  display: flex;
+  overflow-x: scroll;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+  overscroll-behavior-x: contain;
+  overscroll-behavior-y: none;
+  scroll-snap-type: x proximity;
+  border-left: 2px solid rgb(46, 46, 46);
+  border-right: 2px solid rgb(46, 46, 46);
+}
+.techsContainer > div:last-child {
+  display: flex;
+}
+.addButton {
+  align-self: center;
+  margin: 20px 0;
+}
+@media (max-width: 650px) {
+  .techsSection > h3 {
+    align-self: stretch;
+    margin: 0 5vw;
+    width: 90%;
+    text-align: center;
+  }
+  .techsSection > h3::before {
+    width: 86%;
+    left: 7%;
+  }
+  .techsContainer > div:last-child {
+    display: none;
+  }
+}

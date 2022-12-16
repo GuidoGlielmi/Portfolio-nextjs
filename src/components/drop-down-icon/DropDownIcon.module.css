@@ -1,0 +1,8 @@
+.dropDown {
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+  margin: 10px;
+  cursor: pointer;
+  filter: drop-shadow(0 0 7px rgb(221, 221, 221));
+}

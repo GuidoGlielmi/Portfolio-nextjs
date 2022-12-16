@@ -1,0 +1,36 @@
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 5px 10px;
+  background-image: linear-gradient(
+    170deg,
+    rgb(230, 230, 230),
+    rgb(195, 195, 195) 50%,
+    rgb(230, 230, 230)
+  );
+  background-size: 300%;
+  background-position: 0px;
+  border: none;
+  transform: scale(1);
+  box-shadow: 0 0 2px rgb(71, 71, 71);
+  border-radius: var(--global-radius);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.button:hover {
+  background-position: 100%;
+}
+.button:active {
+  transform: scale(0.97);
+}
+.s {
+  font-size: 0.8em;
+}
+.l {
+  font-size: 1.2em;
+}
+.xl {
+  font-size: 1.5em;
+}

@@ -1,0 +1,22 @@
+.circleBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 10px;
+  filter: drop-shadow(5px 5px 3px rgba(68, 8, 8, 0.39));
+}
+.circleBox > p {
+  position: absolute;
+}
+.circleBox svg {
+  transform: rotate(-90deg) scale(1, -1);
+  border-radius: 50%;
+}
+.circle {
+  stroke: #90abd5;
+  transition: stroke-dashoffset 0.5s ease;
+}
+.grayCircle {
+  stroke: gray;
+}

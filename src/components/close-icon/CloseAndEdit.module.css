@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  margin: 4px;
+}
+.container > * {
+  margin: 0 5px;
+}
+.container > *:hover {
+  transition: all 0.2s ease;
+}
+.container > *:hover {
+  opacity: 0.9;
+  transform: scale(1.1);
+}
+.icon {
+  filter: drop-shadow(0 0 1px #bdbdfd);
+  width: 2em;
+  height: 2em;
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+.close {
+  width: 2.25em;
+  height: 2.25em;
+}

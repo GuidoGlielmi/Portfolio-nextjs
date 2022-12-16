@@ -1,0 +1,50 @@
+.closeContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+.close,
+.shadow {
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.close {
+  z-index: 1;
+}
+.shadow {
+  top: 1.5px;
+}
+.closeLeft,
+.shadowLeft,
+.closeRight,
+.shadowRight {
+  position: absolute;
+  height: 15%;
+  width: 100%;
+  border-radius: 2px;
+  top: 7%;
+}
+
+.closeLeft,
+.shadowLeft {
+  transform: rotate(45deg);
+  transform-origin: top left;
+  left: 20%;
+}
+.closeRight,
+.shadowRight {
+  transform: rotate(-45deg);
+  transform-origin: top right;
+  right: 20%;
+}
+.closeLeft,
+.closeRight {
+  background-color: rgb(48, 48, 48);
+}
+.shadowLeft,
+.shadowRight {
+  background-color: rgb(238, 238, 238);
+}

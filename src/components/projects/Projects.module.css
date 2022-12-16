@@ -1,0 +1,93 @@
+.projectsSection {
+  position: relative;
+  font-size: var(--global-font-medium);
+}
+.projectsSection > h2 {
+  margin-bottom: 20px;
+  padding-top: 1vh;
+  font-size: 1.5em;
+  text-align: center;
+}
+.projectsSection > h2::before {
+  content: '';
+  position: absolute;
+  width: 55%;
+  right: 4vw; /* projectsSection's padding */
+  top: 0;
+  border-top: 2px solid #2a2a2a;
+}
+.projects {
+  display: flex;
+  flex-direction: column;
+}
+.addButton {
+  align-self: center;
+  margin: 20px 0;
+}
+
+.projects > * {
+  /* projectContainer */
+  display: flex;
+  align-items: center;
+  position: relative;
+  max-width: 70%;
+  padding-bottom: 30px;
+  margin: 10vh 0;
+}
+
+.projects > :nth-child(odd) {
+  /* projectContainerRight */
+  align-self: flex-end;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  filter: var(--global-right-shadow);
+}
+.projects > :nth-child(odd)::before {
+  content: '';
+  position: absolute;
+  right: 2vw;
+  bottom: 0;
+  width: 100%;
+  border-bottom: 2px solid #363636;
+  border-image: linear-gradient(to left, #202020, rgba(0, 0, 0, 0)) 0 0 1%;
+}
+
+.projects > :nth-child(even) {
+  /* projectContainerLeft */
+  align-self: flex-start;
+  display: flex;
+  justify-content: flex-start;
+  filter: var(--global-left-shadow);
+}
+.projects > :nth-child(even)::before {
+  content: '';
+  position: absolute;
+  left: 2vw;
+  bottom: 0;
+  width: 100%;
+  border-bottom: 2px solid #363636;
+  border-image: linear-gradient(to right, #202020, rgba(0, 0, 0, 0)) 0 0 1%;
+}
+
+@media (max-width: 650px) {
+  .projects {
+    align-items: center;
+  }
+  .projectsSection > h2 {
+    position: relative;
+    align-self: center;
+  }
+  .projectsSection > ::before {
+    width: 90%;
+    left: 5%;
+  }
+
+  .projects > :nth-child(even),
+  .projects > :nth-child(odd) {
+    align-self: unset;
+    flex-direction: column;
+    max-width: 80%;
+    margin: 5vh 0;
+  }
+}
