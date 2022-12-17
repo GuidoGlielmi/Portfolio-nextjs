@@ -1,41 +1,69 @@
-import {useRef, useState} from 'react';
+import React from 'react';
+import {Key, useRef, useState} from 'react';
 import {CSSTransition, SwitchTransition} from 'react-transition-group';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {solid} from '@fortawesome/fontawesome-svg-core/import.macro';
 import Header from 'components/header/Header';
 import NavBar from 'components/nav-bar/NavBar';
 import Footer from 'components/footer/Footer';
-import TechsAndInfo from 'components/techs-and-info/TechsAndInfo';
-import Projects from 'components/projects/Projects';
-import Education from 'components/education/Education';
-import Experiences from 'components/experiences/Experiences';
-import Skills from 'components/skills/Skills';
-import CircleButton from 'components/button/CircleButton';
+import TechsAndInfo from 'components/portfolioSections/techs-and-info/TechsAndInfo';
+import Projects from 'components/portfolioSections/projects/Projects';
+import Education from 'components/portfolioSections/education/Education';
+import Experiences from 'components/portfolioSections/experiences/Experiences';
+import Skills from 'components/portfolioSections/skills/Skills';
+import CircleButton from 'components/common/button/CircleButton';
 import './Admin.css';
 import styles from 'components//styles/./Admin.module.css';
-import fetch from '../services/Fetch';
-
 import Head from 'next/head';
-import {GetServerSideProps, GetStaticProps} from 'next';
+import {GetStaticProps, InferGetStaticPropsType} from 'next';
+import portfolioService from '../services/portfolioService';
+import {IEducation, IExperience, IProject, ISkill, ITechnology, IUser} from 'IPortfolio';
+
+type PortfolioData = {
+  user: IUser;
+  educations: IEducation[];
+  experiences: IExperience[];
+  projects: IProject[];
+  skills: ISkill[];
+  techs: ITechnology[];
+};
+
 const sectionsNames = ['Who am I', 'Projects', 'Experiences', 'My education', 'My skills'];
-const sections = [<TechsAndInfo />, <Projects />, <Experiences />, <Education />, <Skills />];
-export default function Home() {
+const Home: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
+  user,
+  educations,
+  experiences,
+  projects,
+  skills,
+  techs,
+}) => {
+  const sections = [
+    <TechsAndInfo user={user} techs={techs} />,
+    <Projects projects={projects} />,
+    <Experiences experiences={experiences} />,
+    <Education educations={educations} />,
+    <Skills skills={skills} />,
+  ];
   const [index, setIndex] = useState(0);
   const [state, setState] = useState(true);
 
-  const section = useRef('');
+  const section = useRef<HTMLDivElement>(null);
 
-  function scrollIntoView(i) {
-    section.current.scrollIntoView();
+  function scrollIntoView(i: number) {
+    section.current?.scrollIntoView();
     triggerAnimation(i);
   }
-  function triggerAnimation(i) {
+  function triggerAnimation(i: number) {
     if (index === i) return;
     setState(ps => !ps);
     setIndex(i);
   }
-  const previousSection = () => triggerAnimation(!index ? sections.length - 1 : index - 1);
-  const nextSection = () => triggerAnimation(index === sections.length - 1 ? 0 : index + 1);
+  const previousSection = () => {
+    triggerAnimation(!index ? sections.length - 1 : index - 1);
+  };
+  const nextSection = () => {
+    triggerAnimation(index === sections.length - 1 ? 0 : index + 1);
+  };
 
   return (
     <>
@@ -45,8 +73,8 @@ export default function Home() {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <NavBar />
-      <Header />
+      <NavBar user={user} />
+      <Header user={user} />
       <main className={styles.main}>
         <div>
           <Arrow action={previousSection} />
@@ -54,15 +82,19 @@ export default function Home() {
         </div>
         <div className={styles.bottomPart}>
           <SectionLinks index={index} triggerAnimation={triggerAnimation} />
-          <Sections section={section} state={state} index={index} />
+          <Sections ref={section} state={state.toString()} sections={sections} index={index} />
         </div>
         <Footer sections={sectionsNames} setLinkIndex={scrollIntoView} />
       </main>
     </>
   );
+};
+
+interface ArrowProps {
+  action: () => void;
 }
 
-const Arrow = ({action}) => (
+const Arrow: React.FC<ArrowProps> = ({action}) => (
   <div className={styles.arrowTrack}>
     <div>
       <CircleButton action={action}>
@@ -72,7 +104,12 @@ const Arrow = ({action}) => (
   </div>
 );
 
-const SectionLinks = ({index, triggerAnimation}) => (
+interface SectionLinksProps {
+  index: number;
+  triggerAnimation: (i: number) => void;
+}
+
+const SectionLinks: React.FC<SectionLinksProps> = ({index, triggerAnimation}) => (
   <div className={styles.sectionLinks}>
     {sectionsNames.map((sn, i) => (
       <span
@@ -86,8 +123,14 @@ const SectionLinks = ({index, triggerAnimation}) => (
   </div>
 );
 
-const Sections = ({index, section, state}) => (
-  <div ref={section} className={styles.sectionsContainer}>
+interface SectionsProps {
+  index: number;
+  state: Key | null | undefined;
+  sections: JSX.Element[];
+}
+
+const Sections = React.forwardRef<HTMLDivElement, SectionsProps>(({index, state, sections}, ref) => (
+  <div ref={ref} className={styles.sectionsContainer}>
     <SwitchTransition>
       <CSSTransition
         key={state}
@@ -100,24 +143,24 @@ const Sections = ({index, section, state}) => (
       </CSSTransition>
     </SwitchTransition>
   </div>
-);
+));
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps = async () => {
   try {
-    const users = await fetch.get({url: 'users'});
-    const educations = await fetch.get({url: 'education'});
-    const experiences = await fetch.get({url: 'experiences'});
-    const projects = await fetch.get({url: 'projects'});
-    const skills = await fetch.get({url: 'skills'});
-    const techs = await fetch.get({url: 'techs'});
+    const educations = await portfolioService.getEducations();
+    const experiences = await portfolioService.getExperiences();
+    const projects = await portfolioService.getProjects();
+    const skills = await portfolioService.getSkills();
+    const techs = await portfolioService.getTechs();
+    const users = await portfolioService.getUsers();
     return {
       props: {
-        users,
         educations,
         experiences,
         projects,
         skills,
         techs,
+        user: users[0],
       },
     };
   } catch (err) {
@@ -125,3 +168,5 @@ export const getStaticProps: GetStaticProps = async () => {
   }
   return {props: {}};
 };
+
+export default Home;

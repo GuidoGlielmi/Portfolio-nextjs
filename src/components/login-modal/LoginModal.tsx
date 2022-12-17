@@ -1,7 +1,7 @@
 import {useContext, useEffect, useRef, useState} from 'react';
 import {loginContext} from 'components/contexts/login/LoginContext';
 import {userFeedbackContext} from 'components/contexts/user-feedback/UserFeedbackContext';
-import Button from 'components/button/Button';
+import Button from 'components/common/button/Button';
 import styles from './LoginModal.module.css';
 
 export default function LoginModal({children, closeModal, willResetErrorMsg}) {

@@ -1,7 +1,12 @@
-/* eslint-disable react/no-array-index-key */
+import {Dispatch, SetStateAction} from 'react';
 import styles from './Footer.module.css';
 
-const Footer = ({sections, setLinkIndex}) => (
+interface ButtonProps {
+  sections: string[];
+  setLinkIndex: (i: number) => void;
+}
+
+const Footer: React.FC<ButtonProps> = ({sections, setLinkIndex}) => (
   <footer>
     <ul className={styles.linkList}>
       {sections.map((s, i) => (
