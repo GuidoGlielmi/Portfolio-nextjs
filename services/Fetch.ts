@@ -15,8 +15,10 @@ export default class Requests {
 
   async makeRequest({url = '', body, method = 'GET'}: HttpReq): Promise<any> {
     let rawRes: Response;
+    const completeUrl = `${this.#baseUrl}${url}`;
+    console.log(completeUrl);
     try {
-      rawRes = await fetch(`${this.#baseUrl}${url}`, {
+      rawRes = await fetch(completeUrl, {
         method: method.toUpperCase(),
         headers: {
           'Content-Type': 'application/json',
@@ -24,8 +26,8 @@ export default class Requests {
         },
         ...(body && {body: JSON.stringify(body)}),
       });
-    } catch {
-      console.log('No internet');
+    } catch (e) {
+      console.log(e, 'No internet');
       throw new RequestError({message: 'No internet connection'});
     }
     try {
