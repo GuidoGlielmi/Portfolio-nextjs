@@ -136,10 +136,15 @@ const Sections = React.forwardRef<HTMLDivElement, SectionsProps>(({index, state,
 export const getStaticProps = async () => {
   try {
     const educations = await portfolioService.getEducations();
+    console.log(educations);
     const experiences = await portfolioService.getExperiences();
+    console.log(experiences);
     const projects = await portfolioService.getProjects();
+    console.log(projects);
     const skills = await portfolioService.getSkills();
+    console.log(skills);
     const techs = await portfolioService.getTechs();
+    console.log(techs);
     const users = await portfolioService.getUsers();
     return {
       props: {
@@ -148,7 +153,7 @@ export const getStaticProps = async () => {
         projects,
         skills,
         techs,
-        user: users[0],
+        user: users?.[0],
       },
       revalidate: 300,
     };
