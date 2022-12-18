@@ -22,7 +22,6 @@ export default class Requests {
         method: method.toUpperCase(),
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${localStorage.getItem('token') || ''}`,
         },
         ...(body && {body: JSON.stringify(body)}),
       });
