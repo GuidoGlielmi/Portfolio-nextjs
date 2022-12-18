@@ -29,9 +29,9 @@ export default class Requests {
       console.log(e, 'No internet');
       throw new RequestError({message: 'No internet connection'});
     }
-    console.log(rawRes);
     try {
       return await rawRes.json();
+      console.log(rawRes);
     } catch {
       // response nody should never be empty
       throw new RequestError({message: 'Empty response body'});
