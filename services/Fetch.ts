@@ -29,6 +29,7 @@ export default class Requests {
       console.log(e, 'No internet');
       throw new RequestError({message: 'No internet connection'});
     }
+    console.log(rawRes);
     try {
       return await rawRes.json();
     } catch {
