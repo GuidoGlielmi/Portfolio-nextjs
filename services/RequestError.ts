@@ -1,14 +1,13 @@
 export interface IRequestError {
-  status: number;
+  status?: number;
   message: string;
 }
 
-export default class RequestError implements IRequestError {
-  status: number;
-
+export default class RequestError {
+  status?: number;
   message: string;
 
-  constructor({status, message}) {
+  constructor({status, message}: IRequestError) {
     this.status = status;
     this.message = message;
   }

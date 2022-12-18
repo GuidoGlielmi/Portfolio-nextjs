@@ -41,6 +41,6 @@ class PortfolioService {
   }
 }
 
-const request = new Requests('');
+const request = new Requests('https://portfolio-back.azurewebsites.net/');
 
 export default new PortfolioService(request);

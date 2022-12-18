@@ -26,13 +26,13 @@ export default class Requests {
       });
     } catch {
       console.log('No internet');
-      throw new RequestError({status: null, message: 'No internet connection'});
+      throw new RequestError({message: 'No internet connection'});
     }
     try {
       return await rawRes.json();
     } catch {
       // response nody should never be empty
-      throw new RequestError({status: null, message: 'Empty response body'});
+      throw new RequestError({message: 'Empty response body'});
     }
   }
 }
