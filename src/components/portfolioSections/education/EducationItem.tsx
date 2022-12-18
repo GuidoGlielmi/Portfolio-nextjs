@@ -1,8 +1,8 @@
 import styles from './EducationItem.module.css';
-import {Education} from 'IPortfolio';
+import {IEducation} from 'IPortfolio';
 
 type EducationItemProps = {
-  education: Education;
+  education: IEducation;
 };
 
 const EducationItem: React.FC<EducationItemProps> = ({

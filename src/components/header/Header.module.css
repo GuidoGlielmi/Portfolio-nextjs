@@ -14,7 +14,7 @@
   background: linear-gradient(160deg, rgb(80, 144, 159) -10%, rgba(19, 3, 26, 0.95));
   /* background: linear-gradient(to bottom right, #a9abd0, rgb(10, 10, 10)); */
 }
-header {
+.header {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;

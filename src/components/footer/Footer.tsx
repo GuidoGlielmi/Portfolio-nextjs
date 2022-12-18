@@ -7,7 +7,7 @@ interface ButtonProps {
 }
 
 const Footer: React.FC<ButtonProps> = ({sections, setLinkIndex}) => (
-  <footer>
+  <footer className={styles.footer}>
     <ul className={styles.linkList}>
       {sections.map((s, i) => (
         <li onClick={() => setLinkIndex(i)} key={s}>

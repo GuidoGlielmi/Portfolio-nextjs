@@ -1,8 +1,8 @@
 import styles from './ExperienceItem.module.css';
-import {Experience} from 'IPortfolio';
+import {IExperience} from 'IPortfolio';
 
 type ExperienceItemProps = {
-  experience: Experience;
+  experience: IExperience;
 };
 
 const ExperienceItem: React.FC<ExperienceItemProps> = ({experience}) => {

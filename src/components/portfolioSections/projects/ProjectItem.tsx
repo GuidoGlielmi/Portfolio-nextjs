@@ -1,8 +1,8 @@
 import styles from './ProjectItem.module.css';
-import {Project} from 'IPortfolio';
+import {IProject} from 'IPortfolio';
 
 type ProjectItemProps = {
-  project: Project;
+  project: IProject;
 };
 
 const ProjectItem: React.FC<ProjectItemProps> = ({

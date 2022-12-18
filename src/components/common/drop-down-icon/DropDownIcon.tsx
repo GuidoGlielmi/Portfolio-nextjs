@@ -1,16 +1,13 @@
-import {SizeProp} from '@fortawesome/fontawesome-svg-core';
-import {solid} from '@fortawesome/fontawesome-svg-core/import.macro';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import styles from './DropDownIcon.module.css';
 
 interface DropDownIconProps {
   onClick: () => void;
-  size?: SizeProp;
+  size?: string;
 }
 
 const DropDownIcon: React.FC<DropDownIconProps> = ({onClick, size}) => (
   <div onClick={onClick} className={styles.dropDown}>
-    <FontAwesomeIcon icon={solid('chevron-down')} size={size} />
+    <i className='fa-solid fa-chevron-down'></i>
   </div>
 );
 export default DropDownIcon;

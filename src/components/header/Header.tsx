@@ -1,15 +1,16 @@
 import styles from './Header.module.css';
 import {IUser} from 'IPortfolio';
 type HeaderProps = {
-  user: IUser;
+  user?: IUser;
 };
 const Header: React.FC<HeaderProps> = ({user}) => {
+  if (!user) return null;
   return (
     <>
       <div className={styles.headerShadowContainer}>
         <div className={styles.headerShadow} />
       </div>
-      <header>
+      <header className={styles.header}>
         <div className={styles.infoAndTitle}>
           <div className={styles.infoContainer}>
             <h3>Welcome to my personal page!</h3>
