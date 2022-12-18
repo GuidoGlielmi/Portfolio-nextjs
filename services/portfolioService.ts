@@ -22,25 +22,25 @@ class PortfolioService {
   }
 
   async getEducations(): Promise<IEducation[]> {
-    return this.#responseHandler({url: 'api/educations'});
+    return this.#responseHandler({url: 'educations'});
   }
   async getExperiences(): Promise<IExperience[]> {
-    return this.#responseHandler({url: 'api/experiences'});
+    return this.#responseHandler({url: 'experiences'});
   }
   async getProjects(): Promise<IProject[]> {
-    return this.#responseHandler({url: 'api/projects'});
+    return this.#responseHandler({url: 'projects'});
   }
   async getSkills(): Promise<ISkill[]> {
-    return this.#responseHandler({url: 'api/skills'});
+    return this.#responseHandler({url: 'skills'});
   }
   async getTechs(): Promise<ITechnology[]> {
-    return this.#responseHandler({url: 'api/technologies'});
+    return this.#responseHandler({url: 'technologies'});
   }
   async getUsers(): Promise<IUser[]> {
-    return this.#responseHandler({url: 'api/users'});
+    return this.#responseHandler({url: 'users'});
   }
 }
 
-const request = new Requests('https://portfolio-back.azurewebsites.net/');
+const request = new Requests('https://portfolio-back.azurewebsites.net/api/');
 
 export default new PortfolioService(request);

@@ -150,6 +150,7 @@ export const getStaticProps = async () => {
         techs,
         user: users[0],
       },
+      revalidate: 300,
     };
   } catch (err) {
     console.log(err);
