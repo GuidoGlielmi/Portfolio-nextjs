@@ -10,15 +10,15 @@ class PortfolioService {
     this.#fetch = request;
   }
 
-  async #responseHandler({url, method, body}: HttpReq) {
-    const res = (await this.#fetch.makeRequest({url, body, method})) as IPortfolio;
+  async #responseHandler(options: HttpReq) {
+    const res = await this.#fetch.makeRequest(options);
     if (res.status_code < 200 || res.status_code >= 300) {
       throw new RequestError({
         status: res.status_code,
         message: res.message,
       });
     }
-    return res.result;
+    return res;
   }
 
   async getEducations(): Promise<IEducation[]> {
@@ -41,6 +41,12 @@ class PortfolioService {
   }
 }
 
-const request = new Requests('https://portfolio-back.azurewebsites.net/api/');
+let request: Requests;
+if (process.env.IS_LOCAL) {
+  request = new Requests('http://localhost:7101/api/');
+} else {
+  request = new Requests('https://portfolio-back.azurewebsites.net/api/');
+}
 
 export default new PortfolioService(request);
+//
