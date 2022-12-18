@@ -1,7 +1,7 @@
 import styles from './Header.module.css';
-import {User} from 'IPortfolio';
+import {IUser} from 'IPortfolio';
 type HeaderProps = {
-  user: User;
+  user: IUser;
 };
 const Header: React.FC<HeaderProps> = ({user}) => {
   return (
