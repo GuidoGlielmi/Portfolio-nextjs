@@ -11,8 +11,8 @@ const Experiences: React.FC<ExperienceSectionProps> = ({experiences}) => {
   return (
     <section className={styles.experiencesSection}>
       <h2>My Experiences</h2>
-      {experiences.map(e => (
-        <ExperienceItem key={e.id} experience={e} />
+      {experiences.map((e, i) => (
+        <ExperienceItem key={e.id + i} experience={e} />
       ))}
     </section>
   );

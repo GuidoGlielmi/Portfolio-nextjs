@@ -39,7 +39,7 @@ export interface ISkill {
   id: string;
   abilityPercentage: string;
   name: string;
-  type: SkillType;
+  type: string;
 }
 
 export interface ITechnology {
@@ -65,6 +65,5 @@ export interface IProjectUrl {
   id: string;
   url: string;
   name: string;
-  project: IProject;
   projectid: string;
 }

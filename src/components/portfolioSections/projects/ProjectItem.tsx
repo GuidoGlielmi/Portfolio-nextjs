@@ -22,15 +22,15 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
           </a>
         )}
         <div className={styles.urls}>
-          {urls.map(u => (
-            <a href={u.url} target='_blank' rel='noreferrer' key={u.id}>
+          {urls.map((u, i) => (
+            <a href={u.url} target='_blank' rel='noreferrer' key={u.id + i}>
               {`${u.name} Repo`}
             </a>
           ))}
         </div>
         <div className={styles.techs}>
           {projectTechs.map((t, i) =>
-            i !== projectTechs.length - 1 ? <span key={t.id}>{t.name} - </span> : <span key={t.id}>{t.name}</span>,
+            i !== projectTechs.length - 1 ? <span key={t.id + i}>{t.name} - </span> : <span key={t.id}>{t.name}</span>,
           )}
         </div>
       </div>

@@ -12,8 +12,8 @@ const IEducation: React.FC<EducationSectionProps> = ({educations}) => {
     <section className={styles.educationSection}>
       <h2>My studies</h2>
       <div className={styles.educations}>
-        {educations.map(e => (
-          <EducationItem education={e} key={e.id} />
+        {educations.map((e, i) => (
+          <EducationItem education={e} key={e.id + i} />
         ))}
       </div>
     </section>

@@ -1,4 +1,5 @@
 :root {
+  --font-primary: Cabin, Nunito, Raleway, sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -7,6 +8,7 @@
 }
 
 * {
+  font-family: Nunito;
   box-sizing: border-box;
   padding: 0;
   margin: 0;

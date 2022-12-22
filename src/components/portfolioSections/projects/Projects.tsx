@@ -12,8 +12,8 @@ const Projects: React.FC<ProjectSectionProps> = ({projects}) => {
     <section className={styles.projectsSection}>
       <h2>Projects I&apos;ve worked on</h2>
       <div className={styles.projects}>
-        {projects.map(p => (
-          <ProjectItem project={p} key={p.id} />
+        {projects.map((p, i) => (
+          <ProjectItem project={p} key={p.id + i} />
         ))}
       </div>
     </section>

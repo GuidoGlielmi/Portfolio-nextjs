@@ -31,7 +31,7 @@ export default class Requests {
     }
     try {
       const res = await rawRes.json();
-      console.log(res);
+      // console.log(res);
       return res;
     } catch {
       // response nody should never be empty

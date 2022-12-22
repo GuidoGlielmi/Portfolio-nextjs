@@ -59,11 +59,11 @@ const Techs: React.FC<TechsProps> = ({techs}) => {
     <div className={styles.techsSection}>
       <h3>Some technologies i&apos;m familiar with</h3>
       <div ref={techsContainer} onWheel={onWheel} className={styles.techsContainer}>
-        {techs.map(t => (
-          <TechItem tech={t} key={t.id} ref={techImg} />
+        {techs.map((t, i) => (
+          <TechItem tech={t} key={t.id + i} ref={techImg} />
         ))}
-        {techs.map(t => (
-          <TechItem tech={t} key={t.id} ref={techImg} />
+        {techs.map((t, i) => (
+          <TechItem tech={t} key={t.id + i} ref={techImg} />
         ))}
       </div>
     </div>

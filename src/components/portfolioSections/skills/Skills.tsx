@@ -33,8 +33,8 @@ const TypeGroup: React.FC<TypeGroupProps> = ({title, skills}) => {
     <div className={styles.group}>
       <h2>{title}</h2>
       <div className={styles.skills}>
-        {skills.map((s: any) => (
-          <SkillItem skill={s} key={s.id} />
+        {skills.map((s: any, i: number) => (
+          <SkillItem skill={s} key={s.id + i} />
         ))}
       </div>
     </div>
