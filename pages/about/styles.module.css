@@ -85,6 +85,7 @@
   display: flex;
   padding: 22vh 0;
   position: relative;
+  cursor: grab;
   transition: all 0.8s cubic-bezier(0.97, -0.38, 0.07, 1.3);
 }
 
@@ -93,7 +94,7 @@
   flex-direction: column;
   flex-shrink: 0;
   width: 100%;
-  padding: 0 3.5vw;
+  /* padding: 0 3.5vw; */
 }
 .arrowTrack {
   /* previousArrowContainer nextArrowContainer */

@@ -11,16 +11,6 @@ const TechsAndInfo: React.FC<TechsAndInfoProps> = ({techs, user}) => {
   if (!techs || !user) return null;
   return (
     <section className={styles.techsAndInfoSection}>
-      <div className={styles.personalInfo}>
-        <h2>I&apos;m a web developer</h2>
-        {<p>{user.aboutMe}</p>}
-        <a href='./assets/Guido-Glielmi-RESUME.pdf' download>
-          Download my CV
-        </a>
-        <a href='./assets/Guido-Glielmi-RESUME(es).pdf' download>
-          Download my CV (es)
-        </a>
-      </div>
       <Techs techs={techs} />
     </section>
   );

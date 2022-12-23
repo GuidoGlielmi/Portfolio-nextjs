@@ -4,7 +4,7 @@ import S from './styles.module.css';
 import portfolioService from '../services/portfolioService';
 import {motion} from 'framer-motion';
 import {InferGetStaticPropsType} from 'next';
-
+import data from '../data.json';
 const About: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({user}) => {
   return (
     <motion.div
@@ -15,14 +15,6 @@ const About: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({user})
         type: 'spring',
       }}
     >
-      <Head>
-        <link rel='preconnect' href='https://fonts.googleapis.com' />
-        <link rel='preconnect' href='https://fonts.gstatic.com' crossOrigin='anonymous' />
-        <link
-          href='https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@500&family=Comfortaa&family=Domine&family=Dosis&family=Josefin+Sans&family=M+PLUS+Rounded+1c&family=Nunito:wght@200;400;500;700&family=Raleway:wght@100;300&family=Source+Serif+Pro:ital,wght@0,300;1,400&family=Spectral&family=Cabin&display=swap'
-          rel='stylesheet'
-        />
-      </Head>
       <Link href='/about'>
         <div className={S.background}>
           <div>
@@ -35,12 +27,14 @@ const About: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({user})
             <div className={S.backgroundLeft} />
           </div>
           <div className={S.info}>
-            <img src={user?.profileImg} alt='profile' />
-            <h1>
-              <p>Welcome to my personal page!</p>
-              <p> I'm a web developer</p>
-            </h1>
-            <p>{user?.aboutMe}</p>
+            <img src={'assets/img/profile-img.jpg'} alt='profile' />
+            <div>
+              <h1>
+                <p>Welcome to my personal page!</p>
+                <p> I'm a web developer</p>
+              </h1>
+              <p>{user?.aboutMe}</p>
+            </div>
           </div>
         </div>
       </Link>
@@ -62,5 +56,8 @@ export const getStaticProps = async () => {
   } catch (err) {
     console.log(err);
   }
-  return {props: {}};
+  const parsedData = data;
+  return {
+    props: parsedData,
+  };
 };

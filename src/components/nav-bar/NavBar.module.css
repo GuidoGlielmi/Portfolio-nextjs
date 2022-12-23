@@ -1,10 +1,35 @@
-.social {
+.nav {
   display: flex;
-  align-items: center;
+  justify-content: space-between;
   position: fixed;
   top: 0;
   right: 0;
-  margin: max(1vw, 1vh);
+  width: 100%;
+  height: 7vh;
+  z-index: 2000;
+}
+.languages {
+  display: flex;
+  flex-direction: row !important;
+  justify-content: stretch !important;
+  width: 35px;
+  height: 35px;
+  overflow: hidden;
+}
+
+.languages > * {
+  position: relative;
+  right: 0;
+  flex-shrink: 0;
+  height: 100%;
+  transition: all 0.5s ease;
+}
+
+.social {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 max(1vw, 1vh);
   z-index: 1000;
 }
 
@@ -18,7 +43,7 @@
   max-height: 100%;
   max-width: 100%;
   min-width: 20px;
-  filter: drop-shadow(0 0 2px #9b9b9b);
+  filter: drop-shadow(0 0 1px #d6d6d6);
 }
 .social a:hover {
   filter: drop-shadow(4px 4px 0px rgba(170, 57, 57, 0.151));
@@ -28,44 +53,71 @@
 .social > * {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   margin: 0 5px;
 }
-
-.sectionLinks {
-  position: fixed;
-  top: 0;
-  left: 0;
-  transition: all 1s ease;
-  z-index: 1000;
-  height: 10vh;
+.cvSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   cursor: pointer;
 }
 
+.cvSection div {
+  position: absolute;
+  top: 100%;
+  opacity: 0;
+  transition: all 0.3s;
+}
+.cvSection:hover > div,
+.cvSection > div:hover {
+  opacity: 1;
+}
+
+.cvSection div * {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background: white;
+  color: black;
+}
+
+.cvSection div :last-child {
+  border-radius: 0 0 10px 10px;
+}
+.cvSection div :first-child {
+  border-radius: 10px 10px 0 0;
+}
+
+.sectionLinks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.75s cubic-bezier(0.23, 0.79, 0.19, 1);
+  z-index: 1000;
+  cursor: pointer;
+  background: linear-gradient(to bottom right, #444, #1a1a1a);
+  border-radius: 0 0 40px 0;
+  height: 7vh;
+}
+.sectionLinks:hover {
+  height: calc(7vh * 6) !important;
+}
 .sectionLinks > * {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
   width: min(200px, 45vw);
-  height: min(80px, 10vh);
+  height: 100%;
   text-align: center;
-  background: #333;
   text-shadow: 2px 2px 1px #111;
 }
 
-.sectionLinks > :first-child {
-  border-radius: 0 0 20px 0;
-  z-index: 5000;
-  transition: all 0.5s ease;
-  cursor: default;
-}
-.sectionLinks:hover > :first-child {
-  border-radius: 0;
-}
 .sectionLinks > :not(:first-child) {
   opacity: 0;
   margin-top: -50%;
-  transition: all 1s cubic-bezier(0.23, 0.79, 0.19, 1);
+  transition: all 0.5s cubic-bezier(0.23, 0.79, 0.19, 1);
 }
 
 .sectionLinks:hover > :not(:first-child) {
@@ -74,7 +126,7 @@
 }
 
 .sectionLinks:hover > :last-child {
-  border-radius: 0 0 20px 0;
+  border-radius: 0 0 40px 0;
 }
 
 .sectionLinks > :not(:first-child):hover {
@@ -82,7 +134,7 @@
 }
 
 .clickedSectionLink {
-  color: blue !important;
+  color: rgb(108, 175, 161) !important;
 }
 
 @media (max-width: 768px) {
