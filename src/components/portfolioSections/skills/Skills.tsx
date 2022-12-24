@@ -1,8 +1,3 @@
-import {useContext, useEffect, useState} from 'react';
-import {loginContext} from 'components/contexts/login/LoginContext';
-import {userFeedbackContext} from 'components/contexts/user-feedback/UserFeedbackContext';
-import {userContext} from 'components/contexts/user/UserContext';
-import Button from 'components/common/button/Button';
 import SkillItem from './SkillItem';
 import styles from './Skills.module.css';
 import {ISkill} from 'IPortfolio';

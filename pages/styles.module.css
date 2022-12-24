@@ -47,7 +47,7 @@
 .info {
   display: flex;
   gap: max(3vw, 3vh);
-  width: 75%;
+  width: 60%;
   margin: auto;
 }
 .info img {

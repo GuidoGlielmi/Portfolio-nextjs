@@ -33,7 +33,6 @@ const About: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({user})
                 <p>Welcome to my personal page!</p>
                 <p> I'm a web developer</p>
               </h1>
-              <p>{user?.aboutMe}</p>
             </div>
           </div>
         </div>
