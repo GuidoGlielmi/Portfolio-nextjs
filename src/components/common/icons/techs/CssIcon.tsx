@@ -1,8 +1,6 @@
 import React from 'react';
-type CssIconProps = {
-  size?: string;
-};
-const CssIcon: React.FC<CssIconProps> = ({size}) => {
+import {TechIconProps} from '.';
+export const CssIcon: React.FC<TechIconProps> = ({size}) => {
   return (
     <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' width={size} height={size}>
       <path fill='#0277BD' d='M41,5H7l3,34l14,4l14-4L41,5L41,5z' />
@@ -18,4 +16,5 @@ const CssIcon: React.FC<CssIconProps> = ({size}) => {
     </svg>
   );
 };
+CssIcon.displayName = 'Css';
 export default CssIcon;

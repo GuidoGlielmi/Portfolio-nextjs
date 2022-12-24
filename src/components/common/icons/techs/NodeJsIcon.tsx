@@ -1,8 +1,6 @@
 import React from 'react';
-type NodeJsIconProps = {
-  size?: string;
-};
-const NodeJsIcon: React.FC<NodeJsIconProps> = ({size}) => {
+import {TechIconProps} from '.';
+export const NodeJsIcon: React.FC<TechIconProps> = ({size}) => {
   return (
     <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' width={size} height={size}>
       <path
@@ -28,4 +26,5 @@ const NodeJsIcon: React.FC<NodeJsIconProps> = ({size}) => {
     </svg>
   );
 };
+NodeJsIcon.displayName = 'Node JS';
 export default NodeJsIcon;

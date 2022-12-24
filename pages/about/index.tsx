@@ -15,7 +15,7 @@ import Script from 'next/script';
 import {IEducation, IExperience, IProject, ISkill, ITechnology, IUser} from 'IPortfolio';
 import {wrap} from 'popmotion';
 
-const sectionsNames = ['Who am I', 'Projects', 'Experiences', 'My education', 'My skills'];
+// const sectionsNames = ['Who am I', 'Projects', 'Experiences', 'My education', 'My skills'];
 type SectionsProps2 = {
   educations: IEducation[];
   experiences: IExperience[];
@@ -32,19 +32,11 @@ const Home: React.FC<SectionsProps2> = ({user, educations, experiences, projects
     <Education educations={educations} />,
     <Skills skills={skills} />,
   ];
-  // const [sectionIndex, setSectionIndex] = useState(0);
-  const [state, setState] = useState(true);
 
   const section = useRef<HTMLDivElement>(null);
 
-  function triggerAnimation(i: number) {
-    if (sectionIndex === i) return;
-    setState(ps => !ps);
-    // setSectionIndex(i);
-  }
-
-  const nextSection = () => {
-    triggerAnimation(sectionIndex === sections.length - 1 ? 0 : sectionIndex + 1);
+  const setSectionIndex = (i: number) => {
+    setPage(pp => [i, pp[1]]);
   };
   const [[page, direction], setPage] = useState([0, 0]);
   const sectionIndex = wrap(0, sections.length, page);
@@ -84,7 +76,7 @@ const Home: React.FC<SectionsProps2> = ({user, educations, experiences, projects
         <link rel='icon' href='/favicon.ico' />
         <Script src='https://kit.fontawesome.com/8f51ab7548.js' crossOrigin='anonymous' />
       </Head>
-      <NavBar user={user} sectionIndex={sectionIndex} triggerAnimation={triggerAnimation} />
+      <NavBar user={user} sectionIndex={sectionIndex} setSectionIndex={setSectionIndex} />
       <main className={styles.main}>
         <Arrow action={() => paginate(1)} />
         <div className={styles.bottomPart}>

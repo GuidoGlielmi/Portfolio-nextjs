@@ -1,8 +1,6 @@
 import React from 'react';
-type HtmlIconProps = {
-  size?: string;
-};
-const HtmlIcon: React.FC<HtmlIconProps> = ({size}) => {
+import {TechIconProps} from '.';
+export const HtmlIcon: React.FC<TechIconProps> = ({size}) => {
   return (
     <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' width={size} height={size}>
       <path fill='#E65100' d='M41,5H7l3,34l14,4l14-4L41,5L41,5z' />
@@ -15,4 +13,5 @@ const HtmlIcon: React.FC<HtmlIconProps> = ({size}) => {
     </svg>
   );
 };
+HtmlIcon.displayName = 'HTML';
 export default HtmlIcon;

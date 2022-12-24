@@ -2,7 +2,7 @@ import styles from './NavBar.module.css';
 import {IUser} from 'IPortfolio';
 import Ar from 'components/common/icons/flags/Ar';
 import Eu from 'components/common/icons/flags/Us';
-import {Fragment, useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import GithubIcon from 'components/common/icons/social/GithubIcon';
 import LinkedinIcon from 'components/common/icons/social/LinkedinIcon';
 
@@ -11,10 +11,10 @@ const sectionsNames = ['Who am I', 'Projects', 'Experiences', 'My education', 'M
 type NavBarProps = {
   user?: IUser;
   sectionIndex: number;
-  triggerAnimation: (i: number) => void;
+  setSectionIndex: (i: number) => void;
 };
 
-const NavBar: React.FC<NavBarProps> = ({user, sectionIndex, triggerAnimation}) => {
+const NavBar: React.FC<NavBarProps> = ({user, sectionIndex, setSectionIndex}) => {
   const [selectedLangIndex, setSelectedLangIndex] = useState(0);
   const [langsHovered, setLangsHovered] = useState(false);
   const [cvHovered, setCvHovered] = useState(false);
@@ -30,7 +30,7 @@ const NavBar: React.FC<NavBarProps> = ({user, sectionIndex, triggerAnimation}) =
 
   return (
     <nav className={styles.nav}>
-      <SectionLinks sectionIndex={sectionIndex} triggerAnimation={triggerAnimation} />
+      <SectionLinks sectionIndex={sectionIndex} setSectionIndex={setSectionIndex} />
       <div className={styles.social}>
         <div
           className={styles.languages}
@@ -72,16 +72,16 @@ const NavBar: React.FC<NavBarProps> = ({user, sectionIndex, triggerAnimation}) =
 
 interface SectionLinksProps {
   sectionIndex: number;
-  triggerAnimation: (i: number) => void;
+  setSectionIndex: (i: number) => void;
 }
 
-const SectionLinks: React.FC<SectionLinksProps> = ({sectionIndex, triggerAnimation}) => (
+const SectionLinks: React.FC<SectionLinksProps> = ({sectionIndex, setSectionIndex}) => (
   <div className={styles.sectionLinks}>
     <span>See more</span>
     {sectionsNames.map((sn, i) => (
       <span
         key={sn}
-        onClick={() => triggerAnimation(i)}
+        onClick={() => setSectionIndex(i)}
         className={sectionIndex === i ? styles.clickedSectionLink : undefined}
       >
         {sn}

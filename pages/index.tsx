@@ -1,11 +1,7 @@
-import Head from 'next/head';
 import Link from 'next/link';
 import S from './styles.module.css';
-import portfolioService from '../services/portfolioService';
 import {motion} from 'framer-motion';
-import {InferGetStaticPropsType} from 'next';
-import data from '../data.json';
-const About: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({user}) => {
+const About: React.FC = () => {
   return (
     <motion.div
       initial={{opacity: 0}}
@@ -42,21 +38,3 @@ const About: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({user})
 };
 
 export default About;
-
-export const getStaticProps = async () => {
-  try {
-    const users = await portfolioService.getUsers();
-    return {
-      props: {
-        user: users?.[0],
-      },
-      revalidate: 300,
-    };
-  } catch (err) {
-    console.log(err);
-  }
-  const parsedData = data;
-  return {
-    props: parsedData,
-  };
-};

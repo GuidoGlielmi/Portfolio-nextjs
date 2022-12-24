@@ -1,8 +1,6 @@
 import React from 'react';
-type JavascriptIconProps = {
-  size?: string;
-};
-const JavascriptIcon: React.FC<JavascriptIconProps> = ({size}) => {
+import {TechIconProps} from '.';
+export const JavascriptIcon: React.FC<TechIconProps> = ({size}) => {
   return (
     <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' width={size} height={size}>
       <path fill='#ffd600' d='M6,42V6h36v36H6z' />
@@ -13,4 +11,5 @@ const JavascriptIcon: React.FC<JavascriptIconProps> = ({size}) => {
     </svg>
   );
 };
+JavascriptIcon.displayName = 'Javascript';
 export default JavascriptIcon;

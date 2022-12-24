@@ -1,8 +1,6 @@
 import React from 'react';
-type PrismaIconProps = {
-  size?: string;
-};
-const PrismaIcon: React.FC<PrismaIconProps> = ({size}) => {
+import {TechIconProps} from '.';
+export const PrismaIcon: React.FC<TechIconProps> = ({size}) => {
   return (
     <svg
       fill='none'
@@ -28,5 +26,5 @@ const PrismaIcon: React.FC<PrismaIconProps> = ({size}) => {
     </svg>
   );
 };
-
+PrismaIcon.displayName = 'Prisma';
 export default PrismaIcon;

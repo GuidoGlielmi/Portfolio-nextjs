@@ -1,8 +1,6 @@
 import React from 'react';
-type GraphQlLIconProps = {
-  size?: string;
-};
-const GraphQLIcon: React.FC<GraphQlLIconProps> = ({size}) => {
+import {TechIconProps} from '.';
+export const GraphQLIcon: React.FC<TechIconProps> = ({size}) => {
   return (
     <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' width={size} height={size}>
       <path
@@ -19,4 +17,5 @@ const GraphQLIcon: React.FC<GraphQlLIconProps> = ({size}) => {
     </svg>
   );
 };
+GraphQLIcon.displayName = 'Graph QL';
 export default GraphQLIcon;

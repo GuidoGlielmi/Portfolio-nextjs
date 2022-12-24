@@ -1,8 +1,6 @@
 import React from 'react';
-type PostgreIconProps = {
-  size?: string;
-};
-const PostgreIcon: React.FC<PostgreIconProps> = ({size}) => {
+import {TechIconProps} from '.';
+export const PostgreIcon: React.FC<TechIconProps> = ({size}) => {
   return (
     <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' width={size} height={size}>
       <path
@@ -24,4 +22,5 @@ const PostgreIcon: React.FC<PostgreIconProps> = ({size}) => {
     </svg>
   );
 };
+PostgreIcon.displayName = 'PostgreSQL';
 export default PostgreIcon;

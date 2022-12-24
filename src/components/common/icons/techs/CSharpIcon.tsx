@@ -1,8 +1,6 @@
 import React from 'react';
-type CSharpIconProps = {
-  size?: string;
-};
-const CSharpIcon: React.FC<CSharpIconProps> = ({size}) => {
+import {TechIconProps} from '.';
+export const CSharpIcon: React.FC<TechIconProps> = ({size}) => {
   return (
     <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' width={size} height={size}>
       <path
@@ -26,4 +24,5 @@ const CSharpIcon: React.FC<CSharpIconProps> = ({size}) => {
     </svg>
   );
 };
+CSharpIcon.displayName = 'C#';
 export default CSharpIcon;

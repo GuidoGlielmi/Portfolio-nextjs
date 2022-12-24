@@ -1,8 +1,6 @@
 import React from 'react';
-type NetIconProps = {
-  size?: string;
-};
-export const NetIcon: React.FC<NetIconProps> = ({size}) => {
+import {TechIconProps} from '.';
+export const NetIcon: React.FC<TechIconProps> = ({size}) => {
   return (
     <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' width={size} height={size} baseProfile='basic'>
       <path
@@ -45,3 +43,5 @@ export const NetIcon: React.FC<NetIconProps> = ({size}) => {
     </svg>
   );
 };
+NetIcon.displayName = '.NET';
+export default NetIcon;

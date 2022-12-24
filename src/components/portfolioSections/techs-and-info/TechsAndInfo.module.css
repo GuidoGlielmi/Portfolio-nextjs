@@ -32,6 +32,11 @@
   font-size: larger;
   resize: vertical;
 }
+.techsContainer {
+  display: flex;
+  gap: 10px;
+  margin: 20vh 0 50vh 0;
+}
 
 @media (max-width: 650px) {
   .personalInfo {

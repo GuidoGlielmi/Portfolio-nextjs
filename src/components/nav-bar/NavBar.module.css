@@ -100,7 +100,7 @@
   background: linear-gradient(to bottom right, #444, #1a1a1a);
   border-radius: 0 0 40px 0;
   height: 7vh;
-  border-right: 2px solid #555;
+  border-bottom: 2px solid #555;
 }
 .sectionLinks:hover {
   height: calc(7vh * 6) !important;

@@ -2,11 +2,10 @@
 
 :root {
   --font-primary: Cabin, Nunito, Raleway, sans-serif;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-  }
+  --color-lightest: #f2e5e5;
+  --color-lighter: #e8c4c4;
+  --color-light: #f2e5e5;
+  --color-dark: #2b3a55;
 }
 
 * {

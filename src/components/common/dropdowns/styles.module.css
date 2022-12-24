@@ -2,22 +2,20 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: all 0.75s cubic-bezier(0.23, 0.79, 0.19, 1);
+  transition: all 0.5s cubic-bezier(0.23, 0.79, 0.19, 1);
+  width: min(200px, 45vw);
   z-index: 1000;
   cursor: pointer;
   background: linear-gradient(to bottom right, #444, #1a1a1a);
-  border-radius: 0 0 40px 0;
-  height: 7vh;
+  border-radius: 0 0 20px 20px;
   border-right: 2px solid #555;
-}
-.options:hover {
-  height: calc(7vh * 6) !important;
+  overflow: hidden;
 }
 .options > * {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: min(200px, 45vw);
+  gap: 10px;
   height: 100%;
   text-align: center;
   text-shadow: 2px 2px 1px #111;
@@ -25,8 +23,8 @@
 
 .options > :not(:first-child) {
   opacity: 0;
-  margin-top: -50%;
-  transition: all 0.5s cubic-bezier(0.23, 0.79, 0.19, 1);
+  margin-top: -20%;
+  transition: all 0.75s cubic-bezier(0.23, 0.79, 0.19, 1);
 }
 
 .options:hover > :not(:first-child) {
@@ -35,7 +33,7 @@
 }
 
 .options:hover > :last-child {
-  border-radius: 0 0 40px 0;
+  border-radius: 0 0 20px 20px;
 }
 
 .options > :not(:first-child):hover {

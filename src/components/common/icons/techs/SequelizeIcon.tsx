@@ -1,8 +1,6 @@
 import React from 'react';
-type SequelizeIconProps = {
-  size?: string;
-};
-const SequelizeIcon: React.FC<SequelizeIconProps> = ({size}) => {
+import {TechIconProps} from '.';
+export const SequelizeIcon: React.FC<TechIconProps> = ({size}) => {
   return (
     <svg xmlns='http://www.w3.org/2000/svg' width={size} height={size}>
       <style></style>
@@ -36,5 +34,6 @@ const SequelizeIcon: React.FC<SequelizeIconProps> = ({size}) => {
     </svg>
   );
 };
+SequelizeIcon.displayName = 'Sequelize';
 
 export default SequelizeIcon;

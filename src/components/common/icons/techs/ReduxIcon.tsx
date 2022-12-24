@@ -1,8 +1,6 @@
 import React from 'react';
-type ReduxIconProps = {
-  size?: string;
-};
-const ReduxIcon: React.FC<ReduxIconProps> = ({size}) => {
+import {TechIconProps} from '.';
+export const ReduxIcon: React.FC<TechIconProps> = ({size}) => {
   return (
     <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' width={size} height={size}>
       <path
@@ -20,4 +18,5 @@ const ReduxIcon: React.FC<ReduxIconProps> = ({size}) => {
     </svg>
   );
 };
+ReduxIcon.displayName = 'Redux';
 export default ReduxIcon;

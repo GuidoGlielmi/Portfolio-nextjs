@@ -1,8 +1,6 @@
 import React from 'react';
-type ReactIconProps = {
-  size?: string;
-};
-const ReactIcon: React.FC<ReactIconProps> = ({size}) => {
+import {TechIconProps} from '.';
+export const ReactIcon: React.FC<TechIconProps> = ({size}) => {
   return (
     <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' width={size} height={size}>
       <path
@@ -21,4 +19,5 @@ const ReactIcon: React.FC<ReactIconProps> = ({size}) => {
     </svg>
   );
 };
+ReactIcon.displayName = 'React';
 export default ReactIcon;

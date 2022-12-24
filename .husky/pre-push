@@ -1,0 +1,18 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo ''
+echo '🏗️👷 Building your project before pushing 🏗️👷'
+echo ''
+echo 'Please wait, maybe drink a couple shots of mate in the meantime'
+echo ''
+echo 'Trying to build now.'
+npm run build ||
+(
+    echo '🔨❌ Your build failed 🔨❌
+            Build failed: View the errors above to see why. 
+    '
+    false;
+)
+# If everything passes... Now we can push
+echo '✅✅✅✅✅✅✅✅'

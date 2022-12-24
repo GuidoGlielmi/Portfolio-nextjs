@@ -1,8 +1,7 @@
 import React from 'react';
-type TypescriptIconProps = {
-  size?: string;
-};
-const TypescriptIcon: React.FC<TypescriptIconProps> = ({size}) => {
+import {TechIconProps} from '.';
+
+export const TypescriptIcon: React.FC<TechIconProps> = ({size}) => {
   return (
     <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' width={size} height={size}>
       <rect width='36' height='36' x='6' y='6' fill='#1976d2' />
@@ -18,4 +17,5 @@ const TypescriptIcon: React.FC<TypescriptIconProps> = ({size}) => {
   );
 };
 
+TypescriptIcon.displayName = 'Typescript';
 export default TypescriptIcon;

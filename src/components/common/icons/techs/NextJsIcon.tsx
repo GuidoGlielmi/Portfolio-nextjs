@@ -1,8 +1,6 @@
 import React from 'react';
-type NextJsIconProps = {
-  size?: string;
-};
-const NextJsIcon: React.FC<NextJsIconProps> = ({size}) => {
+import {TechIconProps} from '.';
+export const NextJsIcon: React.FC<TechIconProps> = ({size}) => {
   return (
     <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' width={size} height={size}>
       <path
@@ -12,4 +10,5 @@ const NextJsIcon: React.FC<NextJsIconProps> = ({size}) => {
     </svg>
   );
 };
+NextJsIcon.displayName = 'Next JS';
 export default NextJsIcon;

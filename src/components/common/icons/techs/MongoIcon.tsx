@@ -1,8 +1,6 @@
 import React from 'react';
-type MongoIconProps = {
-  size?: string;
-};
-const MongoIcon: React.FC<MongoIconProps> = ({size}) => {
+import {TechIconProps} from '.';
+export const MongoIcon: React.FC<TechIconProps> = ({size}) => {
   return (
     <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' width={size} height={size}>
       <path
@@ -19,4 +17,5 @@ const MongoIcon: React.FC<MongoIconProps> = ({size}) => {
     </svg>
   );
 };
+MongoIcon.displayName = 'MongoDB';
 export default MongoIcon;

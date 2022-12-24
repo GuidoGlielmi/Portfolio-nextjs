@@ -1,8 +1,6 @@
 import React from 'react';
-type HibernateIconProps = {
-  size?: string;
-};
-export const HibernateIcon: React.FC<HibernateIconProps> = ({size}) => {
+import {TechIconProps} from '.';
+export const HibernateIcon: React.FC<TechIconProps> = ({size}) => {
   return (
     <svg
       width={size}
@@ -22,3 +20,5 @@ export const HibernateIcon: React.FC<HibernateIconProps> = ({size}) => {
     </svg>
   );
 };
+HibernateIcon.displayName = 'Hibernate';
+export default HibernateIcon;
