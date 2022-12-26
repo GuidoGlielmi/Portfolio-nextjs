@@ -8,14 +8,14 @@
   cursor: pointer;
   background: linear-gradient(to bottom right, #444, #1a1a1a);
   border-radius: 0 0 20px 20px;
-  border-right: 2px solid #555;
+  border-bottom: 2px solid #555;
   overflow: hidden;
 }
 .options > * {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 5px;
   height: 100%;
   text-align: center;
   text-shadow: 2px 2px 1px #111;
@@ -29,7 +29,7 @@
 
 .options:hover > :not(:first-child) {
   opacity: 1;
-  margin-top: 0;
+  margin-top: 10px;
 }
 
 .options:hover > :last-child {
@@ -37,7 +37,11 @@
 }
 
 .options > :not(:first-child):hover {
-  text-shadow: -2px 2px 0px rgb(121, 83, 83);
+  text-shadow: -2px 2px 0px #795353;
+}
+
+.options svg {
+  filter: drop-shadow(1px 1px 0.5px #ac8787);
 }
 
 .clickedOption {

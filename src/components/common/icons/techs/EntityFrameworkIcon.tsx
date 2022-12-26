@@ -1,6 +1,6 @@
 import React from 'react';
 import {TechIconProps} from '.';
-export const AspNetIcon: React.FC<TechIconProps> = ({size}) => {
+export const EntityFrameworkIcon: React.FC<TechIconProps> = ({size}) => {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
@@ -984,5 +984,5 @@ export const AspNetIcon: React.FC<TechIconProps> = ({size}) => {
     </svg>
   );
 };
-AspNetIcon.displayName = 'ASP.NET';
-export default AspNetIcon;
+EntityFrameworkIcon.displayName = 'Entity framework';
+export default EntityFrameworkIcon;

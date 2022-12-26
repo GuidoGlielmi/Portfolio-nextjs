@@ -49,9 +49,19 @@
   top: 50vh;
 }
 .arrowContainer {
+  position: fixed;
+  right: 2vw;
+  top: 50vh;
+  width: max(3vw, 3vh);
   background: transparent;
   border: none;
+  cursor: pointer;
+  z-index: 5000;
   transition: all 500ms cubic-bezier(0.3, 2.13, 0.38, 0.67);
+}
+.arrowContainer:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(1px 5px 1px black);
 }
 
 @media (max-width: 1200px) {
