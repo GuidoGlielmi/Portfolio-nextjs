@@ -16,15 +16,16 @@ export function debounce(fn: () => void, delay: number) {
 }
 
 const ProgressRing: React.FC<ProgressRingProps> = ({percentage = '100'}) => {
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  const [screenWidth, setScreenWidth] = useState(0);
   const sizeMultiplier = screenWidth > 650 ? 1 : 3;
-  const radius = 7 * sizeMultiplier;
+  const radius = 2.5 * sizeMultiplier;
   const strokeWidth = radius / 3;
   const diameter = radius * 2 + strokeWidth;
   const circumference = screenWidth * (radius / 100) * 2 * Math.PI;
   const offset = (circumference * (100 - parseInt(percentage))) / 100;
   const cxy = radius + strokeWidth / 2;
   useEffect(() => {
+    setScreenWidth(window.innerWidth);
     const handleResize = debounce(() => setScreenWidth(window.innerWidth), 100);
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);

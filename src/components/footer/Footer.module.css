@@ -7,7 +7,7 @@
   font-family: var(--global-main-font);
   height: 60vh;
   background: linear-gradient(160deg, rgb(80, 144, 159) -10%, rgba(29, 11, 37, 0.95));
-  font-size: var(--global-font-medium);
+  font-size: var(--font-size-medium);
   color: #eee;
   border-top: 3.5px solid rgba(0, 0, 0, 0.329);
   box-shadow: 0 0 20px 11px #00000028;

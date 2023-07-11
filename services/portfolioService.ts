@@ -1,4 +1,4 @@
-import {IEducation, IExperience, IProject, ISkill, ITechnology, IUser} from 'IPortfolio';
+import {IExperience, IProject, ISkill, ITechnology, IUser} from 'IPortfolio';
 import {IPortfolio} from './ApiConfig';
 import Requests, {HttpReq} from './Fetch';
 import RequestError from './RequestError';
@@ -21,23 +21,20 @@ class PortfolioService {
     return res;
   }
 
-  async getEducations(): Promise<IEducation[]> {
-    return this.#responseHandler({url: 'educations'});
+  async getExperiences(es = false): Promise<IExperience[]> {
+    return this.#responseHandler({url: `experiences${es ? '?lang=es' : ''}`});
   }
-  async getExperiences(): Promise<IExperience[]> {
-    return this.#responseHandler({url: 'experiences'});
+  async getProjects(es = false): Promise<IProject[]> {
+    return this.#responseHandler({url: `projects${es ? '?lang=es' : ''}`});
   }
-  async getProjects(): Promise<IProject[]> {
-    return this.#responseHandler({url: 'projects'});
+  async getSkills(es = false): Promise<ISkill[]> {
+    return this.#responseHandler({url: `skills${es ? '?lang=es' : ''}`});
   }
-  async getSkills(): Promise<ISkill[]> {
-    return this.#responseHandler({url: 'skills'});
+  async getTechs(es = false): Promise<ITechnology[]> {
+    return this.#responseHandler({url: `technologies`});
   }
-  async getTechs(): Promise<ITechnology[]> {
-    return this.#responseHandler({url: 'technologies'});
-  }
-  async getUsers(): Promise<IUser[]> {
-    return this.#responseHandler({url: 'users'});
+  async getUsers(es = false): Promise<IUser[]> {
+    return this.#responseHandler({url: `users${es ? '?lang=es' : ''}`});
   }
 }
 

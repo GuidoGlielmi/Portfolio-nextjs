@@ -1,0 +1,96 @@
+.container > div {
+  gap: 5vh;
+  padding: 10%;
+}
+.container h2 {
+  font-size: 1.4em;
+  position: sticky;
+  top: 85px;
+  padding: 5px 15px;
+  border-radius: 13px;
+  z-index: 100;
+  transition: all 0.3s ease;
+}
+.container > *,
+.container > * > * {
+  /* projectsAndExperiences sections */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container > * > div {
+  /* projectContainer, experienceContainer */
+  box-shadow: 5px 5px 3px #00000005;
+  justify-content: center;
+  gap: 3vh;
+  /* max-height: 100vh; */
+  width: 100%;
+  padding: 5%;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.container > *:nth-child(even) > div {
+  /* right */
+  background: linear-gradient(to bottom right, #fff0, #fff2);
+}
+.container > *:nth-child(odd) > div {
+  /* left */
+  background: linear-gradient(to bottom right, #0000, #0002);
+}
+
+.container > *:nth-child(even) > div:hover {
+  box-shadow: none;
+}
+.container > *:nth-child(odd) > div:hover {
+  box-shadow: none;
+}
+
+.container img {
+  transition: all 0.3s ease;
+}
+.container > *:nth-child(even) img {
+  /* right */
+  filter: var(--global-filter-light);
+}
+.container > *:nth-child(odd) img {
+  /* left */
+  filter: var(--global-filter-dark);
+}
+
+.container > *:nth-child(even) > div:hover img {
+  filter: contrast(110%) brightness(110%);
+}
+.container > *:nth-child(odd) > div:hover img {
+  /* box-shadow: 5px 5px 10px #0001; */
+  filter: contrast(110%) brightness(110%);
+}
+
+.container > :first-child h3 {
+  border-bottom: 2px solid rgb(37, 37, 37);
+  border-image: linear-gradient(to right, rgba(0, 0, 0, 0), #202020 20% 80%, rgba(0, 0, 0, 0)) 0 0
+    1%;
+}
+.container > :last-child h3 {
+  border-bottom: 2px solid rgb(37, 37, 37);
+  border-image: linear-gradient(to right, #0000, #bbb 20% 80%, rgba(0, 0, 0, 0)) 0 0 1%;
+}
+
+.container div:has(> img) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--project-image-size);
+  height: var(--project-image-size);
+}
+.container img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+  .container > * > div {
+    height: unset;
+  }
+}

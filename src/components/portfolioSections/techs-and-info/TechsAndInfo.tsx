@@ -1,56 +1,86 @@
-import ElasticDropdown from 'components/common/dropdowns/ElasticDropdown';
-import {ITechnology, IUser} from 'IPortfolio';
+import React from 'react';
+import {ISkill, ITechnology, IUser} from 'IPortfolio';
 import S from './TechsAndInfo.module.css';
-import * as Icons from 'components/common/icons/techs';
+import {ReactSVG} from 'react-svg';
+import Tabs from 'components/common/tabs/Tabs';
+import {useState} from 'react';
+import {AnimatePresence, motion} from 'framer-motion';
+import Skills from '../skills/Skills';
+import useTranslation, {translationsKeys} from 'hooks/useTranslation';
 
 type TechsAndInfoProps = {
-  techs?: ITechnology[];
-  user?: IUser;
+  techs: [string[], ITechnology[]];
+  user: IUser;
+  skills: ISkill[];
+  projectsAndExperiencesRef: React.RefObject<HTMLDivElement>;
 };
-const size = '5vh';
-const getOptions = (element: React.FC<Icons.TechIconProps>) => (
-  <>
-    <>{element({size})}</>
-    <span>{element.displayName}</span>
-  </>
-);
-const TechsAndInfo: React.FC<TechsAndInfoProps> = ({techs, user}) => {
-  if (!techs || !user) return null;
-  const backEndTechs = [
-    Icons.CSharpIcon,
-    Icons.ExpressJsIcon,
-    Icons.GraphQLIcon,
-    Icons.JavaIcon,
-    Icons.NodeJsIcon,
-    Icons.SpringIcon,
-    Icons.AspNetIcon,
-  ];
-  const frontEndTechs = [
-    Icons.CssIcon,
-    Icons.HtmlIcon,
-    Icons.JavascriptIcon,
-    Icons.NextJsIcon,
-    Icons.ReduxIcon,
-    Icons.TypescriptIcon,
-  ];
-  const databases = [Icons.MongoIcon, Icons.PostgreIcon];
-  const ORMs = [Icons.HibernateIcon, Icons.PrismaIcon, Icons.SequelizeIcon, Icons.EntityFrameworkIcon];
+const TechsAndInfo = React.forwardRef<HTMLDivElement, TechsAndInfoProps>(
+  ({techs: [types, techs], user, skills, projectsAndExperiencesRef}, ref) => {
+    const [selectedTechType, setSelectedTechType] = useState(types[0]);
+    const techsTitle = useTranslation(translationsKeys.techsTitle);
+    const whoAmITitle = useTranslation(translationsKeys.whoAmITitle);
 
-  const frontOptions = frontEndTechs.map(i => getOptions(i));
-  const backOptions = backEndTechs.map(i => getOptions(i));
-  const databasesOptions = databases.map(i => getOptions(i));
-  const ormsOptions = ORMs.map(i => getOptions(i));
-  return (
-    <section className={S.techsAndInfoSection}>
-      <div className={S.techsContainer}>
-        <ElasticDropdown options={frontOptions} title='Front-end' />
-        <ElasticDropdown options={backOptions} title='Back-end' />
-        <ElasticDropdown options={databasesOptions} title='Databases' />
-        <ElasticDropdown options={ormsOptions} title="ORM's" />
-      </div>
-    </section>
-  );
-};
+    if (!techs || !user) return null;
+
+    return (
+      <section
+        ref={ref}
+        className={S.techsAndInfoSection}
+        onWheel={e => {
+          if (e.deltaY < 0) return;
+          projectsAndExperiencesRef.current?.scrollIntoView({behavior: 'smooth'});
+        }}
+      >
+        <div className={S.techsSection}>
+          <h2>{techsTitle}</h2>
+          <div className={S.techsContainer}>
+            <Tabs
+              tabs={types.map(t => [t, techTitleFormatter(t)] as [string, string])}
+              onChange={selectedTab => {
+                setSelectedTechType(selectedTab);
+              }}
+            />
+            <div className={S.techGroup}>
+              <AnimatePresence mode='wait' initial={false}>
+                {techs.map(
+                  t =>
+                    t.type === selectedTechType && (
+                      <motion.div
+                        key={t.name}
+                        transition={{duration: 0.1}}
+                        animate={{opacity: 1, scale: 1}}
+                        initial={{opacity: 0, scale: 0.5}}
+                        exit={{opacity: 0, scale: 0.5}} // necesary for AnimatePresence
+                        className={S.tech}
+                      >
+                        <ReactSVG
+                          src={t.image}
+                          // key={t.name}
+                          beforeInjection={svg => {
+                            svg.setAttribute('width', '5vh');
+                            svg.setAttribute('height', '5vh');
+                          }}
+                        />
+                        <span>{t.name}</span>
+                      </motion.div>
+                    ),
+                )}
+              </AnimatePresence>
+            </div>
+          </div>
+          {/*         <div style={{marginLeft: 0}}>
+          <TypeGroup skills={skills.filter(s => s.type === 'LANGUAGE')} title='Languages' />
+        </div> */}
+        </div>
+        <div className={S.infoContainer}>
+          <h2>{whoAmITitle}</h2>
+          <p>{user.aboutMe}</p>
+          <Skills skills={skills} />
+        </div>
+      </section>
+    );
+  },
+);
 
 export const when = (condition: boolean, value: any) => ({
   elseWhen: (newCondition: boolean) => when(condition || newCondition, value),
@@ -60,3 +90,5 @@ export const when = (condition: boolean, value: any) => ({
 });
 
 export default TechsAndInfo;
+
+const techTitleFormatter = (title: string) => title.replaceAll(/([a-z])([A-Z])/g, '$1-$2');

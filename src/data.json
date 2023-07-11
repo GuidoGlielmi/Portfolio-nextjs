@@ -1,0 +1,255 @@
+{
+  "experiences": [
+    {
+      "certificate": "./assets/img/certificates/RR.jpg",
+      "startDate": "09/2021",
+      "endDate": "01/2022",
+      "deployUrl": "",
+      "description": "MERN stack Bootcamp. Development of a fictional enterprise that matches applicants with open jobs from client companies",
+      "image": "./assets/logos/RR.png",
+      "title": "Radium Rocket",
+      "urls": [
+        {
+          "url": "https://github.com/GuidoGlielmi/German-MindSet-app",
+          "name": "German-MindSet-app"
+        },
+        {
+          "url": "https://github.com/GuidoGlielmi/David-MindSet-server",
+          "name": "David-MindSet-Server"
+        },
+        {
+          "url": "https://github.com/GuidoGlielmi/German-MindSet-server",
+          "name": "German-MindSet-Server"
+        }
+      ],
+      "techs": ["React", "Express.js", "Redux", "Node.js", "MongoDB", "CSS3", "HTML5", "Javascript"]
+    },
+    {
+      "deployUrl": "",
+      "title": "Blessit",
+      "image": "./assets/logos/blessit-logo.svg",
+      "description": "Design and implementation of video calls app for aiding deaf people, with a user authentication system for clients and translators",
+      "startDate": "12/2022",
+      "endDate": "Current",
+      "urls": [],
+      "techs": [
+        "React",
+        "Express.js",
+        "Node.js",
+        "PostgreSQL",
+        "CSS3",
+        "HTML5",
+        "Javascript",
+        "Typescript",
+        "Sequelize"
+      ]
+    },
+    {
+      "deployUrl": "https://piedrassempreciosasdelaindia.com.ar",
+      "title": "Taller Corazón de Manzana",
+      "description": "Customer attention and inventory management & Development, operation and manteinance of full-stack e-commerce app with admin's dashboard, including services like e-mailing, Telegram messenger and Mercado Pago",
+      "image": "./assets/logos/TCDM.jpg",
+      "startDate": "09/2021",
+      "endDate": "Current",
+      "urls": [],
+      "techs": [
+        "React",
+        "Express.js",
+        "Node.js",
+        "PostgreSQL",
+        "CSS3",
+        "HTML5",
+        "Javascript",
+        "Typescript",
+        "Next.js",
+        "Sequelize"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "deployUrl": "https://yoprogramoapp.web.app/",
+      "description": "Portfolio development",
+      "image": "./assets/logos/AP.png",
+      "title": "Argentina Programa",
+      "urls": [
+        {
+          "url": "https://github.com/GuidoGlielmi/YoProgramo-app",
+          "name": "YoProgramo-app"
+        },
+        {
+          "url": "https://github.com/GuidoGlielmi/YoProgramo-server",
+          "name": "YoProgramo-server"
+        }
+      ],
+      "techs": ["CSS3", "HTML5", "Javascript", "Angular", "Java", "Spring"]
+    },
+    {
+      "deployUrl": "https://aerolab-challenge-nexik9h5v-guidoglielmi.vercel.app/",
+      "description": "E-commerce landing page",
+      "image": "./assets/logos/aerolab.jpg",
+      "title": "Aerolab challenge",
+      "urls": [
+        {
+          "url": "https://github.com/GuidoGlielmi/Aerolab-challenge",
+          "name": "Aerolab-challenge"
+        }
+      ],
+      "techs": ["React", "CSS3", "Next", "HTML5", "Javascript"]
+    },
+    {
+      "deployUrl": "https://guidoglielmi.github.io/alkemy-project/",
+      "description": "App for the implementation of SCRUM methodology",
+      "image": "./assets/logos/alkemy.jpg",
+      "title": "Alkemy React Skill Up",
+      "urls": [
+        {
+          "url": "https://github.com/GuidoGlielmi/alkemy-project",
+          "name": "Alkemy-Project"
+        }
+      ],
+      "techs": ["React", "CSS3", "HTML5", "Javascript", "Redux"]
+    }
+  ],
+  "techs": [
+    {
+      "name": "CSS3",
+      "image": "./assets/logos/CssIcon.svg",
+      "type": "FrontEnd"
+    },
+    {
+      "name": "Express.js",
+      "image": "./assets/logos/ExpressJsIcon.svg",
+      "type": "BackEnd"
+    },
+    {
+      "name": "HTML5",
+      "image": "./assets/logos/HtmlIcon.svg",
+      "type": "FrontEnd"
+    },
+    {
+      "name": "Java",
+      "image": "./assets/logos/JavaIcon.svg",
+      "type": "BackEnd"
+    },
+    {
+      "name": "Javascript",
+      "image": "./assets/logos/JavascriptIcon.svg",
+      "type": "FrontEnd"
+    },
+    {
+      "name": "MongoDB",
+      "image": "./assets/logos/MongoIcon.svg",
+      "type": "BackEnd"
+    },
+    {
+      "name": "Next.js",
+      "image": "./assets/logos/NextJsIcon.svg",
+      "type": "FrontEnd"
+    },
+    {
+      "name": "Node.js",
+      "image": "./assets/logos/NodeJsIcon.svg",
+      "type": "BackEnd"
+    },
+    {
+      "name": "PostgreSQL",
+      "image": "./assets/logos/PostgreIcon.svg",
+      "type": "Database"
+    },
+    {
+      "name": "React",
+      "image": "./assets/logos/ReactIcon.svg",
+      "type": "FrontEnd"
+    },
+    {
+      "name": "Redux",
+      "image": "./assets/logos/ReduxIcon.svg",
+      "type": "FrontEnd"
+    },
+    {
+      "name": "Spring",
+      "image": "./assets/logos/SpringIcon.svg",
+      "type": "BackEnd"
+    },
+    {
+      "name": "Typescript",
+      "image": "./assets/logos/TypescriptIcon.svg",
+      "type": "FrontEnd"
+    },
+    {
+      "name": "Entity Framework",
+      "image": "./assets/logos/EntityFrameworkIcon.svg",
+      "type": "ORM"
+    },
+    {
+      "name": "Prisma",
+      "image": "./assets/logos/PrismaIcon.svg",
+      "type": "ORM"
+    },
+    {
+      "name": "Sequelize",
+      "image": "./assets/logos/SequelizeIcon.svg",
+      "type": "ORM"
+    },
+    {
+      "name": "Hibernate",
+      "image": "./assets/logos/HibernateIcon.svg",
+      "type": "ORM"
+    },
+    {
+      "name": "GraphQL",
+      "image": "./assets/logos/GraphQLIcon.svg",
+      "type": "FrontEnd"
+    },
+    {
+      "name": "GraphQL",
+      "image": "./assets/logos/GraphQLIcon.svg",
+      "type": "BackEnd"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Proactivity",
+      "type": "HARDANDSOFT"
+    },
+    {
+      "name": "Active listening",
+      "type": "HARDANDSOFT"
+    },
+    {
+      "name": "Empathy",
+      "type": "HARDANDSOFT"
+    },
+    {
+      "name": "Creativity",
+      "type": "HARDANDSOFT"
+    },
+    {
+      "name": "Resilience",
+      "type": "HARDANDSOFT"
+    },
+    {
+      "name": "Español",
+      "type": "LANGUAGE"
+    },
+    {
+      "name": "English",
+      "type": "LANGUAGE"
+    },
+    {
+      "name": "日本語 / Japanese",
+      "type": "LANGUAGE"
+    }
+  ],
+  "user": {
+    "aboutMe": "I live in Argentina, in the city of Rosario. I graduated as a Sound and Recording Technician (2016 - 2019), after which I developed an interest in microntrollers and the amazing programming world through the legendary C language, starting an incredible journey of passion for automating and problem solving.",
+    "firstName": "Guido",
+    "githubUrl": "https://github.com/GuidoGlielmi",
+    "lastName": "Glielmi",
+    "linkedInUrl": "https://www.linkedin.com/in/guido-glielmi/",
+    "image": "./assets/img/profile-img.jpg",
+    "username": "string",
+    "fullName": "Guido Glielmi"
+  }
+}

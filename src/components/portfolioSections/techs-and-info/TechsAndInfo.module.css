@@ -1,15 +1,39 @@
 .techsAndInfoSection {
-  font-size: var(--global-font-medium);
 }
-.personalInfo {
+.techsAndInfoSection > * {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 15px;
-  position: relative;
-  width: 50%;
-  margin-bottom: min(25vw, 20vh);
 }
+.techsAndInfoSection > :first-child {
+  /* techs section */
+  align-items: flex-end;
+}
+.techsAndInfoSection > :last-child {
+  /* info section */
+  align-items: flex-start;
+  text-align: start;
+}
+
+.techsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-left: 5vw !important;
+  text-shadow: 1.5px 1.5px 0 #6d6d6d71;
+}
+
+.techsAndInfoSection > * {
+  padding: max(3vw, 3vh);
+}
+
+.infoContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: var(--color-lightest);
+  text-shadow: 1.5px 1.5px 0 #262626;
+}
+
 .personalInfo > h2 {
   width: 90%;
   padding-top: 1vh;
@@ -25,19 +49,75 @@
   top: 0;
   border-top: 2px solid #2a2a2a;
 }
-.personalInfo textarea {
-  height: 80px;
-  width: 100%;
-  padding: 2px;
-  font-size: larger;
-  resize: vertical;
-}
+
 .techsContainer {
   display: flex;
-  gap: 10px;
-  margin: 20vh 0 50vh 0;
+  flex-direction: column;
+  gap: 5vh;
+  margin-bottom: 5vh;
 }
 
+.techGroup {
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  gap: max(5vw, 5vh);
+}
+
+.techs div {
+  display: flex;
+  align-items: center;
+}
+
+.tech {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  position: relative;
+  border-radius: 5px;
+  transition: transform 0.1s ease;
+}
+.tech svg {
+  filter: drop-shadow(1px 1px 0 #00000066);
+}
+.tech:hover {
+  transform: scale(1.15) !important;
+}
+
+.tech:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  transform: translateY(-13px);
+  padding: 13px;
+  background: #00000000;
+  transition: all 0.3s ease;
+}
+
+.tech:hover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  transform: translateY(-13px);
+  padding: 13px;
+  background: #00000015;
+  /* box-shadow: 5px 10px 0 rgba(255, 0, 0, 0.04); */
+}
+@media (max-width: 768px) {
+  .techsAndInfoSection > * {
+    align-items: center !important;
+    align-self: center !important;
+    text-align: center !important;
+  }
+}
 @media (max-width: 650px) {
   .personalInfo {
     width: 90%;

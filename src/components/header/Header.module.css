@@ -23,7 +23,7 @@
   /* clip-path: ellipse(100% 100% at 9% 99%); */
   /* clip-path: ellipse(91% 120% at 9% 99%); */
   /* box-shadow: 0 0 10px 1px #363636; */
-  font-size: var(--global-font-large);
+  font-size: var(--font-size-large);
 }
 .infoAndTitle {
   position: relative;

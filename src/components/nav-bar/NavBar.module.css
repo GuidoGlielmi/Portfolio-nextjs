@@ -8,6 +8,31 @@
   height: 7vh;
   z-index: 2000;
 }
+
+.sectionsNames {
+  display: flex;
+  align-items: center;
+  height: 8vh;
+  color: #ddd;
+  background: linear-gradient(to bottom right, #444, #1a1a1a);
+}
+.sectionsNames > * {
+  padding: 0 3vw;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+.sectionsNames > *:hover {
+  text-shadow: -2px 2px 0px #795353;
+}
+.sectionsNames > * :last-child {
+  border-bottom-right-radius: 20px;
+}
+
+.selectedSectionName {
+  color: white;
+  text-shadow: -2px 2px 0px #795353;
+}
+
 .languages {
   display: flex;
   flex-direction: row !important;
@@ -60,7 +85,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 5px 7px;
   cursor: pointer;
+  background-color: white;
+  border-radius: 10px;
 }
 
 .cvSection div {
@@ -90,52 +118,8 @@
   border-radius: 10px 10px 0 0;
 }
 
-.sectionLinks {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: all 0.75s cubic-bezier(0.23, 0.79, 0.19, 1);
-  z-index: 1000;
-  cursor: pointer;
-  background: linear-gradient(to bottom right, #444, #1a1a1a);
+.nav > div:first-child {
   border-radius: 0 0 40px 0;
-  height: 7vh;
-  border-bottom: 2px solid #555;
-}
-.sectionLinks:hover {
-  height: calc(7vh * 6) !important;
-}
-.sectionLinks > * {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: min(200px, 45vw);
-  height: 100%;
-  text-align: center;
-  text-shadow: 2px 2px 1px #111;
-}
-
-.sectionLinks > :not(:first-child) {
-  opacity: 0;
-  margin-top: -50%;
-  transition: all 0.5s cubic-bezier(0.23, 0.79, 0.19, 1);
-}
-
-.sectionLinks:hover > :not(:first-child) {
-  opacity: 1;
-  margin-top: 0;
-}
-
-.sectionLinks:hover > :last-child {
-  border-radius: 0 0 40px 0;
-}
-
-.sectionLinks > :not(:first-child):hover {
-  text-shadow: -2px 2px 0px rgb(121, 83, 83);
-}
-
-.clickedSectionLink {
-  color: rgb(108, 175, 161) !important;
 }
 
 @media (max-width: 768px) {
@@ -143,15 +127,3 @@
     justify-content: space-between;
   }
 }
-
-/* .nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 100%;
-  z-index: 100;
-}
- */

@@ -2,12 +2,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 20px;
-  font-size: var(--global-font-large);
+  margin: 10px;
+  font-size: var(--font-size-medium);
 }
 .skillContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 20px;
 }

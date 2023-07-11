@@ -11,7 +11,7 @@ const SkillItem: React.FC<SkillItemProps> = ({skill}) => {
     <div className={styles.skillContainer}>
       <div className={styles.skill}>
         <p>{skill.name}</p>
-        <ProgressRing percentage={skill.abilityPercentage} />
+        {/* <ProgressRing percentage={skill.abilityPercentage} /> */}
       </div>
     </div>
   );

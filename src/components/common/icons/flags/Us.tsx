@@ -13,7 +13,7 @@ const Us: React.FC<UsProps> = ({size = '35px', round = false}) => {
       style={{borderRadius: round ? '50%' : 0}}
       viewBox='0 0 512 512'
     >
-      <g fill-rule='evenodd'>
+      <g fillRule='evenodd'>
         <g strokeWidth='1pt'>
           <path
             fill='#bd3d44'

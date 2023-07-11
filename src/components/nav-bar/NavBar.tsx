@@ -1,93 +1,94 @@
-import styles from './NavBar.module.css';
+import S from './NavBar.module.css';
 import {IUser} from 'IPortfolio';
 import Ar from 'components/common/icons/flags/Ar';
 import Eu from 'components/common/icons/flags/Us';
-import {useEffect, useState} from 'react';
+import {useEffect, useState, useContext} from 'react';
 import GithubIcon from 'components/common/icons/social/GithubIcon';
 import LinkedinIcon from 'components/common/icons/social/LinkedinIcon';
-
-const sectionsNames = ['Who am I', 'Projects', 'Experiences', 'My education', 'My skills'];
+import {debounce} from 'components/portfolioSections/skills/ProgressRing';
+import {Language, languageContext} from '../../../pages';
 
 type NavBarProps = {
-  user?: IUser;
-  sectionIndex: number;
-  setSectionIndex: (i: number) => void;
+  user: IUser;
+  refs: {ref: React.RefObject<HTMLDivElement>; title: string}[];
+  setSelectedLang: React.Dispatch<React.SetStateAction<Language>>;
 };
 
-const NavBar: React.FC<NavBarProps> = ({user, sectionIndex, setSectionIndex}) => {
-  const [selectedLangIndex, setSelectedLangIndex] = useState(0);
+const NavBar: React.FC<NavBarProps> = ({user, refs, setSelectedLang}) => {
+  const selectedLang = useContext(languageContext);
   const [langsHovered, setLangsHovered] = useState(false);
   const [cvHovered, setCvHovered] = useState(false);
   const [position, setPosition] = useState(0);
+  const [selectedSection, setSelectedSection] = useState(0);
 
   useEffect(() => {
-    setPosition(pp => pp + (selectedLangIndex ? -100 : 100));
-  }, [selectedLangIndex]);
+    const checkSelectedSection = () => {
+      setSelectedSection(Number(window.scrollY >= (refs[0].ref.current?.clientHeight || 0)));
+    };
+
+    document.addEventListener('scroll', debounce(checkSelectedSection, 100));
+    return () => removeEventListener('scroll', checkSelectedSection);
+  }, []);
+
+  useEffect(() => {
+    setPosition(pp => pp + (selectedLang === 'es' ? -100 : 100));
+  }, [selectedLang]);
 
   useEffect(() => {
     setPosition(pp => (pp === 100 ? pp - 100 : pp + 100));
   }, [langsHovered]);
 
   return (
-    <nav className={styles.nav}>
-      <SectionLinks sectionIndex={sectionIndex} setSectionIndex={setSectionIndex} />
-      <div className={styles.social}>
+    <nav className={S.nav}>
+      <div className={S.sectionsNames}>
+        {refs.map(({ref, title}, i) => (
+          <p
+            className={selectedSection === i ? S.selectedSectionName : ''}
+            onClick={() => {
+              ref.current?.scrollIntoView({behavior: 'smooth'});
+            }}
+            key={title}
+          >
+            {title}
+          </p>
+        ))}
+      </div>
+      <div className={S.social}>
         <div
-          className={styles.languages}
+          className={S.languages}
           onMouseEnter={() => setLangsHovered(true)}
           onMouseLeave={() => setLangsHovered(false)}
         >
-          <div style={{right: `${position}%`}} onClick={() => setSelectedLangIndex(0)}>
-            <Ar size='100%' round />
-          </div>
-          <div style={{right: `${position}%`}} onClick={() => setSelectedLangIndex(1)}>
+          <button style={{right: `${position}%`}} onClick={() => setSelectedLang(Language.en)}>
             <Eu size='100%' round />
-          </div>
+          </button>
+          <button style={{right: `${position}%`}} onClick={() => setSelectedLang(Language.es)}>
+            <Ar size='100%' round />
+          </button>
         </div>
-        <div className={styles.cvSection} onMouseEnter={() => setCvHovered(true)}>
+        <div className={S.cvSection} onMouseEnter={() => setCvHovered(true)}>
           <h3>CV</h3>
-          {cvHovered && (
-            <div onMouseLeave={() => setCvHovered(false)} className={styles.cvContainer}>
-              <a href='assets/Guido-Glielmi-RESUME.pdf' download>
-                EN
-              </a>
-              <a href='assets/Guido-Glielmi-RESUME(es).pdf' download>
-                ES
-              </a>
-            </div>
-          )}
+          <div
+            style={{pointerEvents: cvHovered ? 'all' : 'none'}}
+            onMouseLeave={() => setCvHovered(false)}
+          >
+            <a href='assets/Guido-Glielmi-RESUME.pdf' download>
+              EN
+            </a>
+            <a href='assets/Guido-Glielmi-RESUME(es).pdf' download>
+              ES
+            </a>
+          </div>
         </div>
         <a href={user?.linkedInUrl} target='_blank' rel='noreferrer'>
-          <GithubIcon />
-          {/* <img src='./assets/logos/GitHub-Mark-64px.png' alt='LinkedIn external link' /> */}
+          <LinkedinIcon />
         </a>
         <a href={user?.githubUrl} target='_blank' rel='noreferrer'>
-          <LinkedinIcon />
-          {/* <img src='./assets/logos/linkedin.png' alt='Github external link' /> */}
+          <GithubIcon />
         </a>
       </div>
     </nav>
   );
 };
-
-interface SectionLinksProps {
-  sectionIndex: number;
-  setSectionIndex: (i: number) => void;
-}
-
-const SectionLinks: React.FC<SectionLinksProps> = ({sectionIndex, setSectionIndex}) => (
-  <div className={styles.sectionLinks}>
-    <span>See more</span>
-    {sectionsNames.map((sn, i) => (
-      <span
-        key={sn}
-        onClick={() => setSectionIndex(i)}
-        className={sectionIndex === i ? styles.clickedSectionLink : undefined}
-      >
-        {sn}
-      </span>
-    ))}
-  </div>
-);
 
 export default NavBar;

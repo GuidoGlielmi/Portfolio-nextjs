@@ -1,33 +1,16 @@
-export interface IEducation {
-  id: string;
-  degree: string;
-  educationImg: string;
-  school: string;
-  startDate: string;
-  endDate: string | 'Current';
-  userId: string;
-}
-
-export interface IExperience {
-  id: string;
-  title: string;
+export interface IExperience extends IProject {
   certificate: string;
-  description: string;
-  experienceImg: string;
   startDate: string;
   endDate: string;
-  userId: string;
 }
 
 export interface IProject {
-  id: string;
   deployUrl: string;
   description: string;
-  projectImg: string;
+  image: string;
   title: string;
   urls: IProjectUrl[];
-  techs: ITechnology[];
-  userId: string;
+  techs: string[];
 }
 
 export enum SkillType {
@@ -36,34 +19,29 @@ export enum SkillType {
 }
 
 export interface ISkill {
-  id: string;
   abilityPercentage: string;
   name: string;
   type: string;
 }
 
 export interface ITechnology {
-  id: string;
   name: string;
-  techImg: string;
+  image: string;
+  type: string;
 }
 
 export interface IUser {
-  id: string;
   aboutMe: string;
   firstName: string;
   githubUrl: string;
   lastName: string;
   linkedInUrl: string;
-  password: string;
-  profileImg: string;
+  image: string;
   username: string;
   fullName: string;
 }
 
 export interface IProjectUrl {
-  id: string;
   url: string;
   name: string;
-  projectid: string;
 }
