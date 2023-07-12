@@ -1,8 +1,8 @@
 import S from './ExperienceItem.module.css';
 import {IExperience, IProject} from 'IPortfolio';
-import {useState} from 'react';
+import {useState, useContext} from 'react';
 import {AnimatePresence, motion} from 'framer-motion';
-import useBreakpoint from 'hooks/useBreakpoint';
+import {GifPreviewContext, GifPreviewProps} from 'components/contexts/gifPreview';
 
 type ExperienceItemProps = {
   experience: IExperience;
@@ -62,36 +62,43 @@ export const PreviewSwitcher: React.FC<Pick<IProject, 'title' | 'image' | 'deplo
   image,
   deployVideo,
 }) => {
-  const isDesktop = useBreakpoint();
-
+  // const isDesktop = useBreakpoint();
+  const {setSrc} = useContext(GifPreviewContext) as GifPreviewProps;
   const [imageHovered, setImageHovered] = useState(false);
 
   return (
-    <AnimatePresence initial={false}>
-      <div
-        onMouseEnter={() => setImageHovered(true)}
-        onMouseLeave={() => setImageHovered(false)}
-        onClick={() => setImageHovered(ps => !ps)}
-        style={{position: 'absolute', top: 0, left: 0}}
-      >
+    <div
+      onMouseEnter={() => setImageHovered(true)}
+      onMouseLeave={() => setImageHovered(false)}
+      onClick={() => setImageHovered(ps => !ps)}
+      style={{
+        position: 'absolute',
+        top: '50%',
+        left: 0,
+        transform: 'translateY(-50%)',
+      }}
+    >
+      <AnimatePresence initial={false} mode='wait'>
         <motion.img
           transition={{duration: 0.25, ease: 'easeOut'}}
           initial={{
             opacity: 0,
-            ...(imageHovered && {transform: `scale(${isDesktop ? 1.5 : 1})`}),
+            // ...(imageHovered && {transform: `scale(${isDesktop ? 1.5 : 1})`}),
           }}
           animate={{
             opacity: 1,
-            ...(imageHovered && {transform: `scale(${isDesktop ? 2.5 : 1.5})`}),
+            // ...(imageHovered && {transform: `scale(${isDesktop ? 2.5 : 1.5})`}),
           }}
           exit={{opacity: 0}}
           key={`${imageHovered}`}
           className={imageHovered ? S.gif : ''}
           src={!imageHovered ? image : `gifs/${deployVideo}`}
           alt={`${title} logo`}
+          style={{cursor: imageHovered ? 'pointer' : 'default'}}
+          onClick={imageHovered ? () => setSrc(deployVideo) : undefined}
         />
-      </div>
-    </AnimatePresence>
+      </AnimatePresence>
+    </div>
   );
 };
 
