@@ -11,7 +11,7 @@
 }
 
 .main > section {
-  padding-top: 8vh;
+  padding: 8vh 0 15vh;
   scroll-snap-align: start;
   display: grid;
   grid-template-columns: 50% 50%;

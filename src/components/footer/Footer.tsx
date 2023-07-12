@@ -1,20 +1,14 @@
-import {Dispatch, SetStateAction} from 'react';
-import styles from './Footer.module.css';
-
-interface ButtonProps {
-  sections: string[];
-  setLinkIndex: (i: number) => void;
-}
-
-const Footer: React.FC<ButtonProps> = ({sections, setLinkIndex}) => (
-  <footer className={styles.footer}>
-    <ul className={styles.linkList}>
-      {sections.map((s, i) => (
-        <li onClick={() => setLinkIndex(i)} key={s}>
-          {s}
-        </li>
-      ))}
-    </ul>
+const Footer: React.FC = () => (
+  <footer
+    style={{
+      position: 'absolute',
+      bottom: 0,
+      margin: 10,
+      padding: 10,
+      background: '#dfdfdf70',
+      borderRadius: 10,
+    }}
+  >
     <a href='mailto:guidoglielmi@gmail.com' target='_blank' rel='noreferrer'>
       <address>guidoglielmi@gmail.com</address>
     </a>

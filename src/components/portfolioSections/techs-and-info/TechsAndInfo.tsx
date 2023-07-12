@@ -6,7 +6,7 @@ import Tabs from 'components/common/tabs/Tabs';
 import {useState} from 'react';
 import {AnimatePresence, motion} from 'framer-motion';
 import Skills from '../skills/Skills';
-import useTranslation, {translationsKeys} from 'hooks/useTranslation';
+import useTranslation from 'hooks/useTranslation';
 
 type TechsAndInfoProps = {
   techs: [string[], ITechnology[]];
@@ -17,10 +17,10 @@ type TechsAndInfoProps = {
 const TechsAndInfo = React.forwardRef<HTMLDivElement, TechsAndInfoProps>(
   ({techs: [types, techs], user, skills, projectsAndExperiencesRef}, ref) => {
     const [selectedTechType, setSelectedTechType] = useState(types[0]);
-    const techsTitle = useTranslation(translationsKeys.techsTitle);
-    const whoAmITitle = useTranslation(translationsKeys.whoAmITitle);
-
-    if (!techs || !user) return null;
+    const [techsTitle, whoAmITitle] = useTranslation([
+      "Technologies I'm familiar with",
+      'A little something about me',
+    ]);
 
     return (
       <section

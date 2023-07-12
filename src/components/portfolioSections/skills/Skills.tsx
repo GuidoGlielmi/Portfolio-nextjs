@@ -1,7 +1,7 @@
 import SkillItem from './SkillItem';
 import styles from './Skills.module.css';
 import {ISkill} from 'IPortfolio';
-import useTranslation, {translationsKeys} from 'hooks/useTranslation';
+import useTranslation from 'hooks/useTranslation';
 
 type SkillSectionProps = {
   skills: ISkill[];
@@ -9,8 +9,7 @@ type SkillSectionProps = {
 
 const Skills: React.FC<SkillSectionProps> = ({skills}) => {
   if (!skills) return null;
-  const peopleSkills = useTranslation(translationsKeys.peopleSkills);
-  const languages = useTranslation(translationsKeys.languages);
+  const [peopleSkills, languages] = useTranslation(['People Skills', 'Languages']);
   const groups = skills?.reduce(
     (p: any, c: any) => ({...p, [c.type]: p[c.type] ? [...p[c.type], c] : [c]}),
     {},

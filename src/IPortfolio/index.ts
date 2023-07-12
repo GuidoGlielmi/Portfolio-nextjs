@@ -1,14 +1,31 @@
+export interface Es<obj> {
+  es: obj;
+}
+
+interface IProjectSpanish {
+  description: string;
+}
+
+interface ISkillSpanish {
+  name: string;
+}
+
+interface IUserSpanish {
+  aboutMe: string;
+}
+
 export interface IExperience extends IProject {
-  certificate: string;
+  certificate: string | undefined;
   startDate: string;
   endDate: string;
 }
 
-export interface IProject {
+export interface IProject extends Es<IProjectSpanish> {
   deployUrl: string;
-  description: string;
+  deployVideo: string;
   image: string;
   title: string;
+  description: string;
   urls: IProjectUrl[];
   techs: string[];
 }
@@ -18,8 +35,8 @@ export enum SkillType {
   HARD_AND_SOFT,
 }
 
-export interface ISkill {
-  abilityPercentage: string;
+export interface ISkill extends Es<ISkillSpanish> {
+  // abilityPercentage: string;
   name: string;
   type: string;
 }
@@ -30,7 +47,7 @@ export interface ITechnology {
   type: string;
 }
 
-export interface IUser {
+export interface IUser extends Es<IUserSpanish> {
   aboutMe: string;
   firstName: string;
   githubUrl: string;

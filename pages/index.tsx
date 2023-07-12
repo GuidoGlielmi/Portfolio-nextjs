@@ -1,17 +1,15 @@
-import React, {useState, useEffect, useRef, createContext} from 'react';
+import React, {useState, useEffect, useRef, useContext} from 'react';
 import NavBar from 'components/nav-bar/NavBar';
 import TechsAndInfo from 'components/portfolioSections/techs-and-info/TechsAndInfo';
 import S from './styles.module.css';
-// import Head from 'next/head';
-// import Script from 'next/script';
-// import {wrap} from 'popmotion';
-import portfolioService from '../services/portfolioService';
-import {IExperience, IProject, ISkill, ITechnology, IUser} from 'IPortfolio';
+import {Es, IExperience, IProject, ISkill, ITechnology, IUser} from 'IPortfolio';
 import Chevron from 'components/common/icons/chevrons/Chevron';
 import ProjectsAndExperiences from 'components/portfolioSections/ProjectsAndExperiences';
-import {debounce} from 'components/portfolioSections/skills/ProgressRing';
 import portfolioData from 'data.json';
-import {translate} from '../translator';
+import {debounce} from 'helpers/debounce';
+import Footer from 'components/footer/Footer';
+import {LanguageContext, LanguageProps} from 'components/contexts/language';
+import {translate} from '../src/helpers/translator';
 
 export type LanguageGroup = {
   experiences: IExperience[];
@@ -26,20 +24,12 @@ export type SectionsProps = {
   es: LanguageGroup;
 };
 
-export enum Language {
-  es = 'es',
-  en = 'en',
-}
-
-export const languageContext = createContext<Language>(Language.en);
-
 const Home: React.FC<SectionsProps> = ({en, es}) => {
-  const [selectedLang, setSelectedLang] = useState(Language.en);
-
+  const {eng} = useContext(LanguageContext) as LanguageProps;
   const projectsAndExperiencesSectionRef = useRef<HTMLDivElement>(null);
   const techsAndInfoRef = useRef<HTMLDivElement>(null);
   const arrowRef = useRef<HTMLButtonElement>(null);
-  const data = selectedLang === Language.en ? en : es;
+  const data = eng ? en : es;
 
   useEffect(() => {
     const setArrowPosition = () => {
@@ -68,17 +58,16 @@ const Home: React.FC<SectionsProps> = ({en, es}) => {
   };
 
   return (
-    <languageContext.Provider value={selectedLang}>
+    <>
       <NavBar
-        setSelectedLang={setSelectedLang}
         user={data.user}
         refs={[
           {
-            title: selectedLang === 'en' ? 'Who Am I' : 'Sobre mí',
+            title: translate('Who am I', eng),
             ref: techsAndInfoRef,
           },
           {
-            title: selectedLang === 'en' ? 'Projects & Experiences' : 'Projectos & Experiencias',
+            title: translate('Projects & Experiences', eng),
             ref: projectsAndExperiencesSectionRef,
           },
         ]}
@@ -91,8 +80,6 @@ const Home: React.FC<SectionsProps> = ({en, es}) => {
           ref={techsAndInfoRef}
           projectsAndExperiencesRef={projectsAndExperiencesSectionRef}
         />
-        {/* </motion.div> */}
-        {/* </AnimatePresence> */}
         <button
           style={{bottom: '3vh', transform: 'translateX(50%) rotateZ(90deg)'}}
           ref={arrowRef}
@@ -106,8 +93,9 @@ const Home: React.FC<SectionsProps> = ({en, es}) => {
           projects={data.projects}
           experiences={data.experiences}
         />
+        <Footer />
       </main>
-    </languageContext.Provider>
+    </>
   );
 };
 
@@ -164,14 +152,9 @@ export const getStaticProps = async () => {
     [],
   );
 
-  const getSpanish = <M,>(obj: M | M[]) => {
-    const getData = (obj: M) =>
-      Object.entries(obj as any).reduce(
-        (p, [k, v]: [string, any]) => ({...p, [k]: translate(v) || v}),
-        {} as M,
-      );
-    if (obj instanceof Array) return obj.map(getData);
-    return getData(obj);
+  const getSpanish = <M,>(obj: Es<M> | Es<M>[]) => {
+    if (obj instanceof Array) return obj.map(obj => ({...obj, ...obj.es}));
+    return {...obj, ...obj.es};
   };
 
   return {

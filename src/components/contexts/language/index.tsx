@@ -7,29 +7,22 @@ import {
   Dispatch,
   SetStateAction,
 } from 'react';
-import {translate} from '../../../../translator';
 
-interface LanguageProps {
+export interface LanguageProps {
   setEng: Dispatch<SetStateAction<boolean>>;
   eng: boolean;
-  getTranslatedString: (str: string) => string | undefined;
 }
+
+type LanguageProviderProps = {
+  children: React.ReactNode;
+};
 
 export const LanguageContext = createContext<LanguageProps | null>(null);
 
-const LanguageProvider: FC<PropsWithChildren<LanguageProps>> = ({children}) => {
+const LanguageProvider: FC<PropsWithChildren<LanguageProviderProps>> = ({children}) => {
   const [eng, setEng] = useState(true);
 
-  const getTranslatedString = (str: string) => (eng ? str : translate(str));
-
-  const contextValue = useMemo(
-    () => ({
-      getTranslatedString,
-      setEng,
-      eng,
-    }),
-    [eng],
-  );
+  const contextValue = useMemo<LanguageProps>(() => ({setEng, eng}), [eng]);
 
   return <LanguageContext.Provider value={contextValue}>{children}</LanguageContext.Provider>;
 };

@@ -1,7 +1,7 @@
 import {IExperience} from 'IPortfolio';
 import React, {useEffect, useRef} from 'react';
 import ExperienceItem from './ExperienceItem/ExperienceItem';
-import useTranslation, {translationsKeys} from 'hooks/useTranslation';
+import useTranslation from 'hooks/useTranslation';
 
 type ExperiencesProps = {
   experiences: IExperience[];
@@ -10,7 +10,7 @@ type ExperiencesProps = {
 let initialOffsetTop: number;
 const Experiences: React.FC<ExperiencesProps> = ({experiences}) => {
   const titleRef = useRef<HTMLDivElement>(null);
-  const experiencesTitle = useTranslation(translationsKeys.experiences);
+  const [experiencesTitle] = useTranslation('Experiences');
 
   useEffect(() => {
     initialOffsetTop = titleRef.current!.offsetTop;

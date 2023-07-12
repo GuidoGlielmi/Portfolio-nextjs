@@ -1,19 +1,23 @@
 import S from './ProjectItem.module.css';
 import {IProject} from 'IPortfolio';
-
+import {PreviewSwitcher} from '../../Experiences/ExperienceItem/ExperienceItem';
 type ProjectItemProps = {
   project: IProject;
 };
 
 const ProjectItem: React.FC<ProjectItemProps> = ({
-  project: {techs: projectTechs, urls, title, description, image, deployUrl},
+  project: {techs: projectTechs, urls, title, description, image, deployUrl, deployVideo},
 }) => {
   return (
     <div className={S.projectContainer}>
-      <div className={S.projectImgContainer}>
-        <img src={image} alt={`${title} logo`} />
-      </div>
-      <div className={S.projectInfoContainer}>
+      <figure style={{position: 'relative'}} className={S.projectImgContainer}>
+        {deployVideo ? (
+          <PreviewSwitcher title={title} image={image} deployVideo={deployVideo} />
+        ) : (
+          <img src={image} alt={`${title} logo`} />
+        )}
+      </figure>
+      <div className={S.info}>
         <h3>{title}</h3>
         <p>{description}</p>
         {deployUrl && (

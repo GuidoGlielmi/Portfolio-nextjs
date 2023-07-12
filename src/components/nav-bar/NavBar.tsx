@@ -5,17 +5,16 @@ import Eu from 'components/common/icons/flags/Us';
 import {useEffect, useState, useContext} from 'react';
 import GithubIcon from 'components/common/icons/social/GithubIcon';
 import LinkedinIcon from 'components/common/icons/social/LinkedinIcon';
-import {debounce} from 'components/portfolioSections/skills/ProgressRing';
-import {Language, languageContext} from '../../../pages';
+import {debounce} from 'helpers/debounce';
+import {LanguageContext, LanguageProps} from 'components/contexts/language';
 
 type NavBarProps = {
   user: IUser;
   refs: {ref: React.RefObject<HTMLDivElement>; title: string}[];
-  setSelectedLang: React.Dispatch<React.SetStateAction<Language>>;
 };
 
-const NavBar: React.FC<NavBarProps> = ({user, refs, setSelectedLang}) => {
-  const selectedLang = useContext(languageContext);
+const NavBar: React.FC<NavBarProps> = ({user, refs}) => {
+  const {eng, setEng} = useContext(LanguageContext) as LanguageProps;
   const [langsHovered, setLangsHovered] = useState(false);
   const [cvHovered, setCvHovered] = useState(false);
   const [position, setPosition] = useState(0);
@@ -31,8 +30,8 @@ const NavBar: React.FC<NavBarProps> = ({user, refs, setSelectedLang}) => {
   }, []);
 
   useEffect(() => {
-    setPosition(pp => pp + (selectedLang === 'es' ? -100 : 100));
-  }, [selectedLang]);
+    setPosition(pp => pp + (!eng ? -100 : 100));
+  }, [eng]);
 
   useEffect(() => {
     setPosition(pp => (pp === 100 ? pp - 100 : pp + 100));
@@ -59,10 +58,10 @@ const NavBar: React.FC<NavBarProps> = ({user, refs, setSelectedLang}) => {
           onMouseEnter={() => setLangsHovered(true)}
           onMouseLeave={() => setLangsHovered(false)}
         >
-          <button style={{right: `${position}%`}} onClick={() => setSelectedLang(Language.en)}>
+          <button style={{right: `${position}%`}} onClick={() => setEng(true)}>
             <Eu size='100%' round />
           </button>
-          <button style={{right: `${position}%`}} onClick={() => setSelectedLang(Language.es)}>
+          <button style={{right: `${position}%`}} onClick={() => setEng(false)}>
             <Ar size='100%' round />
           </button>
         </div>

@@ -1,4 +1,3 @@
-import ProgressRing from './ProgressRing';
 import styles from './SkillItem.module.css';
 import {ISkill} from 'IPortfolio';
 

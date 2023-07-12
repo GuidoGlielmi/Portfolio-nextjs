@@ -1,8 +1,7 @@
-import S from './Projects.module.css';
 import {IProject} from 'IPortfolio';
 import React, {useEffect, useRef} from 'react';
 import ProjectItem from './ProjectItem/ProjectItem';
-import useTranslation, {translationsKeys} from 'hooks/useTranslation';
+import useTranslation from 'hooks/useTranslation';
 
 type ProjectsProps = {
   projects: IProject[];
@@ -10,7 +9,7 @@ type ProjectsProps = {
 let initialOffsetTop: number;
 const Projects: React.FC<ProjectsProps> = ({projects}) => {
   const titleRef = useRef<HTMLDivElement>(null);
-  const projectsTitle = useTranslation(translationsKeys.projects);
+  const [projectsTitle] = useTranslation('Projects');
   useEffect(() => {
     initialOffsetTop = titleRef.current!.offsetTop;
     const paintBackground = () => {
@@ -31,7 +30,7 @@ const Projects: React.FC<ProjectsProps> = ({projects}) => {
     };
   }, []);
   return (
-    <div className={S.projectsSection}>
+    <div>
       <h2 ref={titleRef}>{projectsTitle}</h2>
       {projects.map(p => (
         <ProjectItem project={p} key={p.title} />
