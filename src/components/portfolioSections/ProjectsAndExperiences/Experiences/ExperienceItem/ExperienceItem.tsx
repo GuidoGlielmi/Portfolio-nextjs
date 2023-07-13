@@ -4,6 +4,7 @@ import {useState, useContext} from 'react';
 import {AnimatePresence, motion} from 'framer-motion';
 import {GifPreviewContext, GifPreviewProps} from 'components/contexts/gifPreview';
 import FullScreenIcon from '../../../../../../public/icons/fullScreenIcon';
+import {translate} from 'helpers/translator';
 
 type ExperienceItemProps = {
   experience: IExperience;
@@ -26,7 +27,8 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({experience}) => {
       <div className={S.info}>
         <h3>{experience.title}</h3>
         <span>
-          {experience.startDate} - {experience.endDate}
+          {experience.startDate} -{' '}
+          {experience.endDate === 'Current' ? translate(experience.endDate) : experience.endDate}
         </span>
         <p>{experience.description}</p>
         {experience.deployUrl && (
@@ -42,15 +44,15 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({experience}) => {
           </a>
         )}
         <div className={S.urls}>
-          {experience.urls.map((u, i) => (
-            <a href={u.url} target='_blank' rel='noreferrer' key={u.name + i}>
+          {experience.urls.map(u => (
+            <a href={u.url} target='_blank' rel='noreferrer' key={u.name}>
               {`${u.name} Repo`}
             </a>
           ))}
         </div>
         <div className={S.techs}>
-          {experience.techs?.map((t, i) => (
-            <span key={t + i}>{t}</span>
+          {experience.techs?.map(t => (
+            <span key={t}>{t}</span>
           ))}
         </div>
       </div>

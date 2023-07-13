@@ -26,6 +26,29 @@
       }
     },
     {
+      "deployUrl": "",
+      "title": "Blessit",
+      "image": "./assets/logos/blessit-logo.svg",
+      "description": "Designed and developed a video call application to facilitate communication for the deaf community. Implemented a status indicator feature for call managers, allowing them to monitor the availability of translators, and user authentication system for clients and translators",
+      "startDate": "12/2022",
+      "endDate": "Current",
+      "urls": [],
+      "techs": [
+        "React",
+        "Express.js",
+        "Node.js",
+        "PostgreSQL",
+        "CSS3",
+        "HTML5",
+        "Javascript",
+        "Typescript",
+        "Sequelize"
+      ],
+      "es": {
+        "description": "Diseño e implementación de aplicación de videollamadas para la asistencia a personas sordas. Desarrollada con indicador de estado de intérpretes para los gestores de llamadas y sistema de autenticación de usuario para clientes e intérpretes"
+      }
+    },
+    {
       "certificate": "./assets/img/certificates/RR.jpg",
       "startDate": "09/2021",
       "endDate": "01/2022",
@@ -59,29 +82,6 @@
       ],
       "es": {
         "description": "Bootcamp con stack MERN. Desarrollo de una empresa ficticia que empareja candidatos con posiciones laborales disponibles de empresas cliente"
-      }
-    },
-    {
-      "deployUrl": "",
-      "title": "Blessit",
-      "image": "./assets/logos/blessit-logo.svg",
-      "description": "Design and implementation of video calls app for aiding deaf people, with a user authentication system for clients and translators",
-      "startDate": "12/2022",
-      "endDate": "Current",
-      "urls": [],
-      "techs": [
-        "React",
-        "Express.js",
-        "Node.js",
-        "PostgreSQL",
-        "CSS3",
-        "HTML5",
-        "Javascript",
-        "Typescript",
-        "Sequelize"
-      ],
-      "es": {
-        "description": "Diseño e implementación de aplicación de videollamadas para la asistencia a personas sordas, con sistema de autenticación de usuario para clientes e intérpretes."
       }
     }
   ],
