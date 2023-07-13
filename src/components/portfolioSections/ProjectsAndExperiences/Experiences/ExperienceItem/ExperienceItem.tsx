@@ -70,7 +70,6 @@ export const PreviewSwitcher: React.FC<Pick<IProject, 'title' | 'image' | 'deplo
   image,
   deployVideo,
 }) => {
-  // const isDesktop = useBreakpoint();
   const {setSrc} = useContext(GifPreviewContext) as GifPreviewProps;
   const [imageHovered, setImageHovered] = useState(false);
 

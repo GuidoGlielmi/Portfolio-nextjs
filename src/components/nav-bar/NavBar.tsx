@@ -19,7 +19,7 @@ const NavBar: React.FC<NavBarProps> = ({user, refs}) => {
   const [cvHovered, setCvHovered] = useState(false);
   const [position, setPosition] = useState(0);
   const [selectedSection, setSelectedSection] = useState(0);
-  const [langsHovered, setLangsHovered] = useState(false);
+  const [langsHovered, setLangsHovered] = useState<boolean>(false);
 
   const previousEng = useRef(eng);
 
@@ -33,12 +33,19 @@ const NavBar: React.FC<NavBarProps> = ({user, refs}) => {
   }, []);
 
   useEffect(() => {
+    if (langsHovered === null) return;
     const invertFlagPosition = () => setPosition(pp => (pp === 100 ? pp - 100 : pp + 100));
     if (langsHovered) {
       invertFlagPosition();
       previousEng.current = eng;
-    } else if (previousEng.current === eng) invertFlagPosition();
+    } else if (eng !== null && previousEng.current === eng) invertFlagPosition();
   }, [langsHovered]);
+
+  useEffect(() => {
+    if (eng !== null && previousEng.current === null) {
+      if (!eng) setPosition(pp => (pp === 100 ? pp - 100 : pp + 100));
+    }
+  }, [eng]);
 
   return (
     <nav className={S.nav}>
