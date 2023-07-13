@@ -1,6 +1,7 @@
 import S from './ProjectItem.module.css';
 import {IProject} from 'IPortfolio';
 import {PreviewSwitcher} from '../../Experiences/ExperienceItem/ExperienceItem';
+import useTranslation from 'hooks/useTranslation';
 type ProjectItemProps = {
   project: IProject;
 };
@@ -17,6 +18,8 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
     certificate,
   },
 }) => {
+  const [certificateTranslation] = useTranslation('Certificate');
+
   return (
     <div className={S.projectContainer}>
       <figure style={{position: 'relative'}} className={S.projectImgContainer}>
@@ -36,7 +39,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
         )}
         {certificate && (
           <a href={`assets/img/certificates/${certificate}`} target='_blank' rel='noreferrer'>
-            Certificate
+            {certificateTranslation}
           </a>
         )}
         <div className={S.urls}>
