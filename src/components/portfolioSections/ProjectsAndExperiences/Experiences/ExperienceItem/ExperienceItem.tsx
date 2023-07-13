@@ -1,10 +1,7 @@
 import S from './ExperienceItem.module.css';
-import {IExperience, IProject} from 'IPortfolio';
-import {useState, useContext} from 'react';
-import {AnimatePresence, motion} from 'framer-motion';
-import {GifPreviewContext, GifPreviewProps} from 'components/contexts/gifPreview';
-import FullScreenIcon from '../../../../../../public/icons/fullScreenIcon';
+import {IExperience} from 'IPortfolio';
 import useTranslation from 'hooks/useTranslation';
+import {PreviewSwitcher} from '../../PreviewSwitcher/indes';
 
 type ExperienceItemProps = {
   experience: IExperience;
@@ -61,62 +58,6 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({experience}) => {
           ))}
         </div>
       </div>
-    </div>
-  );
-};
-
-export const PreviewSwitcher: React.FC<Pick<IProject, 'title' | 'image' | 'deployVideo'>> = ({
-  title,
-  image,
-  deployVideo,
-}) => {
-  const {setSrc} = useContext(GifPreviewContext) as GifPreviewProps;
-  const [imageHovered, setImageHovered] = useState(false);
-
-  return (
-    <div
-      onMouseEnter={() => setImageHovered(true)}
-      onMouseLeave={() => setImageHovered(false)}
-      onClick={() => setImageHovered(ps => !ps)}
-      style={{
-        position: 'absolute',
-        top: '50%',
-        left: 0,
-        transform: 'translateY(-50%)',
-      }}
-    >
-      <AnimatePresence initial={false} mode='wait'>
-        <motion.img
-          transition={{duration: 0.15, ease: 'easeOut'}}
-          initial={{
-            opacity: 0,
-            // ...(imageHovered && {transform: 'scale(1)'}),
-          }}
-          animate={{
-            opacity: 1,
-            // ...(imageHovered && {transform: 'scale(2)'}),
-          }}
-          exit={{opacity: 0}}
-          key={`${imageHovered}`}
-          className={imageHovered ? S.gif : ''}
-          src={!imageHovered ? image : `gifs/${deployVideo}`}
-          alt={`${title} logo`}
-        />
-        {imageHovered && (
-          <div
-            onClick={imageHovered ? () => setSrc(deployVideo) : undefined}
-            style={{
-              position: 'absolute',
-              bottom: 0,
-              right: 0,
-              margin: 10,
-              cursor: imageHovered ? 'pointer' : 'default',
-            }}
-          >
-            <FullScreenIcon width={25} />
-          </div>
-        )}
-      </AnimatePresence>
     </div>
   );
 };

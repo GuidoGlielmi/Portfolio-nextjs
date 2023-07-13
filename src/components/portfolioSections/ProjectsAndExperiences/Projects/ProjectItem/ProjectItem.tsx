@@ -1,7 +1,7 @@
 import S from './ProjectItem.module.css';
 import {IProject} from 'IPortfolio';
-import {PreviewSwitcher} from '../../Experiences/ExperienceItem/ExperienceItem';
 import useTranslation from 'hooks/useTranslation';
+import {PreviewSwitcher} from '../../PreviewSwitcher/indes';
 type ProjectItemProps = {
   project: IProject;
 };

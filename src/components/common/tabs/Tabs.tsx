@@ -15,12 +15,21 @@ const Tabs: React.FC<TabsProps> = ({tabs, onChange}) => {
   const selectedTabRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  const setRangeValues = () => {
     const start =
       selectedTabRef.current!.getBoundingClientRect().left -
       containerRef.current!.getBoundingClientRect().left;
     const end = start + selectedTabRef.current!.getBoundingClientRect().width;
     setRange([start, end]);
+  };
+
+  useEffect(() => {
+    containerRef.current!.addEventListener('scroll', setRangeValues);
+    return () => containerRef.current!.addEventListener('scroll', setRangeValues);
+  }, []);
+
+  useEffect(() => {
+    setRangeValues();
   }, [selectedTab]);
 
   const onChangeHandler = (selectedTab: string) => {
@@ -30,6 +39,9 @@ const Tabs: React.FC<TabsProps> = ({tabs, onChange}) => {
 
   return (
     <div
+      onScroll={e => {
+        console.log(e);
+      }}
       ref={containerRef}
       className={S.tabs}
       style={{

@@ -14,9 +14,9 @@
   --font-size-small: 0.5rem;
   --font-size-x-small: 0.33rem;
   --global-filter-dark: contrast(100%) brightness(100%)
-    drop-shadow(30px 30px 0px rgba(170, 57, 57, 0.151));
+    drop-shadow(30px 20px 0px rgba(170, 57, 57, 0.1));
   --global-filter-light: contrast(100%) brightness(100%)
-    drop-shadow(30px 30px 0px rgba(163, 96, 96, 0.151));
+    drop-shadow(30px 20px 0px rgba(163, 96, 96, 0.1));
   --project-image-size: 60vw;
 }
 @media (min-width: 450px) {
