@@ -6,16 +6,18 @@ import useTranslation from 'hooks/useTranslation';
 type ProjectsProps = {
   projects: IProject[];
 };
-let initialOffsetTop: number;
+
 const Projects: React.FC<ProjectsProps> = ({projects}) => {
-  const titleRef = useRef<HTMLDivElement>(null);
   const [projectsTitle] = useTranslation('Projects');
+
+  const titleRef = useRef<HTMLDivElement>(null);
+  const titleContainerRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    initialOffsetTop = titleRef.current!.offsetTop;
     const paintBackground = () => {
       // console.log(containerRef.current!.offsetTop);
       // console.log(titleRef.current!.offsetTop);
-      if (titleRef.current!.offsetTop > initialOffsetTop) {
+      if (titleRef.current!.offsetTop > titleContainerRef.current!.offsetTop) {
         titleRef.current!.style.background = '#eee';
         titleRef.current!.style.color = '#333';
       } else {
@@ -30,7 +32,7 @@ const Projects: React.FC<ProjectsProps> = ({projects}) => {
     };
   }, []);
   return (
-    <div>
+    <div ref={titleContainerRef}>
       <h2 ref={titleRef}>{projectsTitle}</h2>
       {projects.map(p => (
         <ProjectItem project={p} key={p.title} />

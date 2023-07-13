@@ -7,17 +7,17 @@ type ExperiencesProps = {
   experiences: IExperience[];
 };
 
-let initialOffsetTop: number;
 const Experiences: React.FC<ExperiencesProps> = ({experiences}) => {
-  const titleRef = useRef<HTMLDivElement>(null);
   const [experiencesTitle] = useTranslation('Experiences');
 
+  const titleContainerRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    initialOffsetTop = titleRef.current!.offsetTop;
     const paintBackground = () => {
       // console.log(containerRef.current!.offsetTop);
       // console.log(titleRef.current!.offsetTop);
-      if (titleRef.current!.offsetTop > initialOffsetTop) {
+      if (titleRef.current!.offsetTop > titleContainerRef.current!.offsetTop) {
         titleRef.current!.style.background = '#393939';
         titleRef.current!.style.color = 'white';
       } else {
@@ -33,7 +33,7 @@ const Experiences: React.FC<ExperiencesProps> = ({experiences}) => {
   }, []);
 
   return (
-    <div>
+    <div ref={titleContainerRef}>
       <h2 ref={titleRef}>{experiencesTitle}</h2>
       {experiences.map(e => (
         <ExperienceItem experience={e} key={e.title} />

@@ -1,6 +1,6 @@
 .container > div {
   gap: 5vh;
-  padding: 10%;
+  padding: 0 10% 10% 10%;
 }
 .container h2 {
   font-size: 1.4em;

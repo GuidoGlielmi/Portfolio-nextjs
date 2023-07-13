@@ -3,6 +3,7 @@ import {IExperience, IProject} from 'IPortfolio';
 import {useState, useContext} from 'react';
 import {AnimatePresence, motion} from 'framer-motion';
 import {GifPreviewContext, GifPreviewProps} from 'components/contexts/gifPreview';
+import FullScreenIcon from '../../../../../../public/icons/fullScreenIcon';
 
 type ExperienceItemProps = {
   experience: IExperience;
@@ -83,20 +84,32 @@ export const PreviewSwitcher: React.FC<Pick<IProject, 'title' | 'image' | 'deplo
           transition={{duration: 0.25, ease: 'easeOut'}}
           initial={{
             opacity: 0,
-            // ...(imageHovered && {transform: `scale(${isDesktop ? 1.5 : 1})`}),
+            // ...(imageHovered && {transform: 'scale(1)'}),
           }}
           animate={{
             opacity: 1,
-            // ...(imageHovered && {transform: `scale(${isDesktop ? 2.5 : 1.5})`}),
+            // ...(imageHovered && {transform: 'scale(2)'}),
           }}
           exit={{opacity: 0}}
           key={`${imageHovered}`}
           className={imageHovered ? S.gif : ''}
           src={!imageHovered ? image : `gifs/${deployVideo}`}
           alt={`${title} logo`}
-          style={{cursor: imageHovered ? 'pointer' : 'default'}}
-          onClick={imageHovered ? () => setSrc(deployVideo) : undefined}
         />
+        {imageHovered && (
+          <div
+            onClick={imageHovered ? () => setSrc(deployVideo) : undefined}
+            style={{
+              position: 'absolute',
+              bottom: 0,
+              right: 0,
+              margin: 10,
+              cursor: imageHovered ? 'pointer' : 'default',
+            }}
+          >
+            <FullScreenIcon width={25} />
+          </div>
+        )}
       </AnimatePresence>
     </div>
   );

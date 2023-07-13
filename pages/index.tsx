@@ -99,47 +99,7 @@ const Home: React.FC<SectionsProps> = ({en, es}) => {
   );
 };
 
-interface ArrowProps {
-  action: () => void;
-  prev?: boolean;
-}
-
-const Arrow: React.FC<ArrowProps> = ({action, prev = false}) => {
-  const offset = '20px';
-  const style = prev ? {left: offset, transform: 'rotateZ(180deg)'} : {right: offset};
-  return (
-    <button onClick={action} className={S.arrowContainer} style={style}>
-      <Chevron />
-    </button>
-  );
-};
-
 export const getStaticProps = async () => {
-  // const [
-  //   educations,
-  //   educationsEs,
-  //   experiences,
-  //   experiencesEs,
-  //   projects,
-  //   projectsEs,
-  //   skills,
-  //   skillsEs,
-  //   techs,
-  //   users,
-  //   usersEs,
-  // ] = await Promise.all([
-  //   portfolioService.getEducations(),
-  //   portfolioService.getEducations(true),
-  //   portfolioService.getExperiences(),
-  //   portfolioService.getExperiences(true),
-  //   portfolioService.getProjects(),
-  //   portfolioService.getProjects(true),
-  //   portfolioService.getSkills(),
-  //   portfolioService.getSkills(true),
-  //   portfolioService.getTechs(),
-  //   portfolioService.getUsers(),
-  //   portfolioService.getUsers(true),
-  // ]);
   const {projects, techs, experiences, user, skills} = portfolioData as {
     projects: IProject[];
     techs: ITechnology[];

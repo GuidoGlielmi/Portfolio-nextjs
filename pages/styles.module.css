@@ -4,6 +4,7 @@
   position: relative;
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
+  background: linear-gradient(to left, var(--color-dark) 50%, var(--color-light) 50%);
 }
 
 .main > * {
@@ -15,10 +16,9 @@
   scroll-snap-align: start;
   display: grid;
   grid-template-columns: 50% 50%;
-  background: linear-gradient(to left, var(--color-dark) 50%, var(--color-light) 50%);
-  /* grid-template-rows: 90vh; */
   min-height: 100vh;
   text-align: center;
+  scroll-margin-top: 40px;
 }
 
 .main > section > * {
