@@ -7,6 +7,7 @@ import {useState} from 'react';
 import {AnimatePresence, motion} from 'framer-motion';
 import Skills from '../skills/Skills';
 import useTranslation from 'hooks/useTranslation';
+import useBreakpoint from 'hooks/useBreakpoint';
 
 type TechsAndInfoProps = {
   techs: [string[], ITechnology[]];
@@ -16,6 +17,8 @@ type TechsAndInfoProps = {
 };
 const TechsAndInfo = React.forwardRef<HTMLDivElement, TechsAndInfoProps>(
   ({techs: [types, techs], user, skills, projectsAndExperiencesRef}, ref) => {
+    const isDesktop = useBreakpoint();
+
     const [selectedTechType, setSelectedTechType] = useState(types[0]);
     const [techsTitle, whoAmITitle] = useTranslation([
       "Technologies I'm familiar with",
@@ -27,7 +30,7 @@ const TechsAndInfo = React.forwardRef<HTMLDivElement, TechsAndInfoProps>(
         ref={ref}
         className={S.techsAndInfoSection}
         onWheel={e => {
-          if (e.deltaY < 0) return;
+          if (!isDesktop || e.deltaY < 0) return;
           projectsAndExperiencesRef.current?.scrollIntoView({behavior: 'smooth'});
         }}
       >

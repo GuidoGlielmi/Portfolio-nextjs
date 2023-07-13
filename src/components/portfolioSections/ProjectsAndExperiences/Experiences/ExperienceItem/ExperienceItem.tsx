@@ -11,7 +11,7 @@ type ExperienceItemProps = {
 };
 
 const ExperienceItem: React.FC<ExperienceItemProps> = ({experience}) => {
-  const [endDate] = useTranslation(experience.endDate as 'Current');
+  const [endDate, certificate] = useTranslation([experience.endDate as 'Current', 'Certificate']);
 
   return (
     <div className={S.experienceContainer}>
@@ -45,7 +45,7 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({experience}) => {
             target='_blank'
             rel='noreferrer'
           >
-            Certificate
+            {certificate}
           </a>
         )}
         <div className={S.urls}>

@@ -16,29 +16,27 @@ const Tabs: React.FC<TabsProps> = ({tabs, onChange}) => {
     onChange(selectedTab);
   };
   return (
-    <HorizontallyScrollable>
-      <div className={S.tabs}>
-        {typeof tabs[0] === 'string'
-          ? (tabs as string[]).map(t => (
-              <p
-                onClick={() => onChangeHandler(t)}
-                className={selectedTab === t ? S.selectedTab : ''}
-                key={t}
-              >
-                {t}
-              </p>
-            ))
-          : (tabs as [string, string][]).map(t => (
-              <p
-                onClick={() => onChangeHandler(t[0])}
-                className={selectedTab === t[0] ? S.selectedTab : ''}
-                key={t[0]}
-              >
-                {t[1]}
-              </p>
-            ))}
-      </div>
-    </HorizontallyScrollable>
+    <div className={S.tabs}>
+      {typeof tabs[0] === 'string'
+        ? (tabs as string[]).map(t => (
+            <p
+              onClick={() => onChangeHandler(t)}
+              className={selectedTab === t ? S.selectedTab : ''}
+              key={t}
+            >
+              {t}
+            </p>
+          ))
+        : (tabs as [string, string][]).map(t => (
+            <p
+              onClick={() => onChangeHandler(t[0])}
+              className={selectedTab === t[0] ? S.selectedTab : ''}
+              key={t[0]}
+            >
+              {t[1]}
+            </p>
+          ))}
+    </div>
   );
 };
 export default Tabs;

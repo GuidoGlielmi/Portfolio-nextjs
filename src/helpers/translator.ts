@@ -8,6 +8,7 @@ const translationsKeys = {
   Experiences: 'Experiencias',
   Projects: 'Proyectos',
   Current: 'En Curso',
+  Certificate: 'Certificado',
 };
 
 export type TranslationKeys = keyof typeof translationsKeys;

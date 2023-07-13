@@ -1,5 +1,5 @@
 import React, {useRef} from 'react';
-
+import S from './HorizontallyScrolleable.module.css';
 interface HorizontallyScrollableProps {
   children: React.ReactElement<any, string | React.JSXElementConstructor<any>>;
 }
@@ -13,15 +13,7 @@ const HorizontallyScrollable: React.FC<HorizontallyScrollableProps> = ({children
   };
 
   return (
-    <div
-      ref={containerRef}
-      style={{
-        overflowX: 'scroll',
-        whiteSpace: 'nowrap',
-        scrollBehavior: 'smooth',
-      }}
-      onWheel={handleWheel}
-    >
+    <div className={S.container} ref={containerRef} onWheel={handleWheel}>
       {children}
     </div>
   );

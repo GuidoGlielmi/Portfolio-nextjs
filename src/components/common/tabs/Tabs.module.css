@@ -2,11 +2,13 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  width: 100%;
-  /* margin: 10px 0; */
+  height: 60px;
+  overflow: scroll;
+  min-width: 0;
 }
 
 .tabs > * {
+  flex-shrink: 0;
   cursor: pointer;
   transition: all 0.3s ease;
   padding: 5px 10px;
@@ -37,6 +39,6 @@
 }
 @media (max-width: 768px) {
   .tabs {
-    justify-content: center;
+    justify-content: unset;
   }
 }
