@@ -4,13 +4,15 @@ import {useState, useContext} from 'react';
 import {AnimatePresence, motion} from 'framer-motion';
 import {GifPreviewContext, GifPreviewProps} from 'components/contexts/gifPreview';
 import FullScreenIcon from '../../../../../../public/icons/fullScreenIcon';
-import {translate} from 'helpers/translator';
+import useTranslation from 'hooks/useTranslation';
 
 type ExperienceItemProps = {
   experience: IExperience;
 };
 
 const ExperienceItem: React.FC<ExperienceItemProps> = ({experience}) => {
+  const [endDate] = useTranslation(experience.endDate as 'Current');
+
   return (
     <div className={S.experienceContainer}>
       <figure style={{position: 'relative'}} className={S.experienceImgContainer}>
@@ -27,8 +29,7 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({experience}) => {
       <div className={S.info}>
         <h3>{experience.title}</h3>
         <span>
-          {experience.startDate} -{' '}
-          {experience.endDate === 'Current' ? translate(experience.endDate) : experience.endDate}
+          {experience.startDate} - {endDate}
         </span>
         <p>{experience.description}</p>
         {experience.deployUrl && (
@@ -39,7 +40,11 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({experience}) => {
           </div>
         )}
         {experience.certificate && (
-          <a href={experience.certificate} target='_blank' rel='noreferrer'>
+          <a
+            href={`assets/img/certificates/${experience.certificate}`}
+            target='_blank'
+            rel='noreferrer'
+          >
             Certificate
           </a>
         )}
@@ -83,7 +88,7 @@ export const PreviewSwitcher: React.FC<Pick<IProject, 'title' | 'image' | 'deplo
     >
       <AnimatePresence initial={false} mode='wait'>
         <motion.img
-          transition={{duration: 0.25, ease: 'easeOut'}}
+          transition={{duration: 0.15, ease: 'easeOut'}}
           initial={{
             opacity: 0,
             // ...(imageHovered && {transform: 'scale(1)'}),

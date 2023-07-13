@@ -2,7 +2,7 @@ import S from './NavBar.module.css';
 import {IUser} from 'IPortfolio';
 import Ar from 'components/common/icons/flags/Ar';
 import Eu from 'components/common/icons/flags/Us';
-import {useEffect, useState, useContext} from 'react';
+import {useEffect, useState, useContext, useRef} from 'react';
 import GithubIcon from 'components/common/icons/social/GithubIcon';
 import LinkedinIcon from 'components/common/icons/social/LinkedinIcon';
 import {debounce} from 'helpers/debounce';
@@ -15,10 +15,12 @@ type NavBarProps = {
 
 const NavBar: React.FC<NavBarProps> = ({user, refs}) => {
   const {eng, setEng} = useContext(LanguageContext) as LanguageProps;
-  const [langsHovered, setLangsHovered] = useState(false);
   const [cvHovered, setCvHovered] = useState(false);
   const [position, setPosition] = useState(0);
   const [selectedSection, setSelectedSection] = useState(0);
+  const [langsHovered, setLangsHovered] = useState(false);
+
+  const previousEng = useRef(eng);
 
   useEffect(() => {
     const checkSelectedSection = () => {
@@ -30,11 +32,11 @@ const NavBar: React.FC<NavBarProps> = ({user, refs}) => {
   }, []);
 
   useEffect(() => {
-    setPosition(pp => pp + (!eng ? -100 : 100));
-  }, [eng]);
-
-  useEffect(() => {
-    setPosition(pp => (pp === 100 ? pp - 100 : pp + 100));
+    const invertFlagPosition = () => setPosition(pp => (pp === 100 ? pp - 100 : pp + 100));
+    if (langsHovered) {
+      invertFlagPosition();
+      previousEng.current = eng;
+    } else if (previousEng.current === eng) invertFlagPosition();
   }, [langsHovered]);
 
   return (

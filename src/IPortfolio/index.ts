@@ -19,12 +19,12 @@ export type EndDate = 'Current' | Date;
 type DateUnit = '01' | '02' | '03' | '04' | '05' | '06' | '07' | '08' | '09' | '10' | '11' | '12';
 
 export interface IExperience extends IProject {
-  certificate: string | undefined;
   startDate: Date;
   endDate: EndDate;
 }
 
 export interface IProject extends Es<IProjectSpanish> {
+  certificate: string | undefined;
   deployUrl: string;
   deployVideo: string;
   image: string;

@@ -6,7 +6,16 @@ type ProjectItemProps = {
 };
 
 const ProjectItem: React.FC<ProjectItemProps> = ({
-  project: {techs: projectTechs, urls, title, description, image, deployUrl, deployVideo},
+  project: {
+    techs: projectTechs,
+    urls,
+    title,
+    description,
+    image,
+    deployUrl,
+    deployVideo,
+    certificate,
+  },
 }) => {
   return (
     <div className={S.projectContainer}>
@@ -22,7 +31,12 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
         <p>{description}</p>
         {deployUrl && (
           <a href={deployUrl} target='_blank' rel='noreferrer'>
-            {title} live app
+            Live app
+          </a>
+        )}
+        {certificate && (
+          <a href={`assets/img/certificates/${certificate}`} target='_blank' rel='noreferrer'>
+            Certificate
           </a>
         )}
         <div className={S.urls}>
