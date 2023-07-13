@@ -7,7 +7,7 @@ const GithubIcon: React.FC<GithubIconProps> = ({size = '40px', round = false}) =
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
-      viewBox='0 0 48 48'
+      viewBox='4 4 40 40'
       width={size}
       height={size}
       style={{borderRadius: round ? '50%' : 0}}

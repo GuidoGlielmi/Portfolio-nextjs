@@ -7,6 +7,7 @@ import GithubIcon from 'components/common/icons/social/GithubIcon';
 import LinkedinIcon from 'components/common/icons/social/LinkedinIcon';
 import {debounce} from 'helpers/debounce';
 import {LanguageContext, LanguageProps} from 'components/contexts/language';
+import EmailIcon from '../../../public/icons/emailIcon';
 
 type NavBarProps = {
   user: IUser;
@@ -81,6 +82,9 @@ const NavBar: React.FC<NavBarProps> = ({user, refs}) => {
             </a>
           </div>
         </div>
+        <a href='mailto:guidoglielmi@gmail.com' target='_blank' rel='noreferrer'>
+          <EmailIcon />
+        </a>
         <a href={user?.linkedInUrl} target='_blank' rel='noreferrer'>
           <LinkedinIcon />
         </a>

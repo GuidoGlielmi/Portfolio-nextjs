@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef, useContext} from 'react';
+import React, {useEffect, useRef, useContext} from 'react';
 import NavBar from 'components/nav-bar/NavBar';
 import TechsAndInfo from 'components/portfolioSections/techs-and-info/TechsAndInfo';
 import S from './styles.module.css';
@@ -7,7 +7,6 @@ import Chevron from 'components/common/icons/chevrons/Chevron';
 import ProjectsAndExperiences from 'components/portfolioSections/ProjectsAndExperiences';
 import portfolioData from 'data.json';
 import {debounce} from 'helpers/debounce';
-import Footer from 'components/footer/Footer';
 import {LanguageContext, LanguageProps} from 'components/contexts/language';
 import {translate} from '../src/helpers/translator';
 
@@ -93,7 +92,6 @@ const Home: React.FC<SectionsProps> = ({en, es}) => {
           projects={data.projects}
           experiences={data.experiences}
         />
-        <Footer />
       </main>
     </>
   );

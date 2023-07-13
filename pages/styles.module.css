@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  padding-top: 8vh;
+  padding: 8vh 0;
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
   background: linear-gradient(to left, var(--color-dark) 50%, var(--color-light) 50%);

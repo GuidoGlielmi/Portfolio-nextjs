@@ -3,11 +3,11 @@ type LinkedinIconProps = {
   round?: boolean;
   size?: string;
 };
-const LinkedinIcon: React.FC<LinkedinIconProps> = ({size = '40px', round = false}) => {
+const LinkedinIcon: React.FC<LinkedinIconProps> = ({size = 40, round = false}) => {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
-      viewBox='0 0 48 48'
+      viewBox='4 4 40 40'
       width={size}
       height={size}
       style={{borderRadius: round ? '50%' : 0}}

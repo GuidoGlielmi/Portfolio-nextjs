@@ -1,11 +1,11 @@
 import React from 'react';
 
-type Props = {
-  width: string | number;
+export type SvgProps = {
+  width?: string | number;
   height?: string | number;
 };
 
-const FullScreenIcon = ({width, height}: Props) => {
+const FullScreenIcon = ({width = 40, height}: SvgProps) => {
   return (
     <svg
       stroke='#606060'
