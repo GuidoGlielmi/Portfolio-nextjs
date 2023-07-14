@@ -8,6 +8,7 @@ import {AnimatePresence, motion} from 'framer-motion';
 import Skills from '../skills/Skills';
 import useTranslation from 'hooks/useTranslation';
 import useBreakpoint from 'hooks/useBreakpoint';
+import LoadingIcon from 'components/common/icons/loading-icon/LoadingIcon';
 
 type TechsAndInfoProps = {
   techs: [string[], ITechnology[]];
@@ -45,29 +46,28 @@ const TechsAndInfo = React.forwardRef<HTMLDivElement, TechsAndInfoProps>(
             />
             <div className={S.techGroup}>
               <AnimatePresence mode='wait' initial={false}>
-                {techs.map(
-                  t =>
-                    t.type === selectedTechType && (
-                      <motion.div
-                        key={t.name}
-                        transition={{duration: 0.1}}
-                        animate={{opacity: 1, scale: 1}}
-                        initial={{opacity: 0, scale: 0.5}}
-                        exit={{opacity: 0, scale: 0.5}} // necesary for AnimatePresence
-                        className={S.tech}
-                      >
-                        <ReactSVG
-                          src={t.image}
-                          // key={t.name}
-                          beforeInjection={svg => {
-                            svg.setAttribute('width', '5vh');
-                            svg.setAttribute('height', '5vh');
-                          }}
-                        />
-                        <span>{t.name}</span>
-                      </motion.div>
-                    ),
-                )}
+                {techs
+                  .filter(t => t.type === selectedTechType)
+                  .map(t => (
+                    <motion.div
+                      key={t.name}
+                      transition={{duration: 0.1}}
+                      animate={{opacity: 1, scale: 1}}
+                      initial={{opacity: 0, scale: 0.5}}
+                      exit={{opacity: 0, scale: 0.5}} // necesary for AnimatePresence
+                      className={S.tech}
+                    >
+                      <ReactSVG
+                        src={`assets/logos/${t.image}.svg`}
+                        loading={() => <LoadingIcon />}
+                        // beforeInjection={svg => {
+                        //   svg.setAttribute('width', '45px');
+                        //   svg.setAttribute('height', '45px');
+                        // }}
+                      />
+                      <span>{t.name}</span>
+                    </motion.div>
+                  ))}
               </AnimatePresence>
             </div>
           </div>

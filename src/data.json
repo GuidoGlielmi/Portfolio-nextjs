@@ -144,97 +144,97 @@
   "techs": [
     {
       "name": "CSS3",
-      "image": "./assets/logos/CssIcon.svg",
+      "image": "CssIcon",
       "type": "FrontEnd"
     },
     {
       "name": "Express.js",
-      "image": "./assets/logos/ExpressJsIcon.svg",
+      "image": "ExpressJsIcon",
       "type": "BackEnd"
     },
     {
       "name": "HTML5",
-      "image": "./assets/logos/HtmlIcon.svg",
+      "image": "HtmlIcon",
       "type": "FrontEnd"
     },
     {
       "name": "Java",
-      "image": "./assets/logos/JavaIcon.svg",
+      "image": "JavaIcon",
       "type": "BackEnd"
     },
     {
       "name": "Javascript",
-      "image": "./assets/logos/JavascriptIcon.svg",
+      "image": "JavascriptIcon",
       "type": "FrontEnd"
     },
     {
       "name": "MongoDB",
-      "image": "./assets/logos/MongoIcon.svg",
+      "image": "MongoIcon",
       "type": "BackEnd"
     },
     {
       "name": "Next.js",
-      "image": "./assets/logos/NextJsIcon.svg",
+      "image": "NextJsIcon",
       "type": "FrontEnd"
     },
     {
       "name": "Node.js",
-      "image": "./assets/logos/NodeJsIcon.svg",
+      "image": "NodeJsIcon",
       "type": "BackEnd"
     },
     {
       "name": "PostgreSQL",
-      "image": "./assets/logos/PostgreIcon.svg",
+      "image": "PostgreIcon",
       "type": "Database"
     },
     {
       "name": "React",
-      "image": "./assets/logos/ReactIcon.svg",
+      "image": "ReactIcon",
       "type": "FrontEnd"
     },
     {
       "name": "Redux",
-      "image": "./assets/logos/ReduxIcon.svg",
+      "image": "ReduxIcon",
       "type": "FrontEnd"
     },
     {
       "name": "Spring",
-      "image": "./assets/logos/SpringIcon.svg",
+      "image": "SpringIcon",
       "type": "BackEnd"
     },
     {
       "name": "Typescript",
-      "image": "./assets/logos/TypescriptIcon.svg",
+      "image": "TypescriptIcon",
       "type": "FrontEnd"
     },
     {
       "name": "Entity Framework",
-      "image": "./assets/logos/EntityFrameworkIcon.svg",
+      "image": "EntityFrameworkIcon",
       "type": "ORM"
     },
     {
       "name": "Prisma",
-      "image": "./assets/logos/PrismaIcon.svg",
+      "image": "PrismaIcon",
       "type": "ORM"
     },
     {
       "name": "Sequelize",
-      "image": "./assets/logos/SequelizeIcon.svg",
+      "image": "SequelizeIcon",
       "type": "ORM"
     },
     {
       "name": "Hibernate",
-      "image": "./assets/logos/HibernateIcon.svg",
+      "image": "HibernateIcon",
       "type": "ORM"
     },
     {
       "name": "GraphQL",
-      "image": "./assets/logos/GraphQLIcon.svg",
+      "image": "GraphQLIcon",
       "type": "FrontEnd"
     },
     {
       "name": "GraphQL",
-      "image": "./assets/logos/GraphQLIcon.svg",
+      "image": "GraphQLIcon",
       "type": "BackEnd"
     }
   ],
