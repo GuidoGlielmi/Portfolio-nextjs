@@ -9,6 +9,7 @@ import portfolioData from 'data.json';
 import {debounce} from 'helpers/debounce';
 import {LanguageContext, LanguageProps} from 'components/contexts/language';
 import {translate} from '../src/helpers/translator';
+import Head from 'next/head';
 
 export type LanguageGroup = {
   experiences: IExperience[];
@@ -58,6 +59,9 @@ const Home: React.FC<SectionsProps> = ({en, es}) => {
 
   return (
     <>
+      <Head>
+        <title>Guido Glielmi</title>
+      </Head>
       <NavBar
         user={data.user}
         refs={[

@@ -9,6 +9,23 @@ import Skills from '../skills/Skills';
 import useTranslation from 'hooks/useTranslation';
 import useBreakpoint from 'hooks/useBreakpoint';
 import LoadingIcon from 'components/common/icons/loading-icon/LoadingIcon';
+import {translate} from 'helpers/translator';
+import Chevron from '../../../../public/icons/chevron';
+
+const articles = [
+  {
+    title: 'Memory reference in Javascript',
+    url: 'https://medium.com/@guidoglielmi/memory-reference-in-javascript-d31cf66accb6',
+  },
+  {
+    title: 'Sensible ‘this’ keyword translation',
+    url: 'https://medium.com/@guidoglielmi/sensible-this-keyword-translation-300c7b79e033',
+  },
+  {
+    title: 'Getting to know .reduce() on Javascript',
+    url: 'https://medium.com/@guidoglielmi/getting-to-know-reduce-on-javascript-82841d8fb5f5',
+  },
+];
 
 type TechsAndInfoProps = {
   techs: [string[], ITechnology[]];
@@ -21,10 +38,17 @@ const TechsAndInfo = React.forwardRef<HTMLDivElement, TechsAndInfoProps>(
     const isDesktop = useBreakpoint();
 
     const [selectedTechType, setSelectedTechType] = useState(types[0]);
-    const [techsTitle, whoAmITitle] = useTranslation([
+    const [techsTitle, whoAmITitle, articlesTitle] = useTranslation([
       "Technologies I'm familiar with",
       'A little something about me',
+      "I've written some articles in Medium™",
     ]);
+
+    const [selectedIndex, setSelectedIndex] = useState(0);
+
+    const nextIndex = () => {
+      setSelectedIndex(pi => (pi === articles.length - 1 ? 0 : pi + 1));
+    };
 
     return (
       <section
@@ -70,10 +94,34 @@ const TechsAndInfo = React.forwardRef<HTMLDivElement, TechsAndInfoProps>(
                   ))}
               </AnimatePresence>
             </div>
+            <div className={S.articlesSection}>
+              <h3>{articlesTitle}</h3>
+              <div className={S.articlesContainer}>
+                <div style={{position: 'relative'}}>
+                  <AnimatePresence>
+                    <motion.div
+                      key={selectedIndex}
+                      transition={{duration: 0.2}}
+                      initial={{y: -5, opacity: 0}}
+                      animate={{y: 0, opacity: 1}}
+                      exit={{y: 5, opacity: 0}}
+                    >
+                      <a
+                        href={articles[selectedIndex].url}
+                        target='_blank'
+                        referrerPolicy='no-referrer'
+                      >
+                        {articles[selectedIndex].title}
+                      </a>
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
+                <button onClick={nextIndex}>
+                  <Chevron />
+                </button>
+              </div>
+            </div>
           </div>
-          {/*         <div style={{marginLeft: 0}}>
-          <TypeGroup skills={skills.filter(s => s.type === 'LANGUAGE')} title='Languages' />
-        </div> */}
         </div>
         <div className={S.infoContainer}>
           <h2>{whoAmITitle}</h2>
