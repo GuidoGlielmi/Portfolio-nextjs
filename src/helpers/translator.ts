@@ -9,7 +9,7 @@ const translationsKeys = {
   Projects: 'Proyectos',
   Current: 'En Curso',
   Certificate: 'Certificado',
-  "I've written some articles in Medium™": 'Algunos articulos que he escrito',
+  "I've written some articles in Medium™": 'Algunos articulos que he escrito en Medium™',
 };
 
 export type TranslationKeys = keyof typeof translationsKeys;

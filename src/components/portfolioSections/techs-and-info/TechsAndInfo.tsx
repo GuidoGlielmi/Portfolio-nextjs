@@ -9,7 +9,6 @@ import Skills from '../skills/Skills';
 import useTranslation from 'hooks/useTranslation';
 import useBreakpoint from 'hooks/useBreakpoint';
 import LoadingIcon from 'components/common/icons/loading-icon/LoadingIcon';
-import {translate} from 'helpers/translator';
 import Chevron from '../../../../public/icons/chevron';
 
 const articles = [
