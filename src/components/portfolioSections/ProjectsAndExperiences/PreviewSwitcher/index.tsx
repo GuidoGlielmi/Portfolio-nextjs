@@ -33,7 +33,6 @@ export const PreviewSwitcher: React.FC<Pick<IProject, 'title' | 'image' | 'deplo
     const handleClick = (e: any) => {
       e.preventDefault();
       e.stopPropagation();
-      console.log(asGif, gifRef.current);
       if (!asGif || !gifRef.current) return;
       setAsGif(false);
     };

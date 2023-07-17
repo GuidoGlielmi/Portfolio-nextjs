@@ -20,6 +20,7 @@ const NavBar: React.FC<NavBarProps> = ({user, refs}) => {
   const [position, setPosition] = useState(0);
   const [selectedSection, setSelectedSection] = useState(0);
   const [langsHovered, setLangsHovered] = useState<boolean>(false);
+  const [touchable, setTouchable] = useState<boolean>(false);
 
   const previousEng = useRef(eng);
 
@@ -27,14 +28,24 @@ const NavBar: React.FC<NavBarProps> = ({user, refs}) => {
     const checkSelectedSection = () => {
       setSelectedSection(Number(window.scrollY >= (refs[0].ref.current?.clientHeight || 0)));
     };
-
+    const isTouchable =
+      'ontouchstart' in window ||
+      navigator.maxTouchPoints > 0 ||
+      (navigator as any).msMaxTouchPoints > 0;
+    setTouchable(isTouchable);
     document.addEventListener('scroll', debounce(checkSelectedSection, 100));
     return () => removeEventListener('scroll', checkSelectedSection);
   }, []);
 
+  const invertFlagPosition = () => setPosition(pp => (pp === 100 ? pp - 100 : pp + 100));
+
+  const onTouchEndHandler = () => {
+    invertFlagPosition();
+    setEng(ps => !ps);
+  };
+
   useEffect(() => {
     if (langsHovered === null) return;
-    const invertFlagPosition = () => setPosition(pp => (pp === 100 ? pp - 100 : pp + 100));
     if (langsHovered) {
       invertFlagPosition();
       previousEng.current = eng;
@@ -42,6 +53,7 @@ const NavBar: React.FC<NavBarProps> = ({user, refs}) => {
   }, [langsHovered]);
 
   useEffect(() => {
+    if (touchable) return;
     if (eng !== null && previousEng.current === null) {
       if (!eng) setPosition(pp => (pp === 100 ? pp - 100 : pp + 100));
     }
@@ -68,10 +80,24 @@ const NavBar: React.FC<NavBarProps> = ({user, refs}) => {
           onMouseEnter={() => setLangsHovered(true)}
           onMouseLeave={() => setLangsHovered(false)}
         >
-          <button style={{right: `${position}%`}} onClick={() => setEng(true)}>
+          <button
+            style={{right: `${position}%`}}
+            onTouchEnd={e => {
+              e.preventDefault();
+              onTouchEndHandler();
+            }}
+            onClick={() => setEng(true)}
+          >
             <Eu size='100%' round />
           </button>
-          <button style={{right: `${position}%`}} onClick={() => setEng(false)}>
+          <button
+            style={{right: `${position}%`}}
+            onTouchEnd={e => {
+              e.preventDefault();
+              onTouchEndHandler();
+            }}
+            onClick={() => setEng(false)}
+          >
             <Ar size='100%' round />
           </button>
         </div>

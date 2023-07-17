@@ -226,4 +226,9 @@
   .articlesContainer button {
     height: 100%;
   }
+  .articlesContainer > div > * {
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+  }
 }
