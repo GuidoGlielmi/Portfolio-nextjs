@@ -5,7 +5,7 @@
       "deployVideo": "piedras-de-la-india.gif",
       "title": "Taller Corazón de Manzana",
       "description": "Customer attention and inventory management & Development, operation and manteinance of full-stack e-commerce app with admin's dashboard, including services like e-mailing, Telegram messenger and Mercado Pago",
-      "image": "./assets/logos/TCDM.jpg",
+      "image": "piedras.png",
       "startDate": "09/2021",
       "endDate": "Current",
       "urls": [],
@@ -28,7 +28,7 @@
     {
       "deployUrl": "",
       "title": "Blessit",
-      "image": "./assets/logos/blessit-logo.svg",
+      "image": "blessit-logo.svg",
       "description": "Designed and developed a video call application to facilitate communication for the deaf community. Implemented a status indicator feature for call managers through WebSocket, allowing them to monitor the availability of translators, and user authentication system for clients and translators",
       "startDate": "12/2022",
       "endDate": "Current",
@@ -54,7 +54,7 @@
       "endDate": "01/2022",
       "deployUrl": "",
       "description": "MERN stack Bootcamp. Development of a fictional enterprise that matches applicants with open jobs from client companies",
-      "image": "./assets/logos/RR.png",
+      "image": "RR.png",
       "title": "Radium Rocket",
       "urls": [
         {
@@ -89,7 +89,7 @@
     {
       "certificate": "AP.png",
       "description": "Portfolio development",
-      "image": "./assets/logos/AP.png",
+      "image": "AP.png",
       "title": "Argentina Programa",
       "urls": [
         {
@@ -110,7 +110,7 @@
       "deployUrl": "https://aerolab-challenge-nexik9h5v-guidoglielmi.vercel.app/",
       "deployVideo": "aerolab.gif",
       "description": "E-commerce landing page",
-      "image": "./assets/logos/aerolab.jpg",
+      "image": "aerolab.jpg",
       "title": "Aerolab challenge",
       "urls": [
         {
@@ -127,7 +127,7 @@
       "certificate": "alkemy-react.png",
       "deployUrl": "https://guidoglielmi.github.io/alkemy-project/",
       "description": "App for the implementation of SCRUM methodology",
-      "image": "./assets/logos/alkemy.jpg",
+      "image": "alkemy.jpg",
       "title": "Alkemy React Skill Up",
       "urls": [
         {
@@ -170,7 +170,7 @@
     {
       "name": "MongoDB",
       "image": "MongoIcon",
-      "type": "BackEnd"
+      "type": "Database"
     },
     {
       "name": "Next.js",

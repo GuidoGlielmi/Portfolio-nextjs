@@ -1,7 +1,7 @@
 import S from './ExperienceItem.module.css';
 import {IExperience} from 'IPortfolio';
 import useTranslation from 'hooks/useTranslation';
-import {PreviewSwitcher} from '../../PreviewSwitcher/indes';
+import {PreviewSwitcher} from '../../PreviewSwitcher';
 
 type ExperienceItemProps = {
   experience: IExperience;
@@ -20,7 +20,7 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({experience}) => {
             deployVideo={experience.deployVideo}
           />
         ) : (
-          <img src={experience.image} alt={`${experience.title} logo`} />
+          <img src={`./assets/logos/${experience.image}`} alt={`${experience.title} logo`} />
         )}
       </figure>
       <div className={S.info}>

@@ -17,6 +17,7 @@
   flex-direction: column;
   gap: 20px;
   padding-left: 5vw !important;
+  color: #111;
   text-shadow: 1.5px 1.5px 0 #6d6d6d71;
 }
 
@@ -150,11 +151,12 @@
 }
 
 .articlesContainer svg {
+  transform: rotateZ(-90deg);
   filter: drop-shadow(0 0 3px #33333333);
 }
 .articlesContainer svg:active {
   filter: drop-shadow(0 0 3px #33333300);
-  transform: scale(0.95);
+  transform: rotateZ(-90deg) scale(0.95);
 }
 
 .articlesContainer a:hover {

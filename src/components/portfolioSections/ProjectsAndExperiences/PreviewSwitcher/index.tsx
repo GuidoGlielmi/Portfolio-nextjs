@@ -1,8 +1,10 @@
 import FullScreenIcon from '../../../../../public/icons/fullScreenIcon';
-import React, {useState, useContext, useEffect} from 'react';
+import React, {useState, useContext, useEffect, useRef} from 'react';
 import {GifPreviewContext, GifPreviewProps} from 'components/contexts/gifPreview';
 import {AnimatePresence, motion} from 'framer-motion';
 import {IProject} from 'IPortfolio';
+import PlayIcon from '../../../../../public/icons/play';
+import S from './PreviewSwitcher.module.css';
 
 export const PreviewSwitcher: React.FC<Pick<IProject, 'title' | 'image' | 'deployVideo'>> = ({
   title,
@@ -10,33 +12,68 @@ export const PreviewSwitcher: React.FC<Pick<IProject, 'title' | 'image' | 'deplo
   deployVideo,
 }) => {
   const techPreview = `${title} techPreview`;
+
   const {setSrc} = useContext(GifPreviewContext) as GifPreviewProps;
-  const [imageHovered, setImageHovered] = useState(false);
+
+  const [asGif, setAsGif] = useState(false);
+
+  const gifRef = useRef<HTMLImageElement>(null);
+
   useEffect(() => {
     const handleTouchEnd = (e: any) => {
-      if (e.target.id !== techPreview) setImageHovered(false);
+      if (e.target.id !== techPreview) setAsGif(false);
     };
-    document.addEventListener('touchend', handleTouchEnd);
+    document.addEventListener('touchstart', handleTouchEnd);
     return () => {
-      document.removeEventListener('touchend', handleTouchEnd);
+      document.removeEventListener('touchstart', handleTouchEnd);
     };
   }, []);
+
+  useEffect(() => {
+    const handleClick = (e: any) => {
+      e.preventDefault();
+      e.stopPropagation();
+      console.log(asGif, gifRef.current);
+      if (!asGif || !gifRef.current) return;
+      setAsGif(false);
+    };
+    document.addEventListener('click', handleClick);
+    return () => {
+      document.removeEventListener('click', handleClick);
+    };
+  }, [asGif]);
+
   const img = (
     // included both to eager load
-    <motion.img
+    <div
+      className={S.imgContainer}
       key='img'
-      id={techPreview}
-      style={{position: 'absolute', left: 0, top: 0}}
-      transition={{duration: 0.15, ease: 'easeOut'}}
-      initial={{opacity: 1}}
-      exit={{opacity: 0}}
-      src={image}
-      alt={`${title} logo`}
-    />
+      style={{position: 'relative', width: '100%', height: '100%'}}
+    >
+      <motion.img
+        id={techPreview}
+        style={{position: 'absolute', left: 0, top: 0}}
+        transition={{duration: 0.15, ease: 'easeOut'}}
+        initial={{opacity: 1}}
+        exit={{opacity: 0}}
+        src={`./assets/logos/${image}`}
+        alt={`${title} logo`}
+      />
+      <PlayIcon onClick={() => setAsGif(true)} />
+    </div>
   );
 
   const gif = (
     <motion.img
+      onTransitionEnd={() => {
+        console.log(gifRef.current);
+        if (asGif) gifRef.current!.focus();
+      }}
+      ref={gifRef}
+      onBlur={() => {
+        console.log(123123);
+        setAsGif(false);
+      }}
       key='img&Gif'
       id={techPreview}
       transition={{duration: 0.15, ease: 'easeOut'}}
@@ -57,9 +94,7 @@ export const PreviewSwitcher: React.FC<Pick<IProject, 'title' | 'image' | 'deplo
 
   return (
     <div
-      onMouseEnter={() => setImageHovered(true)}
-      onMouseLeave={() => setImageHovered(false)}
-      onTouchStart={() => setImageHovered(true)}
+      className={S.container}
       style={{
         position: 'absolute',
         top: '50%',
@@ -70,18 +105,18 @@ export const PreviewSwitcher: React.FC<Pick<IProject, 'title' | 'image' | 'deplo
       }}
     >
       <AnimatePresence initial={false} mode='wait'>
-        {imageHovered ? (
+        {asGif ? (
           <>
             {gif}
             {
               <div
-                onClick={imageHovered ? () => setSrc(deployVideo) : undefined}
+                onClick={asGif ? () => setSrc(deployVideo) : undefined}
                 style={{
                   position: 'absolute',
                   top: '57%',
                   right: 0,
                   margin: 10,
-                  cursor: imageHovered ? 'pointer' : 'default',
+                  cursor: asGif ? 'pointer' : 'default',
                 }}
               >
                 <FullScreenIcon width={25} />

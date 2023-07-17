@@ -1,0 +1,14 @@
+.imgContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.imgContainer svg {
+  position: relative;
+  z-index: 1000;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+.imgContainer svg:hover {
+  transform: scale(1.05);
+}

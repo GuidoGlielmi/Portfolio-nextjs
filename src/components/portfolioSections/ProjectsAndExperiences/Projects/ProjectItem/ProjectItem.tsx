@@ -1,7 +1,7 @@
 import S from './ProjectItem.module.css';
 import {IProject} from 'IPortfolio';
 import useTranslation from 'hooks/useTranslation';
-import {PreviewSwitcher} from '../../PreviewSwitcher/indes';
+import {PreviewSwitcher} from '../../PreviewSwitcher';
 type ProjectItemProps = {
   project: IProject;
 };
@@ -26,7 +26,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
         {deployVideo ? (
           <PreviewSwitcher title={title} image={image} deployVideo={deployVideo} />
         ) : (
-          <img src={image} alt={`${title} logo`} />
+          <img src={`./assets/logos/${image}`} alt={`${title} logo`} />
         )}
       </figure>
       <div className={S.info}>
