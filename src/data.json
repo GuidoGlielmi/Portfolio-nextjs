@@ -87,6 +87,23 @@
   ],
   "projects": [
     {
+      "deployUrl": "https://pragma-guitar.vercel.app/",
+      "description": "App for learning guitar",
+      "image": "pragma.png",
+      "title": "Pragma Guitar App",
+      "urls": [
+        {
+          "url": "https://github.com/GuidoGlielmi/Pragma-Guitar",
+          "name": "Pragma-Guitar"
+        }
+      ],
+      "techs": ["React", "CSS3", "HTML5", "Javascript"],
+      "deployVideo": "pragma-guitar.gif",
+      "es": {
+        "description": "Aplicación para el aprendizaje de la guitarra"
+      }
+    },
+    {
       "certificate": "AP.png",
       "description": "Portfolio development",
       "image": "AP.png",
@@ -153,6 +170,11 @@
       "type": "BackEnd"
     },
     {
+      "name": "Framer Motion",
+      "image": "FramerMotionIcon",
+      "type": "FrontEnd"
+    },
+    {
       "name": "HTML5",
       "image": "HtmlIcon",
       "type": "FrontEnd"
@@ -171,6 +193,11 @@
       "name": "MongoDB",
       "image": "MongoIcon",
       "type": "Database"
+    },
+    {
+      "name": "MaterialUI",
+      "image": "MaterialUIIcon",
+      "type": "FrontEnd"
     },
     {
       "name": "Next.js",

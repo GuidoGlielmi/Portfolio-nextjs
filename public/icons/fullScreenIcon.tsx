@@ -8,6 +8,7 @@ export type SvgProps = {
 const FullScreenIcon = ({width = 40, height}: SvgProps) => {
   return (
     <svg
+      style={{filter: 'invert(1)', mixBlendMode: 'difference'}}
       width={width}
       height={height || '100%'}
       fill='#151515'

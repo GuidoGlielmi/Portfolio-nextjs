@@ -24,6 +24,10 @@ const articles = [
     title: 'Getting to know .reduce() on Javascript',
     url: 'https://medium.com/@guidoglielmi/getting-to-know-reduce-on-javascript-82841d8fb5f5',
   },
+  {
+    title: 'JS Iterators & Generators',
+    url: 'https://medium.com/@guidoglielmi/js-iterators-generators-8608f1e18564',
+  },
 ];
 
 type TechsAndInfoProps = {
