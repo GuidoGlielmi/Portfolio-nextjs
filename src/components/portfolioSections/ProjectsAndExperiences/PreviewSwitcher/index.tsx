@@ -20,27 +20,16 @@ export const PreviewSwitcher: React.FC<Pick<IProject, 'title' | 'image' | 'deplo
   const gifRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
-    const handleTouchEnd = (e: any) => {
+    const handleClose = (e: any) => {
       if (e.target.id !== techPreview) setAsGif(false);
     };
-    document.addEventListener('touchstart', handleTouchEnd);
+    window.addEventListener('click', handleClose);
+    window.addEventListener('touchstart', handleClose);
     return () => {
-      document.removeEventListener('touchstart', handleTouchEnd);
+      window.removeEventListener('touchstart', handleClose);
+      window.removeEventListener('click', handleClose);
     };
   }, []);
-
-  useEffect(() => {
-    const handleClick = (e: any) => {
-      e.preventDefault();
-      e.stopPropagation();
-      if (!asGif || !gifRef.current) return;
-      setAsGif(false);
-    };
-    document.addEventListener('click', handleClick);
-    return () => {
-      document.removeEventListener('click', handleClick);
-    };
-  }, [asGif]);
 
   const img = (
     // included both to eager load
@@ -58,7 +47,12 @@ export const PreviewSwitcher: React.FC<Pick<IProject, 'title' | 'image' | 'deplo
         src={`./assets/logos/${image}`}
         alt={`${title} logo`}
       />
-      <PlayIcon onClick={() => setAsGif(true)} />
+      <PlayIcon
+        onClick={e => {
+          e.stopPropagation();
+          setAsGif(true);
+        }}
+      />
     </div>
   );
 
@@ -109,7 +103,9 @@ export const PreviewSwitcher: React.FC<Pick<IProject, 'title' | 'image' | 'deplo
             {gif}
             {
               <div
-                onClick={asGif ? () => setSrc(deployVideo) : undefined}
+                onClick={() => {
+                  if (asGif) setSrc(deployVideo);
+                }}
                 style={{
                   position: 'absolute',
                   top: '57%',

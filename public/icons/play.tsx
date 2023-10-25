@@ -1,7 +1,11 @@
 import React from 'react';
 import {SvgProps} from './fullScreenIcon';
 
-const PlayIcon = ({width = 40, height = 40, onClick}: SvgProps & {onClick: () => void}) => {
+const PlayIcon = ({
+  width = 40,
+  height = 40,
+  onClick,
+}: SvgProps & {onClick: React.MouseEventHandler<SVGSVGElement>}) => {
   return (
     <svg
       onClick={onClick}
