@@ -1,7 +1,7 @@
 {
   "experiences": [
     {
-      "deployUrl": "https://piedrassemipreciosasdelaindia.com.ar",
+      "deployUrl": "",
       "deployVideo": "piedras-de-la-india.gif",
       "title": "Taller Corazón de Manzana",
       "description": "Customer attention and inventory management & Development, operation and manteinance of full-stack e-commerce app with admin's dashboard, including services like e-mailing, Telegram messenger and Mercado Pago",
@@ -160,9 +160,19 @@
   ],
   "techs": [
     {
+      "name": "ASP.NET",
+      "image": "AspDotNetIcon",
+      "type": "BackEnd"
+    },
+    {
       "name": "CSS3",
       "image": "CssIcon",
       "type": "FrontEnd"
+    },
+    {
+      "name": "C#",
+      "image": "CSharpIcon",
+      "type": "BackEnd"
     },
     {
       "name": "Express.js",
@@ -225,11 +235,6 @@
       "type": "FrontEnd"
     },
     {
-      "name": "Spring",
-      "image": "SpringIcon",
-      "type": "BackEnd"
-    },
-    {
       "name": "Typescript",
       "image": "TypescriptIcon",
       "type": "FrontEnd"
@@ -247,11 +252,6 @@
     {
       "name": "Sequelize",
       "image": "SequelizeIcon",
-      "type": "ORM"
-    },
-    {
-      "name": "Hibernate",
-      "image": "HibernateIcon",
       "type": "ORM"
     },
     {

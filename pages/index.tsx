@@ -94,7 +94,7 @@ const Home: React.FC<SectionsProps> = ({en, es}) => {
         <ProjectsAndExperiences
           ref={projectsAndExperiencesSectionRef}
           projects={data.projects}
-          experiences={data.experiences}
+          experiences={data.experiences.sort((a, b) => (a.startDate < b.startDate ? 1 : -1))}
         />
       </main>
     </>
