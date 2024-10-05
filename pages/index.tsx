@@ -1,21 +1,21 @@
-import React, {useEffect, useRef, useContext} from 'react';
-import NavBar from 'components/nav-bar/NavBar';
-import TechsAndInfo from 'components/portfolioSections/techs-and-info/TechsAndInfo';
-import S from './styles.module.css';
-import {Es, IExperience, IProject, ISkill, ITechnology, IUser} from 'IPortfolio';
 import Chevron from 'components/common/icons/chevrons/Chevron';
+import {LanguageContext, LanguageProps} from 'components/contexts/language';
+import NavBar from 'components/nav-bar/NavBar';
 import ProjectsAndExperiences from 'components/portfolioSections/ProjectsAndExperiences';
+import TechsAndInfo from 'components/portfolioSections/techs-and-info/TechsAndInfo';
 import portfolioData from 'data.json';
 import {debounce} from 'helpers/debounce';
-import {LanguageContext, LanguageProps} from 'components/contexts/language';
-import {translate} from '../src/helpers/translator';
+import {Es, IExperience, IProject, ISkill, ITechnology, IUser, TechType} from 'IPortfolio';
 import Head from 'next/head';
+import React, {useContext, useEffect, useRef} from 'react';
+import {translate} from '../src/helpers/translator';
+import S from './styles.module.css';
 
 export type LanguageGroup = {
   experiences: IExperience[];
   projects: IProject[];
   skills: ISkill[];
-  techs: [string[], ITechnology[]];
+  techs: [TechType[], ITechnology[]];
   user: IUser;
 };
 
@@ -109,10 +109,7 @@ export const getStaticProps = async () => {
     user: IUser;
     skills: ISkill[];
   };
-  const techTypes = techs.reduce<string[]>(
-    (p, tech: ITechnology) => [...new Set([...p, tech.type])],
-    [],
-  );
+  const techTypes = [...new Set(techs.map(t => t.type))];
 
   const getSpanish = <M,>(obj: Es<M> | Es<M>[]) => {
     if (obj instanceof Array) return obj.map(obj => ({...obj, ...obj.es}));

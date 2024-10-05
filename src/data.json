@@ -83,6 +83,19 @@
       "es": {
         "description": "Bootcamp con stack MERN. Desarrollo de una empresa ficticia que empareja candidatos con posiciones laborales disponibles de empresas cliente"
       }
+    },
+    {
+      "deployUrl": "",
+      "title": "Baufest",
+      "image": "baufest.png",
+      "description": "Working as a fullstack developer for one of the most important financial institution in America Latina.",
+      "startDate": "03/2024",
+      "endDate": "Current",
+      "urls": [],
+      "techs": ["Next.js", "Typescript", "CSS3", "HTML5", "Nest.js", "MongoDB", "Spring Boot"],
+      "es": {
+        "description": "Actualmente trabajando bajo el rol de desarrollador fullstack para una de las más importantes entidades financieras de America Latina."
+      }
     }
   ],
   "projects": [
@@ -118,7 +131,7 @@
           "name": "YoProgramo-server"
         }
       ],
-      "techs": ["CSS3", "HTML5", "Javascript", "Angular", "Java", "Spring"],
+      "techs": ["CSS3", "HTML5", "Javascript", "Angular", "Java", "Spring Boot"],
       "es": {
         "description": "Desarrollo de Portfolio"
       }
@@ -135,7 +148,7 @@
           "name": "Aerolab-challenge"
         }
       ],
-      "techs": ["React", "CSS3", "Next", "HTML5", "Javascript"],
+      "techs": ["React", "CSS3", "Next.js", "HTML5", "Javascript"],
       "es": {
         "description": "Landing page para E-commerce"
       }
@@ -175,6 +188,11 @@
       "type": "BackEnd"
     },
     {
+      "name": "Entity Framework",
+      "image": "EntityFrameworkIcon",
+      "type": "ORM"
+    },
+    {
       "name": "Express.js",
       "image": "ExpressJsIcon",
       "type": "BackEnd"
@@ -185,13 +203,23 @@
       "type": "FrontEnd"
     },
     {
+      "name": "GraphQL",
+      "image": "GraphQLIcon",
+      "type": "FrontEnd"
+    },
+    {
+      "name": "GraphQL",
+      "image": "GraphQLIcon",
+      "type": "BackEnd"
+    },
+    {
       "name": "HTML5",
       "image": "HtmlIcon",
       "type": "FrontEnd"
     },
     {
-      "name": "Java",
-      "image": "JavaIcon",
+      "name": "Spring Boot",
+      "image": "SpringIcon",
       "type": "BackEnd"
     },
     {
@@ -210,6 +238,11 @@
       "type": "FrontEnd"
     },
     {
+      "name": "Nest.js",
+      "image": "NestJsIcon",
+      "type": "BackEnd"
+    },
+    {
       "name": "Next.js",
       "image": "NextJsIcon",
       "type": "FrontEnd"
@@ -223,6 +256,11 @@
       "name": "PostgreSQL",
       "image": "PostgreIcon",
       "type": "Database"
+    },
+    {
+      "name": "Prisma",
+      "image": "PrismaIcon",
+      "type": "ORM"
     },
     {
       "name": "React",
@@ -240,29 +278,9 @@
       "type": "FrontEnd"
     },
     {
-      "name": "Entity Framework",
-      "image": "EntityFrameworkIcon",
-      "type": "ORM"
-    },
-    {
-      "name": "Prisma",
-      "image": "PrismaIcon",
-      "type": "ORM"
-    },
-    {
       "name": "Sequelize",
       "image": "SequelizeIcon",
       "type": "ORM"
-    },
-    {
-      "name": "GraphQL",
-      "image": "GraphQLIcon",
-      "type": "FrontEnd"
-    },
-    {
-      "name": "GraphQL",
-      "image": "GraphQLIcon",
-      "type": "BackEnd"
     }
   ],
   "skills": [

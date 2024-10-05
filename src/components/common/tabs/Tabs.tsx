@@ -1,9 +1,10 @@
-import {useState, useRef, useEffect} from 'react';
+import {TechType} from 'IPortfolio';
+import {useEffect, useRef, useState} from 'react';
 import S from './Tabs.module.css';
 
 interface TabsProps {
   tabs: string[] | [string, string][];
-  onChange: (selectedTab: string) => void;
+  onChange: (selectedTab: TechType) => void;
 }
 
 const Tabs: React.FC<TabsProps> = ({tabs, onChange}) => {
@@ -32,7 +33,7 @@ const Tabs: React.FC<TabsProps> = ({tabs, onChange}) => {
     setRangeValues();
   }, [selectedTab]);
 
-  const onChangeHandler = (selectedTab: string) => {
+  const onChangeHandler = (selectedTab: TechType) => {
     setSelectedTab(selectedTab);
     onChange(selectedTab);
   };
@@ -50,7 +51,7 @@ const Tabs: React.FC<TabsProps> = ({tabs, onChange}) => {
       }}
     >
       {typeof tabs[0] === 'string'
-        ? (tabs as string[]).map(t => (
+        ? (tabs as TechType[]).map(t => (
             <p
               onClick={() => onChangeHandler(t)}
               className={selectedTab === t ? S.selectedTab : ''}
@@ -59,7 +60,7 @@ const Tabs: React.FC<TabsProps> = ({tabs, onChange}) => {
               {t}
             </p>
           ))
-        : (tabs as [string, string][]).map(t => (
+        : (tabs as [TechType, string][]).map(t => (
             <p
               ref={selectedTab === t[0] ? selectedTabRef : undefined}
               onClick={() => onChangeHandler(t[0])}

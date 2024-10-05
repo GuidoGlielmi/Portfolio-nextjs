@@ -1,15 +1,14 @@
-import React from 'react';
-import {ISkill, ITechnology, IUser} from 'IPortfolio';
-import S from './TechsAndInfo.module.css';
-import {ReactSVG} from 'react-svg';
-import Tabs from 'components/common/tabs/Tabs';
-import {useState} from 'react';
-import {AnimatePresence, motion} from 'framer-motion';
-import Skills from '../skills/Skills';
-import useTranslation from 'hooks/useTranslation';
-import useBreakpoint from 'hooks/useBreakpoint';
 import LoadingIcon from 'components/common/icons/loading-icon/LoadingIcon';
+import Tabs from 'components/common/tabs/Tabs';
+import {AnimatePresence, motion} from 'framer-motion';
+import useBreakpoint from 'hooks/useBreakpoint';
+import useTranslation from 'hooks/useTranslation';
+import {ISkill, ITechnology, IUser, TechType} from 'IPortfolio';
+import React, {useState} from 'react';
+import {ReactSVG} from 'react-svg';
 import Chevron from '../../../../public/icons/chevron';
+import Skills from '../skills/Skills';
+import S from './TechsAndInfo.module.css';
 
 const articles = [
   {
@@ -31,7 +30,7 @@ const articles = [
 ];
 
 type TechsAndInfoProps = {
-  techs: [string[], ITechnology[]];
+  techs: [type: TechType[], tech: ITechnology[]];
   user: IUser;
   skills: ISkill[];
   projectsAndExperiencesRef: React.RefObject<HTMLDivElement>;
@@ -136,12 +135,39 @@ const TechsAndInfo = React.forwardRef<HTMLDivElement, TechsAndInfoProps>(
   },
 );
 
-export const when = (condition: boolean, value: any) => ({
+type TWhenReturn = {
+  elseWhen: (newCondition: boolean) => TWhenReturn;
+  return: (value: any) => TWhenReturn;
+  else: (value: any) => typeof value;
+  value?: any | null;
+};
+
+export const when: (condition: boolean, value?: any) => TWhenReturn = (condition, value) => ({
   elseWhen: (newCondition: boolean) => when(condition || newCondition, value),
-  return: (v: any) => when(condition, condition === true ? value ?? v : null),
-  else: (v: any) => value ?? v,
-  get: value,
+  return: v => when(condition, condition === true ? value ?? v : null),
+  else: v => value ?? v,
+  value,
 });
+
+const when2 = (initialCondition: boolean): TWhenReturn => {
+  const value: [any?] = [];
+  function trier(condition: boolean): TWhenReturn {
+    return {
+      elseWhen: trier,
+      return(v) {
+        if (!value.hasOwnProperty(0) && condition === true) value[0] = v;
+        return trier(condition);
+      },
+      else: v => (value.hasOwnProperty(0) ? value[0] : v),
+      value: value.hasOwnProperty(0) ? value[0] : null,
+    };
+  }
+  return trier(initialCondition);
+};
+
+const asdd = when(123 > 5)
+  .return(123)
+  .else(234);
 
 export default TechsAndInfo;
 
