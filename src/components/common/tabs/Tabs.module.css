@@ -28,7 +28,7 @@
   cursor: pointer;
   transition: all 0.3s ease;
   padding: 5px 10px;
-  z-index: 123123;
+  z-index: 1231;
 }
 .tabs > *:hover {
   color: #ffffffcc;
