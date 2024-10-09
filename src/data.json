@@ -203,7 +203,7 @@
       "type": "FrontEnd"
     },
     {
-      "name": "GraphQL",
+      "name": "GraphQL Client",
       "image": "GraphQLIcon",
       "type": "FrontEnd"
     },
