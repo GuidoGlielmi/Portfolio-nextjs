@@ -1,13 +1,13 @@
-import S from './NavBar.module.css';
-import {IUser} from 'IPortfolio';
 import Ar from 'components/common/icons/flags/Ar';
 import Eu from 'components/common/icons/flags/Us';
-import {useEffect, useState, useContext, useRef} from 'react';
 import GithubIcon from 'components/common/icons/social/GithubIcon';
 import LinkedinIcon from 'components/common/icons/social/LinkedinIcon';
-import {debounce} from 'helpers/debounce';
 import {LanguageContext, LanguageProps} from 'components/contexts/language';
+import {debounce} from 'helpers/debounce';
+import {IUser} from 'IPortfolio';
+import {useContext, useEffect, useRef, useState} from 'react';
 import EmailIcon from '../../../public/icons/emailIcon';
+import S from './NavBar.module.css';
 
 type NavBarProps = {
   user: IUser;
@@ -25,8 +25,11 @@ const NavBar: React.FC<NavBarProps> = ({user, refs}) => {
   const previousEng = useRef(eng);
 
   useEffect(() => {
+    const extraMargin = 40;
     const checkSelectedSection = () => {
-      setSelectedSection(Number(window.scrollY >= (refs[0].ref.current?.clientHeight || 0)));
+      setSelectedSection(
+        Number(window.scrollY >= (refs[0].ref.current?.clientHeight || 0) - extraMargin),
+      );
     };
     const isTouchable =
       'ontouchstart' in window ||
