@@ -58,6 +58,7 @@
   align-items: center;
   gap: 10px;
   padding: 5px 5px 10px 22px;
+  /* overflow: hidden; */
   border-bottom-left-radius: 45px;
   background: rgba(0, 0, 0, 0.1);
   /* margin: 0 max(1vw, 1vh); */
@@ -86,6 +87,41 @@
   justify-content: center;
   margin: 0 5px;
 }
+
+/* .social > *::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: white;
+  z-index: 50;
+  content: "";
+  position: absolute;
+  bottom: -81%;
+  right: -151%;
+  bottom: -6px;
+  z-index: -1;
+  transform-origin: right bottom;
+  transform: skewX(57deg);
+  background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.15) 1%, transparent);
+}
+
+.social > *::after {
+  width: 100%;
+  height: 100%;
+  background: white;
+  z-index: 50;
+  content: "";
+  position: absolute;
+  bottom: -22%;
+  right: -160%;
+  bottom: -6px;
+  z-index: -1;
+  transform-origin: right bottom;
+  transform: skewX(57deg);
+  background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.15) 1%, transparent);
+} */
+
 .cvSection {
   display: flex;
   flex-direction: column;
