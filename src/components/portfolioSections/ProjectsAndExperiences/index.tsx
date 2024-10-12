@@ -1,5 +1,6 @@
-import {IProject, IExperience} from 'IPortfolio';
+import {IExperience, IProject} from 'IPortfolio';
 import React from 'react';
+import {Link} from '../../../constants';
 import Experiences from './Experiences';
 import Projects from './Projects';
 import S from './ProjectsAndExperiences.module.css';
@@ -12,7 +13,7 @@ type ProjectsAndExperiencesProps = {
 const ProjectsAndExperiences = React.forwardRef<HTMLDivElement, ProjectsAndExperiencesProps>(
   ({projects, experiences}, ref) => {
     return (
-      <section ref={ref} className={S.container}>
+      <section ref={ref} className={S.container} id={Link.PROJECTS_AND_EXPERIENCES}>
         <Experiences experiences={experiences} />
         <Projects projects={projects} />
       </section>

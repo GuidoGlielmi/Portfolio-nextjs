@@ -9,7 +9,7 @@ import Languages from './social/languages';
 
 type NavBarProps = {
   user: IUser;
-  refs: {ref: React.RefObject<HTMLDivElement>; title: string}[];
+  refs: Ref[];
 };
 
 const NavBar: React.FC<NavBarProps> = ({user, refs}) => {

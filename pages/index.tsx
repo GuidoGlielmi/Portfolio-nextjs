@@ -8,6 +8,7 @@ import {debounce} from 'helpers/debounce';
 import {Es, IExperience, IProject, ISkill, ITechnology, IUser, TechType} from 'IPortfolio';
 import Head from 'next/head';
 import React, {useContext, useEffect, useRef} from 'react';
+import {Link} from '../src/constants';
 import {translate} from '../src/helpers/translator';
 import S from './styles.module.css';
 
@@ -69,10 +70,12 @@ const Home: React.FC<SectionsProps> = ({en, es}) => {
           {
             title: translate('Who am I', eng),
             ref: techsAndInfoRef,
+            href: '#' + Link.TECHS_AND_INFO,
           },
           {
             title: translate('Projects & Experiences', eng),
             ref: projectsAndExperiencesSectionRef,
+            href: '#' + Link.PROJECTS_AND_EXPERIENCES,
           },
         ]}
       />

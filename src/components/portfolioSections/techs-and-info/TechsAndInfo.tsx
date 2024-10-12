@@ -1,6 +1,7 @@
 import useBreakpoint from 'hooks/useBreakpoint';
 import {ISkill, ITechnology, IUser, TechType} from 'IPortfolio';
 import React from 'react';
+import {Link} from '../../../constants';
 import Skills from './skills/Skills';
 import TechsSection from './techs/TechsSection';
 import S from './TechsAndInfo.module.css';
@@ -18,6 +19,7 @@ const TechsAndInfo = React.forwardRef<HTMLDivElement, TechsAndInfoProps>(
 
     return (
       <section
+        id={Link.TECHS_AND_INFO}
         ref={ref}
         className={S.techsAndInfoSection}
         onWheel={e => {

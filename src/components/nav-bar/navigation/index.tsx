@@ -1,9 +1,9 @@
 import {debounce} from 'helpers/debounce';
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import S from './Navigation.module.css';
 
 type NavigationProps = {
-  refs: {ref: React.RefObject<HTMLDivElement>; title: string}[];
+  refs: Ref[];
 };
 
 const Navigation = ({refs}: NavigationProps) => {
@@ -22,16 +22,10 @@ const Navigation = ({refs}: NavigationProps) => {
 
   return (
     <div className={S.sectionsNames}>
-      {refs.map(({ref, title}, i) => (
-        <p
-          className={selectedSection === i ? S.selectedSectionName : ''}
-          onClick={() => {
-            ref.current?.scrollIntoView({behavior: 'smooth'});
-          }}
-          key={title}
-        >
+      {refs.map(({title, href}, i) => (
+        <a href={href} className={selectedSection === i ? S.selectedSectionName : ''} key={title}>
           {title}
-        </p>
+        </a>
       ))}
     </div>
   );
