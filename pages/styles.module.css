@@ -50,31 +50,6 @@
   animation: tilt-shaking 2s infinite;
 }
 
-.navigationArrow {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  right: 50%;
-  /* width: min-width; */
-  /* bottom: 3vh; */
-  /* transform: translateX(50%) rotateZ(90deg); */
-  cursor: pointer;
-  transition: all 0.6s ease;
-  border-radius: 50%;
-  padding: 3px;
-  z-index: 100;
-}
-.navigationArrow:hover {
-  background: #00000055;
-}
-.navigationArrow path {
-  transition: all 1s ease;
-}
-.navigationArrow:hover path {
-  color: white;
-}
-
 .main > :first-child > :nth-child(even) {
   /* nextArrowContainer*/
   right: 0;
@@ -152,9 +127,6 @@
   }
   .main > section > * {
     min-height: 100vh;
-  }
-  .navigationArrow {
-    display: none;
   }
 }
 

@@ -19,13 +19,28 @@ const NavBar: React.FC<NavBarProps> = ({user, refs}) => {
       <div className={S.social}>
         <Languages />
         <CvSection />
-        <a href='mailto:guidoglielmi@gmail.com' target='_blank' rel='noreferrer'>
+        <a
+          href='mailto:guidoglielmi@gmail.com'
+          target='_blank'
+          rel='noreferrer'
+          aria-label='Send email'
+        >
           <EmailIcon />
         </a>
-        <a href={user?.linkedInUrl} target='_blank' rel='noreferrer'>
+        <a
+          href={user?.linkedInUrl}
+          target='_blank'
+          rel='noreferrer'
+          aria-label='Go to LinkedIn profile'
+        >
           <LinkedinIcon />
         </a>
-        <a href={user?.githubUrl} target='_blank' rel='noreferrer'>
+        <a
+          href={user?.githubUrl}
+          target='_blank'
+          rel='noreferrer'
+          aria-label='Go to Github profile'
+        >
           <GithubIcon />
         </a>
       </div>

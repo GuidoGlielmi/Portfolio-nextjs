@@ -39,7 +39,7 @@ const Articles = ({user}: ArticlesProps) => {
             </motion.div>
           </AnimatePresence>
         </div>
-        <button onClick={nextIndex}>
+        <button onClick={nextIndex} aria-label='Next article'>
           <Chevron />
         </button>
       </div>

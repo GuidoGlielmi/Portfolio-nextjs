@@ -52,6 +52,7 @@ const Languages = () => {
           onTouchEndHandler();
         }}
         onClick={() => setEng(true)}
+        aria-label='Translate to english'
       >
         <Eu size='100%' round />
       </button>
@@ -62,6 +63,7 @@ const Languages = () => {
           onTouchEndHandler();
         }}
         onClick={() => setEng(false)}
+        aria-label='Translate to spanish'
       >
         <Ar size='100%' round />
       </button>

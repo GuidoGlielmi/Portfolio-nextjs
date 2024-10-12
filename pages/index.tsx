@@ -1,4 +1,3 @@
-import Chevron from 'components/common/icons/chevrons/Chevron';
 import {LanguageContext, LanguageProps} from 'components/contexts/language';
 import NavBar from 'components/nav-bar/NavBar';
 import ProjectsAndExperiences from 'components/portfolioSections/ProjectsAndExperiences';
@@ -50,14 +49,6 @@ const Home: React.FC<SectionsProps> = ({en, es}) => {
     return () => removeEventListener('scroll', setArrowPosition);
   }, []);
 
-  const navigateToSection = () => {
-    if (projectsAndExperiencesSectionRef.current === null || techsAndInfoRef.current === null)
-      return;
-    if (window.scrollY >= techsAndInfoRef.current.clientHeight) {
-      techsAndInfoRef.current.scrollIntoView({behavior: 'smooth'});
-    } else projectsAndExperiencesSectionRef.current.scrollIntoView({behavior: 'smooth'});
-  };
-
   return (
     <>
       <Head>
@@ -87,14 +78,6 @@ const Home: React.FC<SectionsProps> = ({en, es}) => {
           ref={techsAndInfoRef}
           projectsAndExperiencesRef={projectsAndExperiencesSectionRef}
         />
-        <button
-          style={{bottom: '3vh', transform: 'translateX(50%) rotateZ(90deg)'}}
-          ref={arrowRef}
-          onClick={navigateToSection}
-          className={S.navigationArrow}
-        >
-          <Chevron />
-        </button>
         <ProjectsAndExperiences
           ref={projectsAndExperiencesSectionRef}
           projects={data.projects}
