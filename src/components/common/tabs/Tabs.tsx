@@ -3,7 +3,7 @@ import {useEffect, useRef, useState} from 'react';
 import S from './Tabs.module.css';
 
 interface TabsProps {
-  tabs: string[] | [string, string][];
+  tabs: [TechType, string][];
   onChange: (selectedTab: TechType) => void;
 }
 
@@ -40,9 +40,6 @@ const Tabs: React.FC<TabsProps> = ({tabs, onChange}) => {
 
   return (
     <div
-      onScroll={e => {
-        console.log(e);
-      }}
       ref={containerRef}
       className={S.tabs}
       style={{
@@ -50,26 +47,16 @@ const Tabs: React.FC<TabsProps> = ({tabs, onChange}) => {
         backgroundPositionX: `${start}px`,
       }}
     >
-      {typeof tabs[0] === 'string'
-        ? (tabs as TechType[]).map(t => (
-            <p
-              onClick={() => onChangeHandler(t)}
-              className={selectedTab === t ? S.selectedTab : ''}
-              key={t}
-            >
-              {t}
-            </p>
-          ))
-        : (tabs as [TechType, string][]).map(t => (
-            <p
-              ref={selectedTab === t[0] ? selectedTabRef : undefined}
-              onClick={() => onChangeHandler(t[0])}
-              className={selectedTab === t[0] ? S.selectedTab : ''}
-              key={t[0]}
-            >
-              {t[1]}
-            </p>
-          ))}
+      {(tabs as [TechType, string][]).map(t => (
+        <p
+          ref={selectedTab === t[0] ? selectedTabRef : undefined}
+          onClick={() => onChangeHandler(t[0])}
+          className={selectedTab === t[0] ? S.selectedTab : ''}
+          key={t[0]}
+        >
+          {t[1]}
+        </p>
+      ))}
     </div>
   );
 };

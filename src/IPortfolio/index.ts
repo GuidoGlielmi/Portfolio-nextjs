@@ -62,14 +62,13 @@ export enum Tech {
 }
 
 export enum SkillType {
-  LANGUAGE,
-  HARD_AND_SOFT,
+  LANGUAGE = 'LANGUAGE',
+  HARD_AND_SOFT = 'HARDANDSOFT',
 }
 
 export interface ISkill extends Es<ISkillSpanish> {
-  // abilityPercentage: string;
   name: string;
-  type: string;
+  type: SkillType;
 }
 
 export interface ITechnology {
@@ -94,6 +93,12 @@ export interface IUser extends Es<IUserSpanish> {
   image: string;
   username: string;
   fullName: string;
+  articles: IArticle[];
+}
+
+export interface IArticle {
+  title: string;
+  url: string;
 }
 
 export interface IProjectUrl {

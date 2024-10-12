@@ -1,19 +1,22 @@
-import {useEffect, useState} from 'react';
+import {ScreenWidthContext} from 'components/contexts/screenWidth';
+import {useContext, useEffect, useState} from 'react';
 
-const useBreakpoint = (breakpoint = 768, delay = 75) => {
+/**
+ * Returns a boolean indicating if the screen width is bigger than the specified threshold
+ */
+const useBreakpoint = (breakpoint = 768) => {
+  const screenWidth = useContext(ScreenWidthContext);
+
   const [bigger, setBigger] = useState(true);
+
   useEffect(() => {
-    const resize = debounce(() => {
-      setBigger(window.innerWidth > breakpoint);
-    }, delay);
-    resize();
-    window.addEventListener('resize', resize);
-    return () => window.removeEventListener('resize', resize);
-  }, [breakpoint, delay]);
+    setBigger(screenWidth > breakpoint);
+  }, [screenWidth]);
+
   return bigger;
 };
 
-function debounce(fn: (...args: any[]) => void, delay: number) {
+export function debounce(fn: (...args: any[]) => void, delay: number) {
   let timer: NodeJS.Timeout;
   return (...args: any[]) => {
     clearTimeout(timer);

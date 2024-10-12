@@ -12,25 +12,8 @@
   text-align: start;
 }
 
-.techsSection {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding-left: 5vw !important;
-  color: #111;
-  text-shadow: 1.5px 1.5px 0 #6d6d6d71;
-}
-
 .techsAndInfoSection > * {
   padding: max(3vw, 3vh);
-}
-
-.infoContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  color: var(--color-lightest);
-  text-shadow: 1.5px 1.5px 0 #262626;
 }
 
 .personalInfo > h2 {
@@ -49,139 +32,9 @@
   border-top: 2px solid #2a2a2a;
 }
 
-.techsContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  gap: 5vh;
-  max-width: 100%;
-}
-
-.techsContainer > * {
-  text-align: end;
-}
-
-.techGroup {
-  display: flex;
-  flex-direction: row-reverse;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  gap: 25px;
-  min-height: 215px;
-}
-
 .techs div {
   display: flex;
   align-items: center;
-}
-
-.tech {
-  display: grid;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-  position: relative;
-  width: 90px;
-  height: 85px;
-  font-size: 0.85em;
-  border-radius: 5px;
-  text-align: center;
-  transition: transform 0.1s ease;
-}
-.tech svg {
-  width: 40px;
-  height: 40px;
-  filter: drop-shadow(1px 1px 0 #00000066);
-}
-.tech:hover {
-  transform: scale(1.15) !important;
-}
-
-.tech:before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: -13px;
-  width: 100%;
-  height: 100%;
-  border-radius: 5px;
-  transform: translateY(-13px);
-  padding: 13px;
-  background: #00000000;
-  transition: all 0.3s ease;
-}
-
-.tech:hover::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-  transform: translateY(-13px);
-  padding: 13px;
-  background: #00000015;
-  /* box-shadow: 5px 10px 0 rgba(255, 0, 0, 0.04); */
-}
-.articlesSection button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 35px;
-  height: 35px;
-  padding: 5px;
-  background: #00000015;
-  border-radius: 0 10px 10px 0;
-}
-.articlesContainer {
-  display: flex;
-  align-items: center;
-  position: relative;
-}
-.articlesContainer a {
-  background: linear-gradient(
-    to right,
-    transparent 50%,
-    rgba(69, 0, 134, 0.13) 60%,
-    rgba(69, 0, 134, 0.13) 90%,
-    transparent 100%
-  );
-  background-size: 200% 100%;
-  background-position-x: 0%;
-  transition: all 0.3s ease;
-}
-
-.articlesContainer svg {
-  transform: rotateZ(-90deg);
-  filter: drop-shadow(0 0 3px #33333333);
-}
-.articlesContainer svg:active {
-  filter: drop-shadow(0 0 3px #33333300);
-  transform: rotateZ(-90deg) scale(0.95);
-}
-
-.articlesContainer a:hover {
-  color: white;
-  background-position-x: -100%;
-}
-
-.articlesContainer > div {
-  position: relative;
-  width: 100%;
-  height: 35px;
-  min-height: 2em;
-  display: flex;
-  align-items: center;
-}
-.articlesContainer > div > * {
-  display: flex;
-  align-items: center;
-  position: absolute;
-  right: 0;
-  height: 100%;
-  padding-left: 5px;
-  background: linear-gradient(to right, #00000015, #00000010, #00000015);
-  border-radius: 10px 0 0 10px;
 }
 
 @media (max-width: 768px) {
@@ -196,18 +49,8 @@
     text-align: center !important;
     scroll-snap-align: start;
   }
-  .techsContainer {
-    align-items: center;
-  }
-  .techsContainer > * {
-    text-align: unset;
-  }
-  .techGroup {
-    flex-direction: row;
-    justify-content: center;
-    padding: 0 5px;
-  }
 }
+
 @media (max-width: 650px) {
   .personalInfo {
     width: 90%;
@@ -220,16 +63,5 @@
   .personalInfo > h2::before {
     width: 90%;
     left: 5%;
-  }
-  .articlesContainer > div {
-    min-height: 4em;
-  }
-  .articlesContainer button {
-    height: 100%;
-  }
-  .articlesContainer > div > * {
-    justify-content: center;
-    text-align: center;
-    width: 100%;
   }
 }

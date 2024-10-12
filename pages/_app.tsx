@@ -1,6 +1,7 @@
 import {Analytics} from '@vercel/analytics/next';
 import GifPreviewProvider from 'components/contexts/gifPreview';
 import LanguageProvider from 'components/contexts/language';
+import WindowWidthProvider from 'components/contexts/screenWidth';
 import type {AppProps} from 'next/app';
 import Head from 'next/head';
 import {useRouter} from 'next/router';
@@ -16,8 +17,10 @@ export default function App({Component, pageProps}: AppProps) {
       </Head>
       <LanguageProvider>
         <GifPreviewProvider>
-          <Component {...pageProps} key={router.asPath} />
-          <Analytics />
+          <WindowWidthProvider>
+            <Component {...pageProps} key={router.asPath} />
+            <Analytics />
+          </WindowWidthProvider>
         </GifPreviewProvider>
       </LanguageProvider>
     </>

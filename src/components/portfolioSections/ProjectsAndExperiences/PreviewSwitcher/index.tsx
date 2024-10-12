@@ -1,8 +1,8 @@
-import FullScreenIcon from '../../../../../public/icons/fullScreenIcon';
-import React, {useState, useContext, useEffect, useRef} from 'react';
 import {GifPreviewContext, GifPreviewProps} from 'components/contexts/gifPreview';
 import {AnimatePresence, motion} from 'framer-motion';
 import {IProject} from 'IPortfolio';
+import React, {useContext, useEffect, useRef, useState} from 'react';
+import FullScreenIcon from '../../../../../public/icons/fullScreenIcon';
 import PlayIcon from '../../../../../public/icons/play';
 import S from './PreviewSwitcher.module.css';
 
@@ -59,12 +59,10 @@ export const PreviewSwitcher: React.FC<Pick<IProject, 'title' | 'image' | 'deplo
   const gif = (
     <motion.img
       onTransitionEnd={() => {
-        console.log(gifRef.current);
         if (asGif) gifRef.current!.focus();
       }}
       ref={gifRef}
       onBlur={() => {
-        console.log(123123);
         setAsGif(false);
       }}
       key='img&Gif'
