@@ -348,8 +348,6 @@
     "lastName": "Glielmi",
     "linkedInUrl": "https://www.linkedin.com/in/guido-glielmi/",
     "image": "./assets/img/profile-img.jpg",
-    "username": "string",
-    "fullName": "Guido Glielmi",
     "articles": [
       {
         "title": "Memory reference in Javascript",

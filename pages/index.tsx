@@ -62,6 +62,7 @@ const Home: React.FC<SectionsProps> = ({en, es}) => {
       <Head>
         <title>Guido Glielmi</title>
       </Head>
+      <h1 style={{position: 'fixed', background: 'transparent'}}>Guido Glielmi</h1>
       <NavBar
         user={data.user}
         refs={[

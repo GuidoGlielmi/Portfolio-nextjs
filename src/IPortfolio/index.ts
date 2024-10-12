@@ -91,8 +91,6 @@ export interface IUser extends Es<IUserSpanish> {
   lastName: string;
   linkedInUrl: string;
   image: string;
-  username: string;
-  fullName: string;
   articles: IArticle[];
 }
 
