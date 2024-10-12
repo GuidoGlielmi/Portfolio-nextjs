@@ -13,6 +13,10 @@ export default function App({Component, pageProps}: AppProps) {
     <>
       <Head>
         <meta name='description' content='Portfolio and resume information of Guido Glielmi' />
+        <meta
+          name='google-site-verification'
+          content='zAv2vKo_dWakUrSKhNCCzwKqJu5J4ZPIvMIfIIk_z2A'
+        />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <link rel='icon' href='favicon.svg' type='image/svg+xml' />
       </Head>
