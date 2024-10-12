@@ -1,7 +1,8 @@
 import {GifPreviewContext, GifPreviewProps} from 'components/contexts/gifPreview';
+import useEventListener from 'components/custom-hooks/useEventListener';
 import {AnimatePresence, motion} from 'framer-motion';
 import {IProject} from 'IPortfolio';
-import React, {useContext, useEffect, useRef, useState} from 'react';
+import React, {useContext, useRef, useState} from 'react';
 import FullScreenIcon from '../../../../../public/icons/fullScreenIcon';
 import PlayIcon from '../../../../../public/icons/play';
 import S from './PreviewSwitcher.module.css';
@@ -19,25 +20,15 @@ export const PreviewSwitcher: React.FC<Pick<IProject, 'title' | 'image' | 'deplo
 
   const gifRef = useRef<HTMLImageElement>(null);
 
-  useEffect(() => {
-    const handleClose = (e: any) => {
-      if (e.target.id !== techPreview) setAsGif(false);
-    };
-    window.addEventListener('click', handleClose);
-    window.addEventListener('touchstart', handleClose);
-    return () => {
-      window.removeEventListener('touchstart', handleClose);
-      window.removeEventListener('click', handleClose);
-    };
-  }, []);
+  const handleClose = (e: any) => {
+    if (e.target.id !== techPreview) setAsGif(false);
+  };
+  useEventListener('click', handleClose, false);
+  useEventListener('touchstart', handleClose, false);
 
   const img = (
     // included both to eager load
-    <div
-      className={S.imgContainer}
-      key='img'
-      style={{position: 'relative', width: '100%', height: '100%'}}
-    >
+    <div className={S.imgContainer} key='img'>
       <motion.img
         id={techPreview}
         style={{position: 'absolute', left: 0, top: 0}}
@@ -59,12 +50,9 @@ export const PreviewSwitcher: React.FC<Pick<IProject, 'title' | 'image' | 'deplo
   const gif = (
     <motion.img
       onTransitionEnd={() => {
-        if (asGif) gifRef.current!.focus();
+        gifRef.current!.focus();
       }}
       ref={gifRef}
-      onBlur={() => {
-        setAsGif(false);
-      }}
       key='img&Gif'
       id={techPreview}
       transition={{duration: 0.15, ease: 'easeOut'}}
@@ -72,10 +60,6 @@ export const PreviewSwitcher: React.FC<Pick<IProject, 'title' | 'image' | 'deplo
       exit={{opacity: 0}}
       alt={`${title} logo`}
       style={{
-        position: 'absolute',
-        top: '50%',
-        transform: 'translateY(-50%)',
-        left: 0,
         border: '2px solid #00000055',
         borderRadius: 5,
       }}
@@ -84,38 +68,16 @@ export const PreviewSwitcher: React.FC<Pick<IProject, 'title' | 'image' | 'deplo
   );
 
   return (
-    <div
-      className={S.container}
-      style={{
-        position: 'absolute',
-        top: '50%',
-        width: '100%',
-        height: '100%',
-        left: 0,
-        transform: 'translateY(-50%)',
-      }}
-    >
+    <div className={S.container}>
       <AnimatePresence initial={false} mode='wait'>
         {asGif ? (
-          <>
+          // div container to make the full screen icon positioned relative to gif sibling
+          <div style={{position: 'relative', display: 'flex'}}>
             {gif}
-            {
-              <div
-                onClick={() => {
-                  if (asGif) setSrc(deployVideo);
-                }}
-                style={{
-                  position: 'absolute',
-                  top: '57%',
-                  right: 0,
-                  margin: 10,
-                  cursor: asGif ? 'pointer' : 'default',
-                }}
-              >
-                <FullScreenIcon width={25} />
-              </div>
-            }
-          </>
+            <div className={S.fullScreenIconContainer} onClick={() => setSrc(deployVideo)}>
+              <FullScreenIcon width={25} />
+            </div>
+          </div>
         ) : (
           img
         )}

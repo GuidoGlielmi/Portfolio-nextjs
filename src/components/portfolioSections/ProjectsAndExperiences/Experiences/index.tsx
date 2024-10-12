@@ -1,7 +1,8 @@
-import {IExperience} from 'IPortfolio';
-import React, {useEffect, useRef} from 'react';
-import ExperienceItem from './ExperienceItem/ExperienceItem';
+import usePaintOnStickyElementScroll from 'components/custom-hooks/usePaintOnStickyElementScroll';
 import useTranslation from 'hooks/useTranslation';
+import {IExperience} from 'IPortfolio';
+import React, {useRef} from 'react';
+import ExperienceItem from './ExperienceItem/ExperienceItem';
 
 type ExperiencesProps = {
   experiences: IExperience[];
@@ -13,24 +14,7 @@ const Experiences: React.FC<ExperiencesProps> = ({experiences}) => {
   const titleContainerRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const paintBackground = () => {
-      // console.log(containerRef.current!.offsetTop);
-      // console.log(titleRef.current!.offsetTop);
-      if (titleRef.current!.offsetTop > titleContainerRef.current!.offsetTop) {
-        titleRef.current!.style.background = '#393939';
-        titleRef.current!.style.color = 'white';
-      } else {
-        titleRef.current!.style.background = 'transparent';
-        titleRef.current!.style.color = '';
-      }
-    };
-    paintBackground();
-    document!.addEventListener('scroll', paintBackground);
-    return () => {
-      document!.removeEventListener('scroll', paintBackground);
-    };
-  }, []);
+  usePaintOnStickyElementScroll('#393939', 'white', titleRef, titleContainerRef);
 
   return (
     <div ref={titleContainerRef}>

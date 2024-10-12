@@ -1,5 +1,3 @@
-import React from 'react';
-
 export type SvgProps = {
   width?: string | number;
   height?: string | number;
