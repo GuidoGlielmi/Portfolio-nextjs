@@ -29,6 +29,7 @@ const LanguageProvider: FC<PropsWithChildren<LanguageProviderProps>> = ({childre
 
   useEffect(() => {
     if (eng === null) return;
+    document.documentElement.lang = eng ? 'en' : 'es';
     localStorage.setItem('isEng', `${eng}`);
   }, [eng]);
 
