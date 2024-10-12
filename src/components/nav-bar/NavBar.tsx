@@ -1,13 +1,11 @@
-import Ar from 'components/common/icons/flags/Ar';
-import Eu from 'components/common/icons/flags/Us';
 import GithubIcon from 'components/common/icons/social/GithubIcon';
 import LinkedinIcon from 'components/common/icons/social/LinkedinIcon';
-import {LanguageContext, LanguageProps} from 'components/contexts/language';
-import {debounce} from 'helpers/debounce';
 import {IUser} from 'IPortfolio';
-import {useContext, useEffect, useRef, useState} from 'react';
 import EmailIcon from '../../../public/icons/emailIcon';
 import S from './NavBar.module.css';
+import Navigation from './navigation';
+import CvSection from './social/cvSection';
+import Languages from './social/languages';
 
 type NavBarProps = {
   user: IUser;
@@ -15,109 +13,12 @@ type NavBarProps = {
 };
 
 const NavBar: React.FC<NavBarProps> = ({user, refs}) => {
-  const {eng, setEng} = useContext(LanguageContext) as LanguageProps;
-  const [cvHovered, setCvHovered] = useState(false);
-  const [position, setPosition] = useState(0);
-  const [selectedSection, setSelectedSection] = useState(0);
-  const [langsHovered, setLangsHovered] = useState<boolean>(false);
-  const [touchable, setTouchable] = useState<boolean>(false);
-
-  const previousEng = useRef(eng);
-
-  useEffect(() => {
-    const extraMargin = 40;
-    const checkSelectedSection = () => {
-      setSelectedSection(
-        Number(window.scrollY >= (refs[0].ref.current?.clientHeight || 0) - extraMargin),
-      );
-    };
-    const isTouchable =
-      'ontouchstart' in window ||
-      navigator.maxTouchPoints > 0 ||
-      (navigator as any).msMaxTouchPoints > 0;
-    setTouchable(isTouchable);
-    document.addEventListener('scroll', debounce(checkSelectedSection, 100));
-    return () => removeEventListener('scroll', checkSelectedSection);
-  }, []);
-
-  const invertFlagPosition = () => setPosition(pp => (pp === 100 ? pp - 100 : pp + 100));
-
-  const onTouchEndHandler = () => {
-    invertFlagPosition();
-    setEng(ps => !ps);
-  };
-
-  useEffect(() => {
-    if (langsHovered === null) return;
-    if (langsHovered) {
-      invertFlagPosition();
-      previousEng.current = eng;
-    } else if (eng !== null && previousEng.current === eng) invertFlagPosition();
-  }, [langsHovered]);
-
-  useEffect(() => {
-    if (touchable) return;
-    if (eng !== null && previousEng.current === null) {
-      if (!eng) setPosition(pp => (pp === 100 ? pp - 100 : pp + 100));
-    }
-  }, [eng]);
-
   return (
     <nav className={S.nav}>
-      <div className={S.sectionsNames}>
-        {refs.map(({ref, title}, i) => (
-          <p
-            className={selectedSection === i ? S.selectedSectionName : ''}
-            onClick={() => {
-              ref.current?.scrollIntoView({behavior: 'smooth'});
-            }}
-            key={title}
-          >
-            {title}
-          </p>
-        ))}
-      </div>
+      <Navigation refs={refs} />
       <div className={S.social}>
-        <div
-          className={S.languages}
-          onMouseEnter={() => setLangsHovered(true)}
-          onMouseLeave={() => setLangsHovered(false)}
-        >
-          <button
-            style={{right: `${position}%`}}
-            onTouchEnd={e => {
-              e.preventDefault();
-              onTouchEndHandler();
-            }}
-            onClick={() => setEng(true)}
-          >
-            <Eu size='100%' round />
-          </button>
-          <button
-            style={{right: `${position}%`}}
-            onTouchEnd={e => {
-              e.preventDefault();
-              onTouchEndHandler();
-            }}
-            onClick={() => setEng(false)}
-          >
-            <Ar size='100%' round />
-          </button>
-        </div>
-        <div className={S.cvSection} onMouseEnter={() => setCvHovered(true)}>
-          <h3>CV</h3>
-          <div
-            style={{pointerEvents: cvHovered ? 'all' : 'none'}}
-            onMouseLeave={() => setCvHovered(false)}
-          >
-            <a href='assets/Guido-Glielmi-RESUME.pdf' download>
-              EN
-            </a>
-            <a href='assets/Guido-Glielmi-RESUME(es).pdf' download>
-              ES
-            </a>
-          </div>
-        </div>
+        <Languages />
+        <CvSection />
         <a href='mailto:guidoglielmi@gmail.com' target='_blank' rel='noreferrer'>
           <EmailIcon />
         </a>

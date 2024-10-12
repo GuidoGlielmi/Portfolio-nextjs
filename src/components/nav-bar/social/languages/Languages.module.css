@@ -1,0 +1,16 @@
+.languages {
+  display: flex;
+  flex-direction: row !important;
+  justify-content: stretch !important;
+  width: 35px;
+  height: 35px;
+  overflow: hidden;
+}
+
+.languages > * {
+  position: relative;
+  right: 0;
+  flex-shrink: 0;
+  height: 100%;
+  transition: all 0.5s ease;
+}

@@ -1,0 +1,24 @@
+.sectionsNames {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  color: #ddd;
+  background: linear-gradient(to bottom right, #444, #1a1a1a);
+  border-radius: 0 0 40px 0;
+}
+.sectionsNames > * {
+  padding: 0 3vw;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+.sectionsNames > *:hover {
+  text-shadow: -2px 2px 0px #795353;
+}
+.sectionsNames > * :last-child {
+  border-bottom-right-radius: 20px;
+}
+
+.selectedSectionName {
+  color: white;
+  text-shadow: -2px 2px 0px #795353;
+}
