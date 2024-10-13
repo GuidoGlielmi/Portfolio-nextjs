@@ -1,13 +1,14 @@
+import {BACKGROUND_ID} from '@constants';
+import {AnimatePresence, motion} from 'framer-motion';
 import {
   createContext,
-  useMemo,
-  useState,
+  Dispatch,
   FC,
   PropsWithChildren,
-  Dispatch,
   SetStateAction,
+  useMemo,
+  useState,
 } from 'react';
-import {AnimatePresence, motion} from 'framer-motion';
 
 export interface GifPreviewProps {
   setSrc: Dispatch<SetStateAction<string>>;
@@ -56,8 +57,8 @@ const Background: FC<PropsWithChildren<BackgroundProps>> = ({children, onClose, 
           initial={{opacity: 0}}
           animate={{opacity: 1}}
           exit={{opacity: 0}}
-          key='background'
-          id='background'
+          key={BACKGROUND_ID}
+          id={BACKGROUND_ID}
           style={{
             display: 'flex',
             justifyContent: 'center',
@@ -72,7 +73,7 @@ const Background: FC<PropsWithChildren<BackgroundProps>> = ({children, onClose, 
             cursor: 'pointer',
           }}
           onClick={e => {
-            if ((e.target as any).id === 'background') onClose();
+            if ((e.target as any).id === BACKGROUND_ID) onClose();
           }}
         >
           <AnimatePresence>

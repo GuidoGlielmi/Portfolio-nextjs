@@ -1,24 +1,22 @@
+import useEventListener from 'components/custom-hooks/useEventListener';
 import {debounce} from 'helpers/debounce';
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 import S from './Navigation.module.css';
 
 type NavigationProps = {
   refs: Ref[];
 };
 
+const extraMargin = 40;
 const Navigation = ({refs}: NavigationProps) => {
   const [selectedSection, setSelectedSection] = useState(0);
 
-  useEffect(() => {
-    const extraMargin = 40;
-    const checkSelectedSection = () => {
-      setSelectedSection(
-        Number(window.scrollY >= (refs[0].ref.current?.clientHeight || 0) - extraMargin),
-      );
-    };
-    document.addEventListener('scroll', debounce(checkSelectedSection, 100));
-    return () => removeEventListener('scroll', checkSelectedSection);
-  }, []);
+  const checkSelectedSection = debounce(() => {
+    setSelectedSection(
+      Number(window.scrollY >= (refs[0].ref.current?.clientHeight || 0) - extraMargin),
+    );
+  }, 100);
+  useEventListener('scroll', checkSelectedSection);
 
   return (
     <div className={S.sectionsNames}>

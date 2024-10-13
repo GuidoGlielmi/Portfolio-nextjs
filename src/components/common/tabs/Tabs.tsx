@@ -1,3 +1,4 @@
+import useEventListener from 'components/custom-hooks/useEventListener';
 import {TechType} from 'IPortfolio';
 import {useEffect, useRef, useState} from 'react';
 import S from './Tabs.module.css';
@@ -24,10 +25,7 @@ const Tabs: React.FC<TabsProps> = ({tabs, onChange}) => {
     setRange([start, end]);
   };
 
-  useEffect(() => {
-    containerRef.current!.addEventListener('scroll', setRangeValues);
-    return () => containerRef.current!.addEventListener('scroll', setRangeValues);
-  }, []);
+  useEventListener('scroll', setRangeValues);
 
   useEffect(() => {
     setRangeValues();

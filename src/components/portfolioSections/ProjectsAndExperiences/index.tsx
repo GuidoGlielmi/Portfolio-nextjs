@@ -1,6 +1,6 @@
+import {Link} from '@constants';
 import {IExperience, IProject} from 'IPortfolio';
 import React from 'react';
-import {Link} from '../../../constants';
 import Experiences from './Experiences';
 import Projects from './Projects';
 import S from './ProjectsAndExperiences.module.css';

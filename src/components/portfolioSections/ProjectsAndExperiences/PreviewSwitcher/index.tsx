@@ -1,3 +1,4 @@
+import {BACKGROUND_ID} from '@constants';
 import {GifPreviewContext, GifPreviewProps} from 'components/contexts/gifPreview';
 import useEventListener from 'components/custom-hooks/useEventListener';
 import {motion, Variant} from 'framer-motion';
@@ -12,7 +13,7 @@ export const PreviewSwitcher: React.FC<Pick<IProject, 'title' | 'image' | 'deplo
   image,
   deployVideo,
 }) => {
-  const techPreview = `${title} techPreview`;
+  const appPreview = `${title} appPreview`;
 
   const {setSrc} = useContext(GifPreviewContext) as GifPreviewProps;
 
@@ -21,10 +22,19 @@ export const PreviewSwitcher: React.FC<Pick<IProject, 'title' | 'image' | 'deplo
   const gifRef = useRef<HTMLImageElement>(null);
 
   const handleClose = (e: any) => {
-    if (e.target.id !== techPreview) setAsGif(false);
+    if (
+      e.target.id === appPreview ||
+      e.target.parentElement.id === appPreview ||
+      e.target.id === BACKGROUND_ID
+    ) {
+      return;
+    }
+    setAsGif(false);
   };
-  useEventListener('click', handleClose, false);
-  useEventListener('touchstart', handleClose, false);
+  useEventListener('click', handleClose);
+  useEventListener('touchstart', handleClose);
+
+  const setGif = () => setSrc(deployVideo);
 
   const variants: {
     [key: string]: Variant;
@@ -38,10 +48,11 @@ export const PreviewSwitcher: React.FC<Pick<IProject, 'title' | 'image' | 'deplo
       {/* rendered both img and gif to eager load */}
       {/* div container to make the full screen icon positioned relative to gif sibling */}
       <motion.div
+        className={S.gifContainer}
         variants={variants}
         animate={asGif ? 'open' : 'closed'}
-        style={{position: 'absolute', display: 'flex'}}
-        key='gifContainer'
+        key='gif'
+        id={appPreview}
       >
         <img
           loading='eager'
@@ -49,17 +60,13 @@ export const PreviewSwitcher: React.FC<Pick<IProject, 'title' | 'image' | 'deplo
             gifRef.current!.focus();
           }}
           ref={gifRef}
-          id={techPreview}
-          alt={`${title} logo`}
-          style={{
-            border: '2px solid #00000055',
-            borderRadius: 5,
-          }}
+          id={appPreview}
+          alt={`${title} app preview gif`}
           src={`gifs/${deployVideo}`}
         />
-        <div className={S.fullScreenIconContainer} onClick={() => setSrc(deployVideo)}>
+        <button className={S.fullScreenIconContainer} onClick={setGif}>
           <FullScreenIcon width={25} />
-        </div>
+        </button>
       </motion.div>
       <motion.div
         variants={variants}
@@ -68,17 +75,18 @@ export const PreviewSwitcher: React.FC<Pick<IProject, 'title' | 'image' | 'deplo
         key='img'
       >
         <img
-          id={techPreview}
-          style={{position: 'absolute', left: 0, top: 0}}
+          style={{position: 'absolute', top: 0}}
           src={`./assets/logos/${image}`}
           alt={`${title} logo`}
         />
-        <PlayIcon
+        <button
           onClick={e => {
             e.stopPropagation();
             setAsGif(true);
           }}
-        />
+        >
+          <PlayIcon />
+        </button>
       </motion.div>
     </div>
   );

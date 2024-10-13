@@ -1,12 +1,13 @@
+import {Link} from '@constants';
 import {LanguageContext, LanguageProps} from 'components/contexts/language';
+import useEventListener from 'components/custom-hooks/useEventListener';
 import NavBar from 'components/nav-bar/NavBar';
 import ProjectsAndExperiences from 'components/portfolioSections/ProjectsAndExperiences';
 import TechsAndInfo from 'components/portfolioSections/techs-and-info/TechsAndInfo';
 import portfolioData from 'data.json';
 import {debounce} from 'helpers/debounce';
 import {Es, IExperience, IProject, ISkill, ITechnology, IUser, TechType} from 'IPortfolio';
-import React, {useContext, useEffect, useRef} from 'react';
-import {Link} from '../src/constants';
+import React, {useContext, useRef} from 'react';
 import {translate} from '../src/helpers/translator';
 import S from './styles.module.css';
 
@@ -30,23 +31,20 @@ const Home: React.FC<SectionsProps> = ({en, es}) => {
   const arrowRef = useRef<HTMLButtonElement>(null);
   const data = eng ? en : es;
 
-  useEffect(() => {
-    const setArrowPosition = () => {
-      if (arrowRef.current === null || techsAndInfoRef.current === null) return;
+  const setArrowPosition = debounce(() => {
+    if (arrowRef.current === null || techsAndInfoRef.current === null) return;
 
-      if (window.scrollY >= techsAndInfoRef.current.clientHeight) {
-        if (arrowRef.current.style.bottom === '3vh') {
-          arrowRef.current.style.bottom = '85vh';
-          arrowRef.current.style.transform = 'translateX(50%) rotateZ(-90deg)';
-        }
-      } else if (arrowRef.current.style.bottom === '85vh') {
-        arrowRef.current.style.bottom = '3vh';
-        arrowRef.current.style.transform = 'translateX(50%) rotateZ(90deg)';
+    if (window.scrollY >= techsAndInfoRef.current.clientHeight) {
+      if (arrowRef.current.style.bottom === '3vh') {
+        arrowRef.current.style.bottom = '85vh';
+        arrowRef.current.style.transform = 'translateX(50%) rotateZ(-90deg)';
       }
-    };
-    document.addEventListener('scroll', debounce(setArrowPosition, 100));
-    return () => removeEventListener('scroll', setArrowPosition);
-  }, []);
+    } else if (arrowRef.current.style.bottom === '85vh') {
+      arrowRef.current.style.bottom = '3vh';
+      arrowRef.current.style.transform = 'translateX(50%) rotateZ(90deg)';
+    }
+  }, 100);
+  useEventListener('scroll', setArrowPosition);
 
   return (
     <>

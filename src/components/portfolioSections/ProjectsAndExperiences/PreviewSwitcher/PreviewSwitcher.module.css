@@ -1,6 +1,7 @@
 .container {
   display: flex;
   align-items: center;
+  justify-content: center;
   position: absolute;
   top: 50%;
   left: 0;
@@ -18,29 +19,41 @@
   height: 100%;
 }
 
-.imgContainer > img {
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-
 .imgContainer svg {
   position: relative;
   z-index: 1000;
   border-radius: 50%;
   transition: all 0.2s ease;
 }
+.imgContainer > button {
+  position: relative;
+  z-index: 100;
+}
 
 .imgContainer svg:hover {
   transform: scale(1.05);
 }
 
+.gifContainer {
+  display: flex;
+  position: absolute;
+  height: 100%;
+  opacity: 0;
+}
+
+.gifContainer > img {
+  border: 2px solid #00000055;
+  border-radius: 5px !important;
+}
+
 .fullScreenIconContainer {
   display: flex;
   position: absolute;
-  z-index: 1000;
+  z-index: 100;
   bottom: 0;
   right: 0px;
   margin: 10px;
   cursor: pointer;
+  filter: invert(1);
+  mix-blend-mode: difference;
 }
