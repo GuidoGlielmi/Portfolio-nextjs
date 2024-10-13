@@ -31,6 +31,9 @@ const LanguageProvider: FC<PropsWithChildren<LanguageProviderProps>> = ({childre
     if (eng === null) return;
     document.documentElement.lang = eng ? 'en' : 'es';
     localStorage.setItem('isEng', `${eng}`);
+    const url = new URL(window.location.href);
+    url.searchParams.set('lang', document.documentElement.lang);
+    window.history.pushState(null, '', url.toString());
   }, [eng]);
 
   const contextValue = useMemo<LanguageProps>(() => ({setEng, eng}), [eng]);

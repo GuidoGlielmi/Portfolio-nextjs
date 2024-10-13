@@ -40,6 +40,10 @@ export default function App({Component, pageProps}: AppProps) {
 
         <link rel='icon' href='./favicon.svg' type='image/svg+xml' />
         <link rel='shortcut icon' href='./assets/img/profile-img2.jpg' />
+
+        <link rel='alternate' href='https://guidoglielmi.com.ar?lang=en' hrefLang='en' />
+        <link rel='alternate' href='https://guidoglielmi.com.ar?lang=es' hrefLang='es' />
+
         <script
           key='website-jsonld'
           type='application/ld+json'
