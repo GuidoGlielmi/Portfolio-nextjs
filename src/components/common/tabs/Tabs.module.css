@@ -24,12 +24,15 @@
 }
 
 .tabs > * {
+  font-size: 1em;
   flex-shrink: 0;
   cursor: pointer;
   transition: all 0.3s ease;
   padding: 5px 10px;
   z-index: 1231;
+  text-shadow: 1.5px 1.5px 0 #6d6d6d71;
 }
+
 .tabs > *:hover {
   color: #ffffffcc;
 }

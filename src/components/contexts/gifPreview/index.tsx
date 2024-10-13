@@ -52,7 +52,7 @@ const Background: FC<PropsWithChildren<BackgroundProps>> = ({children, onClose, 
   return (
     <AnimatePresence>
       {open && (
-        <motion.div
+        <motion.button
           transition={{duration: 0.1, ease: 'easeOut'}}
           initial={{opacity: 0}}
           animate={{opacity: 1}}
@@ -91,7 +91,7 @@ const Background: FC<PropsWithChildren<BackgroundProps>> = ({children, onClose, 
               {children}
             </motion.div>
           </AnimatePresence>
-        </motion.div>
+        </motion.button>
       )}
     </AnimatePresence>
   );

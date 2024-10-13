@@ -14,7 +14,7 @@ const Tabs: React.FC<TabsProps> = ({tabs, onChange}) => {
   );
   const [[start, end], setRange] = useState([0, 0]);
 
-  const selectedTabRef = useRef<HTMLDivElement>(null);
+  const selectedTabRef = useRef<HTMLButtonElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const setRangeValues = () => {
@@ -45,15 +45,15 @@ const Tabs: React.FC<TabsProps> = ({tabs, onChange}) => {
         backgroundPositionX: `${start}px`,
       }}
     >
-      {(tabs as [TechType, string][]).map(t => (
-        <p
-          ref={selectedTab === t[0] ? selectedTabRef : undefined}
-          onClick={() => onChangeHandler(t[0])}
-          className={selectedTab === t[0] ? S.selectedTab : ''}
-          key={t[0]}
+      {(tabs as [TechType, string][]).map(([type, name]) => (
+        <button
+          ref={selectedTab === type ? selectedTabRef : undefined}
+          onClick={() => onChangeHandler(type)}
+          className={selectedTab === type ? S.selectedTab : ''}
+          key={type}
         >
-          {t[1]}
-        </p>
+          {name}
+        </button>
       ))}
     </div>
   );

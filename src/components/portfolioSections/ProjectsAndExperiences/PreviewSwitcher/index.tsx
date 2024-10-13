@@ -8,6 +8,13 @@ import FullScreenIcon from '../../../../../public/icons/fullScreenIcon';
 import PlayIcon from '../../../../../public/icons/play';
 import S from './PreviewSwitcher.module.css';
 
+const variants: {
+  [key: string]: Variant;
+} = {
+  open: {opacity: 1, zIndex: 1, transition: {duration: 0.3, ease: [0.54, 0, 0.23, -0.13]}},
+  closed: {opacity: 0, zIndex: 0, transition: {duration: 0.3, ease: [0.59, 0.95, 0.3, 1.04]}},
+};
+
 export const PreviewSwitcher: React.FC<Pick<IProject, 'title' | 'image' | 'deployVideo'>> = ({
   title,
   image,
@@ -35,13 +42,6 @@ export const PreviewSwitcher: React.FC<Pick<IProject, 'title' | 'image' | 'deplo
   useEventListener('touchstart', handleClose);
 
   const setGif = () => setSrc(deployVideo);
-
-  const variants: {
-    [key: string]: Variant;
-  } = {
-    open: {opacity: 1, zIndex: 1, transition: {duration: 0.3, ease: [0.54, 0, 0.23, -0.13]}},
-    closed: {opacity: 0, zIndex: 0, transition: {duration: 0.3, ease: [0.59, 0.95, 0.3, 1.04]}},
-  };
 
   return (
     <div className={S.container}>
