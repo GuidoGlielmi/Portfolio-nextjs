@@ -15,7 +15,7 @@ export default function App({Component, pageProps}: AppProps) {
     name: 'Guido Glielmi portfolio',
     url: 'https://www.guidoglielmi.com.ar',
     description: 'Showcase of portfolio and resume information of Guido Glielmi',
-    logo: 'https://www.example.org/images/my-logo.png',
+    logo: './assets/img/profile-img2.jpg',
   };
 
   return (
@@ -27,10 +27,7 @@ export default function App({Component, pageProps}: AppProps) {
           property='og:description'
           content='Showcase of portfolio and resume information of Guido Glielmi'
         />
-        <meta
-          property='og:image'
-          content='https://guidoglielmi.com.ar/assets/img/profile-img.jpg'
-        />
+        <meta property='og:image' content='./assets/img/profile-img2.jpg' />
         <meta property='og:url' content='https://guidoglielmi.com.ar' />
 
         <meta name='description' content='Portfolio and resume information of Guido Glielmi' />
@@ -39,8 +36,10 @@ export default function App({Component, pageProps}: AppProps) {
           content='zAv2vKo_dWakUrSKhNCCzwKqJu5J4ZPIvMIfIIk_z2A'
         />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
-        <link rel='icon' href='favicon.svg' type='image/svg+xml' />
+        <meta name='thumbnail' content='./favicon.svg' />
 
+        <link rel='icon' href='./favicon.svg' type='image/svg+xml' />
+        <link rel='shortcut icon' href='./assets/img/profile-img2.jpg' />
         <script
           key='website-jsonld'
           type='application/ld+json'
