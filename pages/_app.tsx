@@ -30,7 +30,10 @@ export default function App({Component, pageProps}: AppProps) {
         <meta property='og:image' content='./assets/img/profile-img2.jpg' />
         <meta property='og:url' content='https://guidoglielmi.com.ar' />
 
+        <title>Guido Glielmi</title>
+        <link rel='canonical' href='https://www.guidoglielmi.com.ar' />
         <meta name='description' content='Portfolio and resume information of Guido Glielmi' />
+
         <meta
           name='google-site-verification'
           content='zAv2vKo_dWakUrSKhNCCzwKqJu5J4ZPIvMIfIIk_z2A'

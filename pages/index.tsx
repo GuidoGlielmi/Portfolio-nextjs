@@ -5,7 +5,6 @@ import TechsAndInfo from 'components/portfolioSections/techs-and-info/TechsAndIn
 import portfolioData from 'data.json';
 import {debounce} from 'helpers/debounce';
 import {Es, IExperience, IProject, ISkill, ITechnology, IUser, TechType} from 'IPortfolio';
-import Head from 'next/head';
 import React, {useContext, useEffect, useRef} from 'react';
 import {Link} from '../src/constants';
 import {translate} from '../src/helpers/translator';
@@ -51,9 +50,6 @@ const Home: React.FC<SectionsProps> = ({en, es}) => {
 
   return (
     <>
-      <Head>
-        <title>Guido Glielmi</title>
-      </Head>
       <h1 style={{position: 'fixed', background: 'transparent'}}>Guido Glielmi</h1>
       <NavBar
         user={data.user}

@@ -22,3 +22,11 @@
   color: white;
   text-shadow: -2px 2px 0px #795353;
 }
+
+@media (max-width: 768px) {
+  .sectionsNames {
+    justify-content: space-around;
+    box-shadow: 0 0 27px #0000004f;
+    border-radius: 0 0 2px 2px;
+  }
+}
