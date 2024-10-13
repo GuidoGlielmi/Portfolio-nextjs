@@ -1,6 +1,5 @@
-import {Link} from '@constants';
+import {Link, TechType} from '@constants';
 import useBreakpoint from 'hooks/useBreakpoint';
-import {ISkill, ITechnology, IUser, TechType} from 'IPortfolio';
 import React from 'react';
 import Skills from './skills/Skills';
 import TechsSection from './techs/TechsSection';

@@ -1,5 +1,4 @@
 import useTranslation from 'hooks/useTranslation';
-import {IProject} from 'IPortfolio';
 import {PreviewSwitcher} from '../../PreviewSwitcher';
 import S from './ProjectItem.module.css';
 

@@ -1,4 +1,4 @@
-import useEventListener from 'components/custom-hooks/useEventListener';
+import useEventListener from '@hooks/useEventListener';
 import {debounce} from 'helpers/debounce';
 import {createContext, FC, PropsWithChildren, useState} from 'react';
 

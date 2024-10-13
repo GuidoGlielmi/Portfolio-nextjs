@@ -1,6 +1,6 @@
+import {TechType} from '@constants';
 import Tabs from 'components/common/tabs/Tabs';
 import useTranslation from 'hooks/useTranslation';
-import {ITechnology, IUser, TechType} from 'IPortfolio';
 import {useState} from 'react';
 import Articles from './articles';
 import TechGroup from './techGroup';

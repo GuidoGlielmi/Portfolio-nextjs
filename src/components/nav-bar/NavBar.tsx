@@ -1,6 +1,5 @@
 import GithubIcon from 'components/common/icons/social/GithubIcon';
 import LinkedinIcon from 'components/common/icons/social/LinkedinIcon';
-import {IUser} from 'IPortfolio';
 import EmailIcon from '../../../public/icons/emailIcon';
 import S from './NavBar.module.css';
 import Navigation from './navigation';

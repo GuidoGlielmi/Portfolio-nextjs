@@ -1,6 +1,5 @@
-import usePaintOnStickyElementScroll from 'components/custom-hooks/usePaintOnStickyElementScroll';
+import usePaintOnStickyElementScroll from '@hooks/usePaintOnStickyElementScroll';
 import useTranslation from 'hooks/useTranslation';
-import {IProject} from 'IPortfolio';
 import React, {useRef} from 'react';
 import ProjectItem from './ProjectItem/ProjectItem';
 

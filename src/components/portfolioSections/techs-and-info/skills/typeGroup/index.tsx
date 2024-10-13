@@ -1,4 +1,3 @@
-import {ISkill} from 'IPortfolio';
 import SkillItem from '../skillItem';
 import S from './TypeGroup.module.css';
 

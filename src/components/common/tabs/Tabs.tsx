@@ -1,5 +1,5 @@
-import useEventListener from 'components/custom-hooks/useEventListener';
-import {TechType} from 'IPortfolio';
+import {TechType} from '@constants';
+import useEventListener from '@hooks/useEventListener';
 import {useEffect, useRef, useState} from 'react';
 import S from './Tabs.module.css';
 

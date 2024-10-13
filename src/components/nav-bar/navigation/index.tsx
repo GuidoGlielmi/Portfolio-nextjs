@@ -1,4 +1,4 @@
-import useEventListener from 'components/custom-hooks/useEventListener';
+import useEventListener from '@hooks/useEventListener';
 import {debounce} from 'helpers/debounce';
 import {useState} from 'react';
 import S from './Navigation.module.css';

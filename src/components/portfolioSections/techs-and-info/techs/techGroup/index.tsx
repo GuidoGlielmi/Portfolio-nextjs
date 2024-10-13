@@ -1,6 +1,5 @@
 import LoadingIcon from 'components/common/icons/loading-icon/LoadingIcon';
 import {AnimatePresence, motion} from 'framer-motion';
-import {ITechnology} from 'IPortfolio';
 import {ReactSVG} from 'react-svg';
 import S from './TechGroup.module.css';
 

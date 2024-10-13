@@ -1,5 +1,5 @@
+import {SkillType} from '@constants';
 import useTranslation from 'hooks/useTranslation';
-import {ISkill, IUser, SkillType} from 'IPortfolio';
 import S from './Skills.module.css';
 import {TypeGroup} from './typeGroup';
 

@@ -1,6 +1,5 @@
 import {AnimatePresence, motion} from 'framer-motion';
 import useTranslation from 'hooks/useTranslation';
-import {IUser} from 'IPortfolio';
 import {useState} from 'react';
 import Chevron from '../../../../../../public/icons/chevron';
 import S from './Articles.module.css';

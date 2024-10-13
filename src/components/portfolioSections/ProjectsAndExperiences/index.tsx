@@ -1,5 +1,4 @@
 import {Link} from '@constants';
-import {IExperience, IProject} from 'IPortfolio';
 import React from 'react';
 import Experiences from './Experiences';
 import Projects from './Projects';

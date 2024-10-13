@@ -14,7 +14,7 @@ const translationsKeys = {
 
 export type TranslationKeys = keyof typeof translationsKeys;
 
-export const translate = (str: TranslationKeys | string, eng: boolean | null = true) => {
-  const translation = translationsKeys[str as TranslationKeys];
-  return eng || !translation ? str : translationsKeys[str as TranslationKeys];
+export const translate = (str: TranslationKeys, eng: boolean | null = true) => {
+  const translation = translationsKeys[str];
+  return eng || !translation ? str : translationsKeys[str];
 };

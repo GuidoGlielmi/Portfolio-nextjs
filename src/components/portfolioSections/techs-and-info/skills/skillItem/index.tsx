@@ -1,4 +1,3 @@
-import {ISkill} from 'IPortfolio';
 import S from './SkillItem.module.css';
 
 type SkillItemProps = {skill: ISkill};

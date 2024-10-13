@@ -1,12 +1,11 @@
-import {Link} from '@constants';
+import {Link, TechType} from '@constants';
+import useEventListener from '@hooks/useEventListener';
 import {LanguageContext, LanguageProps} from 'components/contexts/language';
-import useEventListener from 'components/custom-hooks/useEventListener';
 import NavBar from 'components/nav-bar/NavBar';
 import ProjectsAndExperiences from 'components/portfolioSections/ProjectsAndExperiences';
 import TechsAndInfo from 'components/portfolioSections/techs-and-info/TechsAndInfo';
 import portfolioData from 'data.json';
 import {debounce} from 'helpers/debounce';
-import {Es, IExperience, IProject, ISkill, ITechnology, IUser, TechType} from 'IPortfolio';
 import React, {useContext, useRef} from 'react';
 import {translate} from '../src/helpers/translator';
 import S from './styles.module.css';

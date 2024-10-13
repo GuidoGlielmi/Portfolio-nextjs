@@ -1,7 +1,6 @@
-import S from './ExperienceItem.module.css';
-import {IExperience} from 'IPortfolio';
 import useTranslation from 'hooks/useTranslation';
 import {PreviewSwitcher} from '../../PreviewSwitcher';
+import S from './ExperienceItem.module.css';
 
 type ExperienceItemProps = {
   experience: IExperience;

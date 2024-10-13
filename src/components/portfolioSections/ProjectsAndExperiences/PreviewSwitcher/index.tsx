@@ -1,8 +1,7 @@
 import {BACKGROUND_ID} from '@constants';
+import useEventListener from '@hooks/useEventListener';
 import {GifPreviewContext, GifPreviewProps} from 'components/contexts/gifPreview';
-import useEventListener from 'components/custom-hooks/useEventListener';
 import {motion, Variant} from 'framer-motion';
-import {IProject} from 'IPortfolio';
 import React, {useContext, useRef, useState} from 'react';
 import FullScreenIcon from '../../../../../public/icons/fullScreenIcon';
 import PlayIcon from '../../../../../public/icons/play';
