@@ -1,11 +1,9 @@
 import {Link, TechType} from '@constants';
-import useEventListener from '@hooks/useEventListener';
 import {LanguageContext, LanguageProps} from 'components/contexts/language';
 import NavBar from 'components/nav-bar/NavBar';
 import ProjectsAndExperiences from 'components/portfolioSections/ProjectsAndExperiences';
 import TechsAndInfo from 'components/portfolioSections/techs-and-info/TechsAndInfo';
 import portfolioData from 'data.json';
-import {debounce} from 'helpers/debounce';
 import React, {useContext, useRef} from 'react';
 import {translate} from '../src/helpers/translator';
 import S from './styles.module.css';
@@ -27,23 +25,7 @@ const Home: React.FC<SectionsProps> = ({en, es}) => {
   const {eng} = useContext(LanguageContext) as LanguageProps;
   const projectsAndExperiencesSectionRef = useRef<HTMLDivElement>(null);
   const techsAndInfoRef = useRef<HTMLDivElement>(null);
-  const arrowRef = useRef<HTMLButtonElement>(null);
   const data = eng ? en : es;
-
-  const setArrowPosition = debounce(() => {
-    if (arrowRef.current === null || techsAndInfoRef.current === null) return;
-
-    if (window.scrollY >= techsAndInfoRef.current.clientHeight) {
-      if (arrowRef.current.style.bottom === '3vh') {
-        arrowRef.current.style.bottom = '85vh';
-        arrowRef.current.style.transform = 'translateX(50%) rotateZ(-90deg)';
-      }
-    } else if (arrowRef.current.style.bottom === '85vh') {
-      arrowRef.current.style.bottom = '3vh';
-      arrowRef.current.style.transform = 'translateX(50%) rotateZ(90deg)';
-    }
-  }, 100);
-  useEventListener({event: 'scroll', fn: setArrowPosition});
 
   return (
     <>
