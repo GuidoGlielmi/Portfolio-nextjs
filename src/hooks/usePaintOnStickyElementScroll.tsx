@@ -7,9 +7,9 @@ const usePaintOnStickyElementScroll = (
   element: React.RefObject<HTMLDivElement>,
   container: React.RefObject<HTMLDivElement>,
 ) => {
-  useEventListener(
-    'scroll',
-    () => {
+  useEventListener({
+    event: 'scroll',
+    fn: () => {
       if (element.current!.offsetTop > container.current!.offsetTop) {
         element.current!.style.background = background;
         element.current!.style.color = color;
@@ -18,8 +18,8 @@ const usePaintOnStickyElementScroll = (
         element.current!.style.color = '';
       }
     },
-    true,
-  );
+    callOnStart: true,
+  });
 };
 
 export default usePaintOnStickyElementScroll;

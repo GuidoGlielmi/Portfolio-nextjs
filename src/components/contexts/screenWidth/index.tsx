@@ -10,7 +10,7 @@ const ScreenWidthProvider: FC<PropsWithChildren<ScreenWidthProviderProps>> = ({c
   const [ScreenWidth, setScreenWidth] = useState(1024);
 
   const resize = debounce(() => setScreenWidth(window.innerWidth), 50);
-  useEventListener('resize', resize, true);
+  useEventListener({event: 'resize', fn: resize, callOnStart: true});
 
   return <ScreenWidthContext.Provider value={ScreenWidth}>{children}</ScreenWidthContext.Provider>;
 };

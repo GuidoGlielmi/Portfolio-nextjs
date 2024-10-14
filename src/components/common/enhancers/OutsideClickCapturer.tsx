@@ -16,8 +16,8 @@ const OutsideClickCapturer = ({cb, className, children}: ClickRecorderProps) => 
     }
   };
 
-  useEventListener('touchstart', handleClose);
-  useEventListener('click', handleClose);
+  useEventListener({event: 'touchstart', fn: handleClose});
+  useEventListener({event: 'click', fn: handleClose});
 
   return (
     <div

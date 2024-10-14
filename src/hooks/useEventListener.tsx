@@ -1,15 +1,18 @@
 import {useEffect} from 'react';
 
-const useEventListener = (
-  event: keyof DocumentEventMap,
-  fn: (ev?: DocumentEventMap[keyof DocumentEventMap]) => void,
-  callOnStart = false,
-) => {
+type UseEventListenerProps = {
+  event: keyof DocumentEventMap;
+  fn: (ev?: DocumentEventMap[keyof DocumentEventMap]) => void;
+  callOnStart?: boolean;
+  element?: Node;
+};
+
+const useEventListener = ({event, fn, callOnStart = false, element}: UseEventListenerProps) => {
   useEffect(() => {
     if (callOnStart) fn();
-    document.addEventListener(event, fn);
+    (element || document).addEventListener(event, fn);
     return () => {
-      document.removeEventListener(event, fn);
+      (element || document).removeEventListener(event, fn);
     };
   }, []);
 };

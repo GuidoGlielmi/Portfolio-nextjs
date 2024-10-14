@@ -43,7 +43,7 @@ const Home: React.FC<SectionsProps> = ({en, es}) => {
       arrowRef.current.style.transform = 'translateX(50%) rotateZ(90deg)';
     }
   }, 100);
-  useEventListener('scroll', setArrowPosition);
+  useEventListener({event: 'scroll', fn: setArrowPosition});
 
   return (
     <>

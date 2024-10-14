@@ -16,7 +16,7 @@ const Navigation = ({refs}: NavigationProps) => {
       Number(window.scrollY >= (refs[0].ref.current?.clientHeight || 0) - extraMargin),
     );
   }, 100);
-  useEventListener('scroll', checkSelectedSection);
+  useEventListener({event: 'scroll', fn: checkSelectedSection});
 
   return (
     <div className={S.sectionsNames}>

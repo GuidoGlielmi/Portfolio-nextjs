@@ -18,14 +18,16 @@ const Tabs: React.FC<TabsProps> = ({tabs, onChange}) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const setRangeValues = () => {
-    const start =
+    const selectedTabXStart =
       selectedTabRef.current!.getBoundingClientRect().left -
       containerRef.current!.getBoundingClientRect().left;
-    const end = start + selectedTabRef.current!.getBoundingClientRect().width;
-    setRange([start, end]);
+    const selectedTabXEnd =
+      selectedTabXStart + selectedTabRef.current!.getBoundingClientRect().width;
+    setRange([selectedTabXStart, selectedTabXEnd]);
   };
 
-  useEventListener('scroll', setRangeValues);
+  useEventListener({event: 'scroll', fn: setRangeValues, element: containerRef.current as Node});
+  useEventListener({event: 'touchmove', fn: setRangeValues, element: containerRef.current as Node});
 
   useEffect(() => {
     setRangeValues();
