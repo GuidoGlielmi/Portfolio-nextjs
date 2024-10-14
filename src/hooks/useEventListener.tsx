@@ -2,7 +2,7 @@ import {useEffect} from 'react';
 
 const useEventListener = (
   event: keyof DocumentEventMap,
-  fn: (ev?: DocumentEventMap[keyof DocumentEventMap]) => any,
+  fn: (ev?: DocumentEventMap[keyof DocumentEventMap]) => void,
   callOnStart = false,
 ) => {
   useEffect(() => {

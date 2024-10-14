@@ -53,6 +53,7 @@ const Languages = () => {
         }}
         onClick={() => setEng(true)}
         aria-label='Translate to english'
+        type='button'
       >
         <Eu size='100%' round />
       </button>
@@ -64,6 +65,7 @@ const Languages = () => {
         }}
         onClick={() => setEng(false)}
         aria-label='Translate to spanish'
+        type='button'
       >
         <Ar size='100%' round />
       </button>

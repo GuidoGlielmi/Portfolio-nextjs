@@ -45,12 +45,13 @@ const Tabs: React.FC<TabsProps> = ({tabs, onChange}) => {
         backgroundPositionX: `${start}px`,
       }}
     >
-      {(tabs as [TechType, string][]).map(([type, name]) => (
+      {tabs.map(([type, name]) => (
         <button
           ref={selectedTab === type ? selectedTabRef : undefined}
           onClick={() => onChangeHandler(type)}
           className={selectedTab === type ? S.selectedTab : ''}
           key={type}
+          type='button'
         >
           {name}
         </button>
@@ -59,4 +60,3 @@ const Tabs: React.FC<TabsProps> = ({tabs, onChange}) => {
   );
 };
 export default Tabs;
-// background: `linear-gradient(to right, black ${start}px, #ffffff ${start}px, #ffffff ${end}px, black ${end}px, black) text`,

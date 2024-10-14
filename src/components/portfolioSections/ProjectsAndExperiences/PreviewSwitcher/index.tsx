@@ -1,5 +1,4 @@
-import {BACKGROUND_ID} from '@constants';
-import useEventListener from '@hooks/useEventListener';
+import OutsideClickCapturer from '@components/common/enhancers/OutsideClickCapturer';
 import {GifPreviewContext, GifPreviewProps} from 'components/contexts/gifPreview';
 import {motion, Variant} from 'framer-motion';
 import React, {useContext, useRef, useState} from 'react';
@@ -27,23 +26,10 @@ export const PreviewSwitcher: React.FC<Pick<IProject, 'title' | 'image' | 'deplo
 
   const gifRef = useRef<HTMLImageElement>(null);
 
-  const handleClose = (e: any) => {
-    if (
-      e.target.id === appPreview ||
-      e.target.parentElement.id === appPreview ||
-      e.target.id === BACKGROUND_ID
-    ) {
-      return;
-    }
-    setAsGif(false);
-  };
-  useEventListener('click', handleClose);
-  useEventListener('touchstart', handleClose);
-
   const setGif = () => setSrc(deployVideo);
 
   return (
-    <div className={S.container}>
+    <OutsideClickCapturer cb={() => setAsGif(false)} className={S.container}>
       {/* rendered both img and gif to eager load */}
       {/* div container to make the full screen icon positioned relative to gif sibling */}
       <motion.div
@@ -63,7 +49,7 @@ export const PreviewSwitcher: React.FC<Pick<IProject, 'title' | 'image' | 'deplo
           alt={`${title} app preview gif`}
           src={`gifs/${deployVideo}`}
         />
-        <button className={S.fullScreenIconContainer} onClick={setGif}>
+        <button className={S.fullScreenIconContainer} onClick={setGif} type='button'>
           <FullScreenIcon width={25} />
         </button>
       </motion.div>
@@ -87,6 +73,6 @@ export const PreviewSwitcher: React.FC<Pick<IProject, 'title' | 'image' | 'deplo
           <PlayIcon />
         </button>
       </motion.div>
-    </div>
+    </OutsideClickCapturer>
   );
 };
