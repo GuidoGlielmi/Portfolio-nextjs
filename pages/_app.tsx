@@ -41,8 +41,11 @@ export default function App({Component, pageProps}: AppProps) {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <meta name='thumbnail' content='./favicon.svg' />
 
-        <link rel='icon' href='./favicon.svg' type='image/svg+xml' />
-        <link rel='shortcut icon' href='./assets/img/profile-img2.jpg' />
+        <link rel='icon' type='image/png' href='/favicon-48x48.png' sizes='48x48' />
+        <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+        <link rel='shortcut icon' href='/favicon.ico' />
+        <link rel='apple-touch-icon' sizes='180x180' href='/apple-touch-icon.png' />
+        <link rel='manifest' href='/site.webmanifest' />
 
         <link rel='alternate' href='https://guidoglielmi.com.ar?lang=en' hrefLang='en' />
         <link rel='alternate' href='https://guidoglielmi.com.ar?lang=es' hrefLang='es' />
