@@ -12,7 +12,7 @@ const Skills: React.FC<SkillSectionProps> = ({user, skills}) => {
   if (!skills) return null;
 
   const [peopleSkills, languages, whoAmITitle] = useTranslation([
-    'People Skills',
+    'Skills that matter to me',
     'Languages',
     'A little something about me',
   ]);

@@ -44,7 +44,7 @@ const GifPreviewProvider: FC<PropsWithChildren<GifPreviewProviderProps>> = ({chi
 };
 
 export interface BackgroundProps {
-  onClose: () => void;
+  onClose: () => void | undefined;
   open: boolean;
 }
 

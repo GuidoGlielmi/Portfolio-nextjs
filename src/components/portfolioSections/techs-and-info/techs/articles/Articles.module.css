@@ -12,6 +12,7 @@
   display: flex;
   align-items: center;
   position: relative;
+  margin-top: 10px;
 }
 .articlesContainer a {
   background: linear-gradient(
@@ -60,6 +61,9 @@
 }
 
 @media (max-width: 650px) {
+  .articlesSection {
+    margin-top: 3vh;
+  }
   .articlesContainer > div {
     min-height: 4em;
   }

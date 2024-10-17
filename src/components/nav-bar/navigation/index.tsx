@@ -7,14 +7,19 @@ type NavigationProps = {
   refs: Ref[];
 };
 
-const extraMargin = 40;
+const extraMargin = 150;
 const Navigation = ({refs}: NavigationProps) => {
   const [selectedSection, setSelectedSection] = useState(0);
 
   const checkSelectedSection = debounce(() => {
-    setSelectedSection(
-      Number(window.scrollY >= (refs[0].ref.current?.clientHeight || 0) - extraMargin),
-    );
+    let i = 0;
+    for (const r of refs) {
+      const {top = 0, height = 0} = r.ref.current?.getBoundingClientRect() || {};
+      const minY = top + window.scrollY - extraMargin;
+      const maxY = minY + height;
+      if (window.scrollY >= minY && window.scrollY <= maxY) return setSelectedSection(i);
+      i++;
+    }
   }, 100);
   useEventListener({event: 'scroll', fn: checkSelectedSection});
 

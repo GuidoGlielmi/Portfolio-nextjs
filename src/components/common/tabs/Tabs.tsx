@@ -5,7 +5,7 @@ import S from './Tabs.module.css';
 
 interface TabsProps {
   tabs: [TechType, string][];
-  onChange: (selectedTab: TechType) => void;
+  onChange: (selectedTab: TechType) => void | undefined;
 }
 
 const Tabs: React.FC<TabsProps> = ({tabs, onChange}) => {

@@ -1,7 +1,7 @@
 const translationsKeys = {
   'Who am I': 'Sobre mí',
   'Projects & Experiences': 'Proyectos & Experiencias',
-  'People Skills': 'Habilidades Blandas',
+  'Skills that matter to me': 'Habilidades que valoro',
   Languages: 'Idiomas',
   'A little something about me': 'Un poco sobre mí...',
   "Technologies I'm familiar with": 'Tecnologías con las que estoy familiarizado',

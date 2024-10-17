@@ -2,7 +2,7 @@ import useEventListener from '@hooks/useEventListener';
 import React, {useRef} from 'react';
 
 type ClickRecorderProps = {
-  cb: () => void;
+  cb: () => void | undefined;
   children: React.ReactNode;
   className?: string;
 };

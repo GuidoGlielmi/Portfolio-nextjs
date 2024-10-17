@@ -45,7 +45,8 @@
     align-items: center !important;
     align-self: center !important;
     min-height: 77vh;
-    padding-top: max(5.5vw, 5.5vh);
+    padding-top: max(9vw, 9vh);
+    padding-bottom: max(5.5vw, 5.5vh);
     text-align: center !important;
     scroll-snap-align: start;
   }
